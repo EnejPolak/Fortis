@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #0F1115;
+  --foreground: #ededed;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100%;
+}
+
+body {
+  background: #0F1115;
+  color: var(--foreground);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100%;
+}
+
+img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 1.25;
+}
+
+p {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.hamburger-line {
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger-line-top {
+  width: 100%;
+}
+
+.hamburger-line-middle {
+  width: 45%;
+}
+
+.hamburger-line-bottom {
+  width: 70%;
+}
+
+.hamburger-menu:hover .hamburger-line-middle,
+.hamburger-menu:hover .hamburger-line-bottom {
+  width: 100%;
+}
+
+/* Menu Panel - Floating Card with Hamburger Inside */
+.menu-panel-backdrop {
+  background: transparent;
+}
+
+.menu-panel-container {
+  position: relative;
+  transform: translateX(-15px);
+}
+
+.menu-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #0F1115;
+  border: 1px solid rgba(159, 163, 167, 0.3);
+  border-radius: 12px;
+  transform-origin: top right;
+  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu-panel-closed {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.menu-panel-open {
+  width: 280px;
+  min-height: 120px;
+  padding: 20px 24px;
+  animation: panelReveal 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: auto;
+  right: 0;
+}
+
+@keyframes panelReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translate(8px, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.menu-panel nav {
+  transition: opacity 0.2s ease 0.1s;
+}
+
+/* Navbar */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+}
+
+.navbar-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Perfumes Brands Cards */
+.intro,
+.outro {
+  height: 100svh;
+  padding: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.outro .kolekcija-label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 32px;
+}
+
+.kolekcija-line {
+  width: 1px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: height 0.3s ease, background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.kolekcija-text {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16%;
+  color: rgba(255, 255, 255, 0.25);
+  position: relative;
+  flex-shrink: 0;
+  transition: margin-top 0.3s ease, color 0.3s ease;
+}
+
+.kolekcija-label:hover .kolekcija-line {
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.kolekcija-label:hover .kolekcija-text {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.kolekcija-text span {
+  display: block;
+  text-align: center;
+  width: 11px;
+}
+
+.intro h1,
+.outro h1 {
+  width: 60%;
+  text-align: center;
+  line-height: 1.1;
+  position: relative;
+}
+
+.outro {
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vh;
+}
+
+.outro h1 {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.cards {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25svh;
+}
+
+.card-marquee {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+
+.card-marquee .marquee {
+  display: flex;
+}
+
+.card-marquee .marquee h1 {
+  white-space: nowrap;
+  font-size: 10vw;
+  font-weight: 600;
+  margin-right: 30px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  padding: 1.5em;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.card-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 150px;
+  overflow: hidden;
+}
+
+.card-img img {
+  transform: scale(2);
+}
+
+.card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+}
+
+.card-content .card-title {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-content .card-description {
+  text-align: center;
+  width: 40%;
+  margin-bottom: 3em;
+  position: relative;
+  transform: translateX(40px);
+  opacity: 0;
+}
+
+.card:nth-child(2) {
+  margin-top: 50vh;
+}
+
+.char {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.char span {
+  transform: translateX(100%);
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 23px;
+  left: 20px;
+  z-index: 100;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 331px;
+}
+
+.footer-logo {
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: white;
+}
+
+.footer-link {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.footer-logo {
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+
+  .intro h1,
+  .outro h1 {
+    width: 100%;
+  }
+
+  .card-content .card-description {
+    width: 90%;
+  }
+}
