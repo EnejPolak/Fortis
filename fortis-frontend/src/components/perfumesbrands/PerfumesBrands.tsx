@@ -22,6 +22,9 @@ export function PerfumesBrands() {
         lenisRef.current.destroy();
         lenisRef.current = null;
       }
+      if (typeof window !== "undefined") {
+        (window as any).__fortisLenis = null;
+      }
     };
   }, []);
 

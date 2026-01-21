@@ -8,9 +8,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Introduction />
-      <PerfumesBrands />
+      <div className="site-content">
+        <Hero />
+        <Introduction />
+        <PerfumesBrands />
+      </div>
       <Footer />
     </>
   );

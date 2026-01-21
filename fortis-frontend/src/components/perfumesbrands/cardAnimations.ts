@@ -11,6 +11,9 @@ export function setupCardAnimations() {
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
+  if (typeof window !== "undefined") {
+    (window as any).__fortisLenis = lenis;
+  }
 
   const cards = gsap.utils.toArray(".card");
   const introCard = cards[0] as HTMLElement;

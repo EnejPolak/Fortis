@@ -57,95 +57,6 @@ section {
   color: #fff;
 }
 
-/* Hamburger Menu */
-.hamburger-menu {
-  cursor: pointer;
-  padding: 0;
-  border: none;
-  background: transparent;
-}
-
-.hamburger-line {
-  height: 2px;
-  background-color: white;
-  border-radius: 1px;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hamburger-line-top {
-  width: 100%;
-}
-
-.hamburger-line-middle {
-  width: 45%;
-}
-
-.hamburger-line-bottom {
-  width: 70%;
-}
-
-.hamburger-menu:hover .hamburger-line-middle,
-.hamburger-menu:hover .hamburger-line-bottom {
-  width: 100%;
-}
-
-/* Menu Panel - Floating Card with Hamburger Inside */
-.menu-panel-backdrop {
-  background: transparent;
-}
-
-.menu-panel-container {
-  position: relative;
-  transform: translateX(-15px);
-}
-
-.menu-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #0F1115;
-  border: 1px solid rgba(159, 163, 167, 0.3);
-  border-radius: 12px;
-  transform-origin: top right;
-  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.menu-panel-closed {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.menu-panel-open {
-  width: 280px;
-  min-height: 120px;
-  padding: 20px 24px;
-  animation: panelReveal 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-  pointer-events: auto;
-  right: 0;
-}
-
-@keyframes panelReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.85) translate(8px, 8px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translate(0, 0);
-  }
-}
-
-.menu-panel nav {
-  transition: opacity 0.2s ease 0.1s;
-}
-
 /* Navbar */
 .navbar-container {
   display: flex;
@@ -156,16 +67,116 @@ section {
 }
 
 .navbar-logo {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
   color: white;
+  z-index: 51;
 }
 
 .navbar-menu {
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 60;
+}
+
+.navbar-menu-right {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 60;
+}
+
+.site-content {
+  position: relative;
+  z-index: 0;
+}
+
+/* CG clip menu */
+.cg-menu-toggle {
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  z-index: 60;
+}
+
+.cg-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 48;
+  pointer-events: none;
+  background: rgba(15, 15, 15, 0.9);
+  opacity: 0;
+}
+
+.cg-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  pointer-events: none;
+}
+
+.cg-menu-open {
+  pointer-events: auto;
+}
+
+.cg-menu-inner {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 2em;
+}
+
+.cg-menu-row {
+  position: relative;
+  display: flex;
+}
+
+.cg-menu-link a {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+}
+
+.cg-row-1 {
+  left: -110%;
+  justify-content: flex-end;
+  font-size: clamp(40px, 6.5vw, 98px);
+}
+
+.cg-row-2 {
+  left: 110%;
+  justify-content: flex-end;
+  font-size: clamp(36px, 6vw, 88px);
+  padding-right: 2em;
+}
+
+.cg-row-3 {
+  left: -110%;
+  font-size: clamp(36px, 6vw, 88px);
+}
+
+.cg-row-4 {
+  left: 110%;
+  justify-content: space-between;
+  font-size: clamp(44px, 7.5vw, 108px);
+  padding-left: 1em;
+}
+
+.cg-row-5 {
+  left: -110%;
+  justify-content: space-between;
+  font-size: clamp(40px, 6.5vw, 98px);
+  padding-left: 0.5em;
 }
 
 /* Perfumes Brands Cards */
@@ -418,5 +429,25 @@ section {
 
   .card-content .card-description {
     width: 90%;
+  }
+
+  .cg-row-1 {
+    font-size: clamp(30px, 8.5vw, 60px);
+  }
+
+  .cg-row-2 {
+    font-size: clamp(26px, 7.5vw, 52px);
+  }
+
+  .cg-row-3 {
+    font-size: clamp(26px, 7.5vw, 52px);
+  }
+
+  .cg-row-4 {
+    font-size: clamp(30px, 8.5vw, 60px);
+  }
+
+  .cg-row-5 {
+    font-size: clamp(30px, 8.5vw, 60px);
   }
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { HamburgerMenu } from "./HamburgerMenu";
 import { MenuPanel } from "./MenuPanel";
 
 export function Navbar() {
@@ -31,10 +30,19 @@ export function Navbar() {
           >
             FORTIS
           </div>
-          <div className="navbar-menu">
-            <MenuPanel isOpen={isMenuOpen} onToggle={toggleMenu} onClose={closeMenu} />
+          <div className="navbar-menu-right">
+            <button
+              type="button"
+              className="cg-menu-toggle"
+              aria-expanded={isMenuOpen}
+              aria-controls="cg-menu"
+              onClick={toggleMenu}
+            >
+              {isMenuOpen ? "Close" : "Menu"}
+            </button>
           </div>
         </div>
+        <MenuPanel isOpen={isMenuOpen} onClose={closeMenu} />
       </nav>
     </>
   );
