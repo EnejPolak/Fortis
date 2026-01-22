@@ -8,7 +8,7 @@
 }
 
 :root {
-  --background: #0F1115;
+  --background: #0f0f0f;
   --foreground: #ededed;
 }
 
@@ -20,13 +20,24 @@ html {
 }
 
 body {
-  background: #0F1115;
+  background: #0f0f0f;
   color: var(--foreground);
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   height: auto;
   min-height: 100%;
+}
+
+html,
+body {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 img {
@@ -93,6 +104,66 @@ section {
   z-index: 0;
 }
 
+.kolekcija-page {
+  background: #0f0f0f;
+  min-height: 100vh;
+  padding-top: 170px;
+  padding-bottom: 600px;
+}
+
+.kolekcija-row {
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 437px);
+  justify-content: center;
+  align-items: start;
+  column-gap: 63px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.kolekcija-row-offset {
+  margin-top: 500px;
+}
+
+.kolekcija-image {
+  width: 100%;
+  max-width: 437px;
+  height: auto;
+}
+
+.kolekcija-image-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.kolekcija-hover-info {
+  position: fixed;
+  top: 20px;
+  left: 350px;
+  z-index: 70;
+  color: #fff;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kolekcija-hover-brand {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.kolekcija-hover-name {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
 /* CG clip menu */
 .cg-menu-toggle {
   font-family: "Inter", sans-serif;
@@ -145,6 +216,32 @@ section {
   text-decoration: none;
   font-family: "Inter", sans-serif;
   color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.cg-menu-link a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.2s ease;
+  transform: translateY(-10px);
+}
+
+.cg-menu-link a:hover::after {
+  width: 100%;
+}
+
+.cg-menu-link-kolekcija::after {
+  transform: translateY(-6px);
+}
+
+.cg-menu-link-default::after {
+  transform: translateY(-10px);
 }
 
 .cg-row-1 {

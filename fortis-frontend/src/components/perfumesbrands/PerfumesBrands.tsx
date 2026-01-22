@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { setupCardAnimations } from "./cardAnimations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -142,7 +143,7 @@ export function PerfumesBrands() {
 
       <section className="outro">
         <h1>Preglej vse naše brende</h1>
-        <button className="kolekcija-label" type="button">
+        <Link href="/kolekcija" className="kolekcija-label">
           <div className="kolekcija-line"></div>
           <div className="kolekcija-text">
             <span>K</span>
@@ -155,7 +156,7 @@ export function PerfumesBrands() {
             <span>j</span>
             <span>a</span>
           </div>
-        </button>
+        </Link>
       </section>
     </>
   );

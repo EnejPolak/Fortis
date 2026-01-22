@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 
 interface MenuPanelProps {
@@ -115,33 +116,43 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
         <div className="cg-menu-inner">
           <div className="cg-menu-row cg-row-1">
             <div className="cg-menu-link">
-              <a href="#">Realities</a>
+              <Link href="/kolekcija" className="cg-menu-link-kolekcija" onClick={onClose}>
+                Kolekcija
+              </Link>
             </div>
           </div>
           <div className="cg-menu-row cg-row-2">
             <div className="cg-menu-link">
-              <a href="#">Artists</a>
+              <Link href="/kontakt" className="cg-menu-link-default" onClick={onClose}>
+                Kontakt
+              </Link>
             </div>
           </div>
           <div className="cg-menu-row cg-row-3">
             <div className="cg-menu-link">
-              <a href="#">Film</a>
+              <Link href="/o-nas" className="cg-menu-link-default" onClick={onClose}>
+                O nas
+              </Link>
             </div>
           </div>
           <div className="cg-menu-row cg-row-4">
             <div className="cg-menu-link">
-              <a href="#">Over Ones</a>
+              <Link href="/znamke" className="cg-menu-link-default" onClick={onClose}>
+                Znamke
+              </Link>
             </div>
             <div className="cg-menu-link">
-              <a href="#">Publications</a>
+              <span className="cg-menu-link-default"></span>
             </div>
           </div>
           <div className="cg-menu-row cg-row-5">
             <div className="cg-menu-link">
-              <a href="#">Team</a>
+              <span className="cg-menu-link-default"></span>
             </div>
             <div className="cg-menu-link">
-              <a href="#">Inspirations</a>
+              <Link href="/" className="cg-menu-link-default" onClick={onClose}>
+                Domov
+              </Link>
             </div>
           </div>
         </div>

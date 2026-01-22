@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { MenuPanel } from "./MenuPanel";
 
 export function Navbar() {
@@ -18,7 +19,8 @@ export function Navbar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50">
         <div className="navbar-container">
-          <div
+          <Link
+            href="/"
             className="navbar-logo"
             style={{
               fontFamily: "Libre Baskerville, serif",
@@ -29,7 +31,7 @@ export function Navbar() {
             }}
           >
             FORTIS
-          </div>
+          </Link>
           <div className="navbar-menu-right">
             <button
               type="button"
