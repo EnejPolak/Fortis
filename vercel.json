@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd fortis-frontend && npm run build",
+  "outputDirectory": "fortis-frontend/.next",
+  "installCommand": "cd fortis-frontend && npm install",
+  "framework": "nextjs",
+  "rootDirectory": "fortis-frontend"
+}
