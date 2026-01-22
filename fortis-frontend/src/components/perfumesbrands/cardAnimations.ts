@@ -103,10 +103,10 @@ export function setupCardAnimations() {
   cards.forEach((card, index) => {
     const isLastCard = index === cards.length - 1;
     ScrollTrigger.create({
-      trigger: card,
+      trigger: card as HTMLElement,
       start: "top top",
       end: isLastCard ? "+=100vh" : "top top",
-      endTrigger: isLastCard ? null : cards[cards.length - 1],
+      endTrigger: isLastCard ? null : (cards[cards.length - 1] as HTMLElement),
       pin: true,
       pinSpacing: isLastCard,
     });
@@ -116,7 +116,7 @@ export function setupCardAnimations() {
     if (index < cards.length - 1) {
       const cardWrapper = (card as HTMLElement).querySelector(".card-wrapper") as HTMLElement;
       ScrollTrigger.create({
-        trigger: cards[index + 1],
+        trigger: cards[index + 1] as HTMLElement,
         start: "top bottom",
         end: "top top",
         onUpdate: (self) => {
@@ -135,7 +135,7 @@ export function setupCardAnimations() {
       const cardImg = (card as HTMLElement).querySelector(".card-img img") as HTMLElement;
       const imgContainer = (card as HTMLElement).querySelector(".card-img") as HTMLElement;
       ScrollTrigger.create({
-        trigger: card,
+        trigger: card as HTMLElement,
         start: "top bottom",
         end: "top top",
         onUpdate: (self) => {
@@ -154,7 +154,7 @@ export function setupCardAnimations() {
     const cardTitleChars = (card as HTMLElement).querySelectorAll(".char span");
 
     ScrollTrigger.create({
-      trigger: card,
+      trigger: card as HTMLElement,
       start: "top top",
       onEnter: () => animateContentIn(cardTitleChars, cardDescription),
       onLeaveBack: () => animateContentOut(cardTitleChars, cardDescription),
