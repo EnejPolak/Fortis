@@ -3,7 +3,7 @@ import Image from "next/image";
 export function Introduction() {
   return (
     <section className="relative w-full py-20">
-      <div style={{ marginLeft: "286px", display: "flex", gap: "96px" }}>
+      <div style={{ marginLeft: "386px", display: "flex", gap: "96px" }}>
         <div style={{ 
           width: "496px",
           height: "661px"
