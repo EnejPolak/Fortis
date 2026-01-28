@@ -6,6 +6,7 @@ import Link from "next/link";
 import { setupCardAnimations } from "./cardAnimations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import TrailContainer from "./TrailContainer";
 
 export function PerfumesBrands() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -33,6 +34,7 @@ export function PerfumesBrands() {
     <>
       <section className="intro">
         <h1>Brendi, s katerimi sodelujemo</h1>
+        <TrailContainer />
       </section>
       
       <section className="cards">
