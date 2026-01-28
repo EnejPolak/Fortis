@@ -133,6 +133,10 @@ section {
   height: auto;
 }
 
+.kolekcija-image-narcotico {
+  max-width: 419px;
+}
+
 .kolekcija-image-wrap {
   display: flex;
   justify-content: center;
