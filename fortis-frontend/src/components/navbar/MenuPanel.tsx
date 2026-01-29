@@ -123,7 +123,7 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
           </div>
           <div className="cg-menu-row cg-row-2">
             <div className="cg-menu-link">
-              <Link href="/kontakt" className="cg-menu-link-default" onClick={onClose}>
+              <Link href="/contact" className="cg-menu-link-default" onClick={onClose}>
                 Kontakt
               </Link>
             </div>
@@ -142,12 +142,16 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
               </Link>
             </div>
             <div className="cg-menu-link">
-              <span className="cg-menu-link-default"></span>
+              <Link href="/svetovanje" className="cg-menu-link-default" onClick={onClose}>
+                Svetovanje
+              </Link>
             </div>
           </div>
           <div className="cg-menu-row cg-row-5">
             <div className="cg-menu-link">
-              <span className="cg-menu-link-default"></span>
+              <Link href="/delovni-cas" className="cg-menu-link-default" onClick={onClose}>
+                Delovni čas
+              </Link>
             </div>
             <div className="cg-menu-link">
               <Link href="/" className="cg-menu-link-default" onClick={onClose}>

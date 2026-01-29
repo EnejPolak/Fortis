@@ -10,10 +10,10 @@ export function Footer() {
         <Link href="/privacy-policy" className="footer-link">
           Privacy and Policy
         </Link>
-        <Link href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="footer-link">
+        <Link href="https://www.instagram.com/fortisnicheatelier/" target="_blank" rel="noopener noreferrer" className="footer-link">
           Instagram
         </Link>
-        <Link href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="footer-link">
+        <Link href="https://www.tiktok.com/@fortis.niche.atelier" target="_blank" rel="noopener noreferrer" className="footer-link">
           TikTok
         </Link>
         <div className="footer-link"></div>

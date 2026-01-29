@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 @import "tailwindcss";
 
 * {
@@ -112,6 +113,277 @@ section {
   padding-bottom: 600px;
 }
 
+/* Delovni čas page – vse v enem kontejnerju, centrirano na sredino */
+.delovni-cas-page {
+  background: #0f0f0f;
+  min-height: 100vh;
+  padding: 100px 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delovni-cas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 640px;
+  margin-top: -200px;
+}
+
+.delovni-cas-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 1rem;
+}
+
+.delovni-cas-hero-logo {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  aspect-ratio: 1012 / 680;
+  position: relative;
+}
+
+.delovni-cas-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.delovni-cas-hero-tagline {
+  margin-top: 0.25rem;
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.delovni-cas-hero-tagline::before,
+.delovni-cas-hero-tagline::after {
+  content: "";
+  width: 1px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.delovni-cas-content {
+  width: 100%;
+  max-width: 560px;
+  margin: 0;
+  padding: 1rem 0 0;
+  text-align: center;
+}
+
+.delovni-cas-heading {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.delovni-cas-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.delovni-cas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.delovni-cas-list-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 2.5vw, 19px);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.delovni-cas-dan {
+  font-weight: 500;
+}
+
+.delovni-cas-en {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.delovni-cas-ura {
+  margin-left: 0.5rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Svetovanje page – isti minimalistični slog */
+.svetovanje-page {
+  background: #0f0f0f;
+  min-height: 100vh;
+  padding: 100px 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.svetovanje-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 640px;
+  margin-top: -70px;
+}
+
+.svetovanje-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 1rem;
+}
+
+.svetovanje-hero-logo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  aspect-ratio: 1012 / 680;
+  position: relative;
+}
+
+.svetovanje-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.svetovanje-hero-tagline {
+  margin-top: 0.25rem;
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.svetovanje-hero-tagline::before,
+.svetovanje-hero-tagline::after {
+  content: "";
+  width: 1px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.svetovanje-content {
+  width: 100%;
+  padding: 1rem 0 0;
+  text-align: center;
+}
+
+.svetovanje-heading {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.svetovanje-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.svetovanje-intro {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+
+.svetovanje-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.svetovanje-card {
+  text-align: left;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.svetovanje-card:last-of-type {
+  border-bottom: none;
+}
+
+.svetovanje-card-title {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(17px, 2.5vw, 20px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.svetovanje-card-opis {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(14px, 1.9vw, 16px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 0.75rem;
+}
+
+.svetovanje-card-cena {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(15px, 2vw, 17px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
 .kolekcija-row {
   padding: 0 50px;
   display: grid;
@@ -124,6 +396,14 @@ section {
   margin: 0 auto;
 }
 
+/* Enaka višina in poravnava vseh celic – srednji stolpec (2, 5, 8…) ne sme biti nižji ali manjši */
+.kolekcija-row > * {
+  min-height: 437px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .kolekcija-row-offset {
   margin-top: 500px;
 }
@@ -132,6 +412,10 @@ section {
   width: 100%;
   max-width: 437px;
   height: auto;
+  max-height: 437px;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
 }
 
 .kolekcija-image-narcotico {
@@ -141,6 +425,9 @@ section {
 .kolekcija-image-wrap {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 437px;
 }
 
 .kolekcija-hover-info {
@@ -588,4 +875,8 @@ section {
   height: 100%;
   background-size: cover;
   background-position: center;
+}
+
+.container {
+  padding: 12em 2em 4em 2em;
 }
