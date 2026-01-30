@@ -136,8 +136,9 @@ const TrailContainer = () => {
       const oldestImage = trailRef.current[0];
       if (now >= oldestImage.removeTime) {
         const imgToRemove = trailRef.current.shift();
+        if (!imgToRemove) return;
 
-        imgToRemove.maskLayers.forEach((layer, i) => {
+        imgToRemove.maskLayers.forEach((layer: HTMLDivElement, i: number) => {
           const startY = i * 10;
           const endY = (i + 1) * 10;
           const distanceFromEdge = 4.5 - Math.abs(i - 4.5);
@@ -150,7 +151,7 @@ const TrailContainer = () => {
           }, delay);
         });
 
-        imgToRemove.imageLayers.forEach((imageLayer) => {
+        imgToRemove.imageLayers.forEach((imageLayer: HTMLDivElement) => {
           imageLayer.style.transition = `opacity ${config.outDuration}ms ${config.easing}`;
           imageLayer.style.opacity = "0.25";
         });
@@ -234,7 +235,7 @@ const TrailContainer = () => {
       }
     };
 
-    let cleanUpMouseListener: (() => void) | null = null;
+    let cleanUpMouseListener: (() => void) | null | undefined = null;
 
     window.addEventListener("resize", handleResize);
 
