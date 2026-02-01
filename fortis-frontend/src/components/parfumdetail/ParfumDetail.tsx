@@ -50,7 +50,10 @@ export function ParfumDetail({
             style={{ marginTop: "20rem", marginLeft: "7rem" }}
           >
             {/* 3 gumbe v isti vrstici: Aura | Notes | Ingredients */}
-            <div className="flex flex-wrap items-center gap-x-28 gap-y-2 mb-6 shrink-0">
+            <div
+              className="flex flex-wrap items-center gap-x-28 gap-y-2 shrink-0"
+              style={{ marginBottom: activeTab === "notes" ? "0.5rem" : "0" }}
+            >
               <button
                 type="button"
                 onClick={() => setActiveTab("name")}
@@ -86,8 +89,11 @@ export function ParfumDetail({
               </button>
             </div>
 
-            {/* Vsebina pod gumbi – enaka pisava/velikost kot gumbi, odmik pri Parfumer */}
-            <div className="parfum-detail-text min-w-0 max-w-sm min-h-[14rem] flex-shrink-0">
+            {/* Vsebina pod gumbi – večji odmik samo pri Notes, pri ostalih zavihkih manjši */}
+            <div
+              className="parfum-detail-text min-w-0 max-w-sm min-h-[14rem] flex-shrink-0"
+              style={{ marginTop: activeTab === "notes" ? "0.5rem" : "0" }}
+            >
               {activeTab === "name" && (
                 <>
                   <p className="text-[var(--foreground)] opacity-80 mb-1">
@@ -121,12 +127,12 @@ export function ParfumDetail({
                 </>
               )}
               {activeTab === "notes" && (
-                <p className="text-[var(--foreground)] leading-relaxed opacity-80">
+                <p className="text-[var(--foreground)] leading-relaxed whitespace-pre-line">
                   {notes || "—"}
                 </p>
               )}
               {activeTab === "ingredients" && (
-                <p className="text-[var(--foreground)] leading-relaxed opacity-80">
+                <p className="text-[var(--foreground)] leading-relaxed">
                   {ingredients || "—"}
                 </p>
               )}

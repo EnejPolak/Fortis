@@ -27,8 +27,10 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine2: "Eau de Parfum",
     description:
       "AURA je navdihnjena z idejo nevidnega, nematerialnega prostora, ki obdaja ljudi, živali in predmete. Plasti dišave se ovijejo okoli osebe kot mreža vibracij. Prepoznavna barva AURE simbolizira toplino in čutnost ter odraža barvo njenega ključnega akorda: maline.\nParfumer: Chris Maurice (Christian Carbonnel)",
-    notes: "",
-    ingredients: "",
+    notes:
+      "TOP NOTES:\nCalabrian bergamot, Brazilian orange, grapefruit, pineapple\n\nMIDDLE NOTES:\nraspberry, passion fruit from Perú, plum, lily of the valley, Indian jasmine sambac, vanilla\n\nBASE NOTES:\nwoody notes, caramel, oakmoss, amber, musk",
+    ingredients:
+      "ALCOHOL DENAT, PARFUM, AQUA, ALPHA-ISOMETHYL IONONE, BENZYL ALCOHOL, BENZYL SALICYLATE, CITRAL, COUMARIN, FARNESOL, GERANIOL, HYDROXYCITRONELLAL, LIMONENE, LINALOOL.",
   },
 };
 
