@@ -34,7 +34,7 @@ export function ParfumDetail({
           <div className="flex justify-end items-center min-h-[calc(100vh-6rem)] lg:justify-end">
             <div
               className="w-[520px] h-[520px]"
-              style={{ transform: "translateX(-120px) translateY(2rem)" }}
+              style={{ transform: "translateX(-120px) translateY(4rem)" }}
             >
               <img
                 src={imageSrc}
