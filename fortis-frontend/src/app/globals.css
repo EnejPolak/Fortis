@@ -1001,3 +1001,23 @@ section {
 .container {
   padding: 12em 2em 4em 2em;
 }
+
+/* Parfum detail – samo mobil: parfum na sredino ekrana (desktop nespremenjen) */
+@media (max-width: 1023px) {
+  .parfum-detail-main {
+    align-items: center;
+  }
+
+  .parfum-detail-main .grid > div:first-child {
+    justify-content: center;
+  }
+
+  .parfum-detail-main .grid > div:first-child > div {
+    transform: none !important;
+  }
+
+  /* Na telefonu skrij gumb Nazaj na kolekcijo */
+  .parfum-detail-back-link {
+    display: none;
+  }
+}

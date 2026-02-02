@@ -28,7 +28,7 @@ export function ParfumDetail({
   const [activeTab, setActiveTab] = useState<ParfumDetailTab>("name");
 
   return (
-    <main className="min-h-screen w-full flex items-start pt-20">
+    <main className="parfum-detail-main min-h-screen w-full flex items-start pt-20">
       <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-y-12 items-start lg:grid-cols-[1fr_520px] lg:gap-x-16 lg:items-start">
           {/* Levi stolpec – slika parfuma na sredino po višini */}
@@ -51,7 +51,7 @@ export function ParfumDetail({
             style={{ marginTop: "20rem", marginLeft: "7rem" }}
           >
             {/* Samostojen gumb – position absolute, premik le njega, ne 3 gumbov */}
-            <div className="absolute left-0" style={{ top: "-9rem" }}>
+            <div className="parfum-detail-back-link absolute left-0" style={{ top: "-9rem" }}>
               <Link
                 href="/kolekcija"
                 className="text-sm font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity"
