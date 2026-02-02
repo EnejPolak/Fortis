@@ -1020,4 +1020,35 @@ section {
   .parfum-detail-back-link {
     display: none;
   }
+
+  /* Na telefonu: tri gumbe višje gor, bližje parfumu */
+  .parfum-detail-main aside {
+    margin-top: 0.5rem !important;
+    margin-left: 0 !important;
+    padding-top: 0.25rem;
+  }
+
+  .parfum-detail-main .grid {
+    row-gap: 0.5rem;
+  }
+
+  /* Na telefonu: 1. gumb levo, Note na sredini, Sestavine čisto desno */
+  .parfum-detail-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    gap: 0;
+  }
+
+  .parfum-detail-tabs > *:nth-child(1) {
+    justify-self: start;
+  }
+
+  .parfum-detail-tabs > *:nth-child(2) {
+    justify-self: center;
+  }
+
+  .parfum-detail-tabs > *:nth-child(3) {
+    justify-self: end;
+  }
 }

@@ -60,9 +60,9 @@ export function ParfumDetail({
               </Link>
             </div>
 
-            {/* 3 gumbe v isti vrstici: Aura | Notes | Ingredients */}
+            {/* 3 gumbe – na mobilu čisto na levi rob (v CSS) */}
             <div
-              className="flex flex-wrap items-center gap-x-28 gap-y-2 shrink-0"
+              className="parfum-detail-tabs flex flex-wrap items-center gap-x-28 gap-y-2 shrink-0"
               style={{ marginBottom: activeTab === "notes" ? "0.5rem" : "0" }}
             >
               <button
