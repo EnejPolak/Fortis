@@ -63,10 +63,11 @@ p {
   line-height: 1.25;
 }
 
-/* Stran parfuma: vse besedilo (100 ml, Eau de Parfum, opis) enake velikosti kot gumbi */
+/* Stran parfuma: vse besedilo (100 ml, Eau de Parfum, opis) enake velikosti kot gumbi, obojestranska poravnava kot v knjigi */
 .parfum-detail-text,
 .parfum-detail-text p {
   font-size: 0.875rem;
+  text-align: justify;
 }
 
 section {

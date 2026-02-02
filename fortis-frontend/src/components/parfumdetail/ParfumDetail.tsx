@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { getParfumBySlug } from "@/data/parfumi";
 
 export type ParfumDetailTab = "name" | "notes" | "ingredients";
@@ -44,11 +45,21 @@ export function ParfumDetail({
             </div>
           </div>
 
-          {/* Desni stolpec – gumbe fiksno na vrhu, pod njimi vsebina */}
+          {/* Desni stolpec – nazaj na kolekcijo (absolute, ne vpliva na gumbe), nato gumbe in vsebina */}
           <aside
-            className="flex flex-col w-full max-w-[520px] lg:w-[520px]"
+            className="flex flex-col w-full max-w-[520px] lg:w-[520px] relative pt-10"
             style={{ marginTop: "20rem", marginLeft: "7rem" }}
           >
+            {/* Samostojen gumb – position absolute, premik le njega, ne 3 gumbov */}
+            <div className="absolute left-0" style={{ top: "-9rem" }}>
+              <Link
+                href="/kolekcija"
+                className="text-sm font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity"
+              >
+                Nazaj na kolekcijo
+              </Link>
+            </div>
+
             {/* 3 gumbe v isti vrstici: Aura | Notes | Ingredients */}
             <div
               className="flex flex-wrap items-center gap-x-28 gap-y-2 shrink-0"
@@ -74,7 +85,7 @@ export function ParfumDetail({
                     : "text-[var(--foreground)] opacity-50 hover:opacity-70"
                 }`}
               >
-                Notes
+                Note
               </button>
               <button
                 type="button"
@@ -85,7 +96,7 @@ export function ParfumDetail({
                     : "text-[var(--foreground)] opacity-50 hover:opacity-70"
                 }`}
               >
-                Ingredients
+                Sestavine
               </button>
             </div>
 
