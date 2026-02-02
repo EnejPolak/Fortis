@@ -851,9 +851,14 @@ section {
   }
 }
 
-/* Footer – desktop (široki razmik med logo in linki) */
+/* Footer – desktop: prvotni razmiki (331px med logo in linki ter med linki) */
 @media (min-width: 1024px) {
   .footer-content {
+    gap: 331px;
+    justify-content: flex-start;
+  }
+
+  .footer-nav {
     gap: 331px;
   }
 }

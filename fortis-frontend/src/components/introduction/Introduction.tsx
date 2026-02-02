@@ -2,8 +2,20 @@ import Image from "next/image";
 
 export function Introduction() {
   return (
-    <section className="relative w-full py-20">
-      <div style={{ marginLeft: "386px", display: "flex", gap: "96px" }}>
+    <section className="relative w-full py-12 md:py-20">
+      {/* Na telefonu: samo slika mobileIntruduction.png */}
+      <div className="block w-full md:hidden">
+        <Image
+          src="/mobileIntruduction.png"
+          alt="Fortis ni moda. Je namen."
+          width={1080}
+          height={1350}
+          className="h-auto w-full object-cover object-top"
+          sizes="100vw"
+        />
+      </div>
+      {/* Na desktopu: lan.jpeg + besedilo ob sliki */}
+      <div className="hidden md:flex" style={{ marginLeft: "386px", gap: "96px" }}>
         <div style={{ 
           width: "496px",
           height: "661px"
