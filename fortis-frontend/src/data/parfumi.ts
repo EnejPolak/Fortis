@@ -387,3 +387,10 @@ KOLEKCIJA_ITEMS.forEach((item) => {
 export function getParfumBySlug(slug: string): ParfumDetailData | null {
   return PARFUM_BY_SLUG[slug] ?? null;
 }
+
+/** Kratek opis za kolekcijo na mobilnih: prvih 4–5 besed opisa + "..." */
+export function getShortDescription(slug: string): string {
+  const desc = PARFUM_DETAIL_OVERRIDES[slug]?.description ?? "";
+  const words = desc.replace(/\s+/g, " ").trim().split(" ").filter(Boolean).slice(0, 5);
+  return words.length ? words.join(" ") + "..." : "";
+}

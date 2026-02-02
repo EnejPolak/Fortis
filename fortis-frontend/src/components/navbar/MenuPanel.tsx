@@ -138,7 +138,7 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
           <div className="cg-menu-row cg-row-4">
             <div className="cg-menu-link">
               <Link href="/znamke" className="cg-menu-link-default" onClick={onClose}>
-                Znamke
+            
               </Link>
             </div>
             <div className="cg-menu-link">

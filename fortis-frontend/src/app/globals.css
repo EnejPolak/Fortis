@@ -411,6 +411,69 @@ section {
   align-items: flex-start;
 }
 
+.kolekcija-item-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.kolekcija-mobile-info {
+  display: none;
+  margin-top: 0.75rem;
+  text-align: left;
+  padding: 1rem 0.5rem 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.kolekcija-mobile-name {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.kolekcija-mobile-desc {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.25rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 768px) {
+  .kolekcija-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .kolekcija-row {
+    display: contents;
+  }
+
+  .kolekcija-row > * {
+    min-height: 0;
+  }
+
+  .kolekcija-image-wrap {
+    min-height: 0;
+    max-height: none;
+  }
+
+  .kolekcija-mobile-info {
+    display: block;
+  }
+
+  .kolekcija-hover-info {
+    display: none;
+  }
+}
+
 .kolekcija-row-offset {
   margin-top: 500px;
 }

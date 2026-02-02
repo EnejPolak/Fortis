@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { KOLEKCIJA_ITEMS } from "@/data/parfumi";
+import { KOLEKCIJA_ITEMS, getShortDescription } from "@/data/parfumi";
 
 type HoverInfo = { brand: string; name: string } | null;
 
@@ -31,32 +31,39 @@ export default function KolekcijaPage() {
             className={rowIndex === 0 ? "kolekcija-row" : "kolekcija-row kolekcija-row-offset"}
           >
             {rowItems.map((item) => (
-              <Link
-                key={item.slug}
-                href={`/parfum/${item.slug}`}
-                className="kolekcija-image-wrap"
-                onMouseEnter={() => setActivePerfume({ brand: item.brand, name: item.name })}
-                onMouseLeave={() => setActivePerfume(null)}
-              >
-                {item.imageSrc.includes("%23") ? (
-                  <img
-                    src={item.imageSrc}
-                    alt={item.alt}
-                    width={437}
-                    height={437}
-                    className={item.imageClassName ?? "kolekcija-image"}
-                  />
-                ) : (
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.alt}
-                    width={437}
-                    height={437}
-                    className={item.imageClassName ?? "kolekcija-image"}
-                    priority={rowIndex === 0 && rowItems.indexOf(item) < 3}
-                  />
-                )}
-              </Link>
+              <div key={item.slug} className="kolekcija-item-wrap">
+                <Link
+                  href={`/parfum/${item.slug}`}
+                  className="kolekcija-image-wrap"
+                  onMouseEnter={() => setActivePerfume({ brand: item.brand, name: item.name })}
+                  onMouseLeave={() => setActivePerfume(null)}
+                >
+                  {item.imageSrc.includes("%23") ? (
+                    <img
+                      src={item.imageSrc}
+                      alt={item.alt}
+                      width={437}
+                      height={437}
+                      className={item.imageClassName ?? "kolekcija-image"}
+                    />
+                  ) : (
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.alt}
+                      width={437}
+                      height={437}
+                      className={item.imageClassName ?? "kolekcija-image"}
+                      priority={rowIndex === 0 && rowItems.indexOf(item) < 3}
+                    />
+                  )}
+                </Link>
+                <div className="kolekcija-mobile-info">
+                  <div className="kolekcija-mobile-name">{item.name}</div>
+                  {getShortDescription(item.slug) ? (
+                    <div className="kolekcija-mobile-desc">{getShortDescription(item.slug)}</div>
+                  ) : null}
+                </div>
+              </div>
             ))}
           </div>
         ))}
