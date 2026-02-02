@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+const DESKTOP_BREAKPOINT = 1000;
+
 const TrailContainer = () => {
   const trailContainerRef = useRef<HTMLDivElement>(null);
   const animationStateRef = useRef<number | null>(null);
@@ -38,7 +40,7 @@ const TrailContainer = () => {
     const trailContainer = trailContainerRef.current;
     if (!trailContainer) return;
 
-    isDesktopRef.current = window.innerWidth > 1000;
+    isDesktopRef.current = window.innerWidth > DESKTOP_BREAKPOINT;
 
     const MathUtils = {
       lerp: (a: number, b: number, n: number) => (1 - n) * a + n * b,
@@ -165,46 +167,73 @@ const TrailContainer = () => {
     };
 
     const render = () => {
-      if (!isDesktopRef.current) return;
-
-      const distance = getMouseDistance();
-
-      interpolatedMousePosRef.current.x = MathUtils.lerp(
-        interpolatedMousePosRef.current.x || mousePosRef.current.x,
-        mousePosRef.current.x,
-        0.1
-      );
-      interpolatedMousePosRef.current.y = MathUtils.lerp(
-        interpolatedMousePosRef.current.y || mousePosRef.current.y,
-        mousePosRef.current.y,
-        0.1
-      );
-
-      if (
-        distance > config.mouseThreshold &&
-        isInTrailContainer(mousePosRef.current.x, mousePosRef.current.y)
-      ) {
-        createTrailImage();
-        lastMousePosRef.current = { ...mousePosRef.current };
+      if (isDesktopRef.current) {
+        const distance = getMouseDistance();
+        interpolatedMousePosRef.current.x = MathUtils.lerp(
+          interpolatedMousePosRef.current.x || mousePosRef.current.x,
+          mousePosRef.current.x,
+          0.1
+        );
+        interpolatedMousePosRef.current.y = MathUtils.lerp(
+          interpolatedMousePosRef.current.y || mousePosRef.current.y,
+          mousePosRef.current.y,
+          0.1
+        );
+        if (
+          distance > config.mouseThreshold &&
+          isInTrailContainer(mousePosRef.current.x, mousePosRef.current.y)
+        ) {
+          createTrailImage();
+          lastMousePosRef.current = { ...mousePosRef.current };
+        }
       }
-
       removeOldImages();
       animationStateRef.current = requestAnimationFrame(render);
     };
 
+    const createTrailImageAtPosition = (clientX: number, clientY: number) => {
+      if (!isInTrailContainer(clientX, clientY)) return;
+      mousePosRef.current = { x: clientX, y: clientY };
+      interpolatedMousePosRef.current = { x: clientX, y: clientY };
+      lastMousePosRef.current = { x: clientX, y: clientY };
+      createTrailImage();
+    };
+
     const startAnimation = () => {
       if (!isDesktopRef.current) return;
-
       const handleMouseMove = (e: MouseEvent) => {
         mousePosRef.current = { x: e.clientX, y: e.clientY };
       };
-
       document.addEventListener("mousemove", handleMouseMove);
       animationStateRef.current = requestAnimationFrame(render);
-
       return () => {
         document.removeEventListener("mousemove", handleMouseMove);
       };
+    };
+
+    let removeTouchListeners: (() => void) | null = null;
+    const startMobileTap = () => {
+      if (isDesktopRef.current) return;
+      const handleTap = (e: MouseEvent | TouchEvent) => {
+        let x: number, y: number;
+        if ("changedTouches" in e && e.changedTouches?.length) {
+          x = e.changedTouches[0].clientX;
+          y = e.changedTouches[0].clientY;
+        } else if ("clientX" in e) {
+          x = e.clientX;
+          y = e.clientY;
+        } else return;
+        createTrailImageAtPosition(x, y);
+      };
+      const isTouch = "ontouchstart" in window;
+      if (isTouch) {
+        trailContainer.addEventListener("touchend", handleTap, { passive: true });
+        removeTouchListeners = () => trailContainer.removeEventListener("touchend", handleTap);
+      } else {
+        trailContainer.addEventListener("click", handleTap);
+        removeTouchListeners = () => trailContainer.removeEventListener("click", handleTap);
+      }
+      animationStateRef.current = requestAnimationFrame(render);
     };
 
     const stopAnimation = () => {
@@ -223,15 +252,21 @@ const TrailContainer = () => {
 
     const handleResize = () => {
       const wasDesktop = isDesktopRef.current;
-      isDesktopRef.current = window.innerWidth > 1000;
+      isDesktopRef.current = window.innerWidth > DESKTOP_BREAKPOINT;
 
       if (isDesktopRef.current && !wasDesktop) {
+        if (removeTouchListeners) {
+          removeTouchListeners();
+          removeTouchListeners = null;
+        }
         cleanUpMouseListener = startAnimation();
       } else if (!isDesktopRef.current && wasDesktop) {
         stopAnimation();
         if (cleanUpMouseListener) {
           cleanUpMouseListener();
+          cleanUpMouseListener = null;
         }
+        startMobileTap();
       }
     };
 
@@ -241,13 +276,14 @@ const TrailContainer = () => {
 
     if (isDesktopRef.current) {
       cleanUpMouseListener = startAnimation();
+    } else {
+      startMobileTap();
     }
 
     return () => {
       stopAnimation();
-      if (cleanUpMouseListener) {
-        cleanUpMouseListener();
-      }
+      if (cleanUpMouseListener) cleanUpMouseListener();
+      if (removeTouchListeners) removeTouchListeners();
       window.removeEventListener("resize", handleResize);
     };
   }, []);
