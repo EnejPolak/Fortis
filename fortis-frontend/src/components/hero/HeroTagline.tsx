@@ -8,13 +8,12 @@ export function HeroTagline({ text }: HeroTaglineProps) {
       style={{
         fontFamily: "Libre Baskerville, serif",
         fontStyle: "italic",
-        fontSize: "20px",
         lineHeight: "140%",
         letterSpacing: "2%",
         color: "#9FA3A7",
         opacity: 0.9,
       }}
-      className="text-center"
+      className="text-center text-sm sm:text-base md:text-lg lg:text-xl"
     >
       {text}
     </p>
