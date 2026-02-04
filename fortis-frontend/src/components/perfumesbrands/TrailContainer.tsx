@@ -27,7 +27,7 @@ const TrailContainer = () => {
       easing: "cubic-bezier(0.87, 0, 0.13, 1)",
     };
 
-    const trailImageCount = 6;
+    const trailImageCount = 7;
     const images = [
       "/Trail/Baruti.png",
       "/Trail/Bepolar.png",
@@ -35,6 +35,7 @@ const TrailContainer = () => {
       "/Trail/Hedonik.png",
       "/Trail/Kinetic.png",
       "/Trail/Meo.png",
+      "/Trail/Almosthuman.png",
     ];
 
     const trailContainer = trailContainerRef.current;
