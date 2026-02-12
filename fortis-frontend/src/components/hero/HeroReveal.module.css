@@ -1,0 +1,127 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #0f0f0f;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: #0f0f0f;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+  z-index: 2;
+}
+
+.counter {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  color: #ededed;
+}
+
+.counter h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.overlayTextContainer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  height: 2rem;
+  overflow: hidden;
+}
+
+.overlayText {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(2rem);
+  will-change: transform;
+}
+
+.overlayText p {
+  color: #ededed;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+}
+
+.heroImages {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+  will-change: gap;
+  z-index: 3;
+}
+
+.img {
+  width: 10vw;
+  aspect-ratio: 5 / 7;
+  transform: translateY(50%) scale(0.5);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  opacity: 0;
+  will-change: opacity, transform, clip-path;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroHeader {
+  position: absolute;
+  bottom: 8rem;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heroHeader h1 {
+  font-family: "Libre Baskerville", serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: clamp(4rem, 15vw, 16rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 0.85;
+  color: #ededed;
+}
+
+@media (max-width: 1000px) {
+  .counter {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .overlayTextContainer {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .heroImages {
+    top: 42%;
+    padding: 0 0.5rem;
+    gap: 2.5vw;
+  }
+
+  .heroHeader {
+    bottom: 19rem;
+  }
+
+  .img {
+    width: 20vw;
+  }
+}
