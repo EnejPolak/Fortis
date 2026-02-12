@@ -130,7 +130,7 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
           </div>
           <div className="cg-menu-row cg-row-3">
             <div className="cg-menu-link">
-              <Link href="/o-nas" className="cg-menu-link-default" onClick={onClose}>
+              <Link href="/oNas" className="cg-menu-link-default" onClick={onClose}>
                 O nas
               </Link>
             </div>
