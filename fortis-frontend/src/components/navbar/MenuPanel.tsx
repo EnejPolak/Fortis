@@ -94,9 +94,9 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
   useEffect(() => {
     if (!timelineRef.current) return;
     if (isOpen) {
-      timelineRef.current.play();
+      timelineRef.current.timeScale(1).play();
     } else {
-      timelineRef.current.reverse();
+      timelineRef.current.timeScale(1.45).reverse();
     }
   }, [isOpen]);
 

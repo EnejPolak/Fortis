@@ -1051,4 +1051,40 @@ section {
   .parfum-detail-tabs > *:nth-child(3) {
     justify-self: end;
   }
+
+  /* O nas: slike ena pod drugo na telefonu */
+  .o-nas-row {
+    flex-direction: column;
+  }
+
+  /* O nas: naslov na telefonu bolj levo, manjši padding */
+  .o-nas-hero {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  .o-nas-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    text-align: left;
+  }
+
+  /* O nas: tekst pod slikami na telefonu na polno širino */
+  .o-nas-text-block {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    justify-content: flex-start !important;
+  }
+
+  .o-nas-text-block p {
+    width: 100% !important;
+  }
+
+  /* O nas: na telefonu skrij desktop tekst o Lanu, pokaži mobilnega med slikama */
+  .o-nas-text-block-lan {
+    display: none !important;
+  }
+
+  .o-nas-mobile-text {
+    display: block !important;
+  }
 }

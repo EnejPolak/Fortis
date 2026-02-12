@@ -23,8 +23,8 @@ const SVG_PATH_2 =
   "M1661.28 2255.51C1661.28 2255.51 2311.09 1960.37 2111.78 1817.01C1944.47 1696.67 718.456 2870.17 499.781 2255.51C308.969 1719.17 2457.51 1613.83 2111.78 963.512C1766.05 313.198 427.949 2195.17 132.281 1455.51C-155.219 736.292 2014.78 891.514 1708.78 252.012C1437.81 -314.29 369.471 909.169 132.281 566.512C18.1772 401.672 244.781 193.012 244.781 193.012";
 
 /* ——— Barve potez za vsako kartico ——— */
-const STROKE_COLORS = ["#c0c0c0", "#636B2F", "#e67339"];
-const BASE_STROKE = "#c0c0c0 ";
+const STROKE_COLORS = ["	#c0c0c0", "#023020", "#e67339"];
+const BASE_STROKE = "#28282B";
 
 export default function ONas() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -115,8 +115,9 @@ export default function ONas() {
 
   return (
     <section ref={sectionRef}>
-      {/* ——— Zgornji del: tekst ——— */}
+      {/* ——— Zgornji del: naslov ——— */}
       <div
+        className="o-nas-hero"
         style={{
           minHeight: "80vh",
           paddingTop: "200px",
@@ -125,24 +126,19 @@ export default function ONas() {
           position: "relative",
         }}
       >
-        <p
+        <h2
+          className="o-nas-title"
           style={{
-            maxWidth: "980px",
-            lineHeight: 1.6,
-            textAlign: "justify",
-            textAlignLast: "left",
-            hyphens: "auto",
+            maxWidth: "1200px",
+            fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
+            fontWeight: 500,
+            lineHeight: 1.15,
+            letterSpacing: "-0.06rem",
           }}
         >
-          Lan Kraševec je obraz Fortis Niche Atelier in ambasador nišne
-          parfumerije z dolgoletnimi izkušnjami profesionalnega svetovanja v svetu
-          artisanal dišav. Njegov pristop temelji na zgodbi: kaj parfum pomeni, od
-          kod prihaja, in zakaj določena hiša izstopa. Svoje znanje in naravno
-          sposobnost pripovedovanja je dokazal tudi na različnih dogodkih, kjer je
-          ljudi pritegnil z iskrenimi vpogledi v svet dišav. Fortis je ustanovil z
-          idejo ustvariti prostor, kjer se luksuz ne meri v glasnosti, ampak v
-          kakovosti izbire, miru in avtentični povezavi z dišavo.
-        </p>
+          Vsaka dišava tukaj ima razlog&nbsp;— zgodbo, izvor in človeka, ki jo
+          zna postaviti na pravo mesto.
+        </h2>
       </div>
 
       {/* ——— Spodnji del: kartice s scroll-reveal animacijo ——— */}
@@ -163,6 +159,7 @@ export default function ONas() {
             return (
               <div
                 key={rowIdx}
+                className="o-nas-row"
                 style={{
                   width: "100%",
                   display: "flex",
@@ -173,7 +170,9 @@ export default function ONas() {
                   const flatIdx = rowIdx * 2 + colIdx;
                   const strokeColor =
                     STROKE_COLORS[flatIdx % STROKE_COLORS.length];
-                  return (
+                  const elements = [];
+
+                  elements.push(
                     <div
                       key={img.src}
                       ref={(el) => {
@@ -292,11 +291,101 @@ export default function ONas() {
                       </div>
                     </div>
                   );
+
+                  /* Na telefonu: tekst o Lanu med slikama */
+                  if (flatIdx === 0) {
+                    elements.push(
+                      <div
+                        key="mobile-lan-text"
+                        className="o-nas-mobile-text"
+                        style={{
+                          display: "none",
+                          padding: "2.5rem 0 3.5rem",
+                          lineHeight: 1.6,
+                          textAlign: "justify",
+                          textAlignLast: "left",
+                          hyphens: "auto",
+                        }}
+                      >
+                        <p>
+                          Lan Kraševec je obraz Fortis Niche Atelier in ambasador nišne
+                          parfumerije z dolgoletnimi izkušnjami profesionalnega svetovanja v svetu
+                          artisanal dišav. Njegov pristop temelji na zgodbi: kaj parfum pomeni, od
+                          kod prihaja, in zakaj določena hiša izstopa. Svoje znanje in naravno
+                          sposobnost pripovedovanja je dokazal tudi na različnih dogodkih, kjer je
+                          ljudi pritegnil z iskrenimi vpogledi v svet dišav. Fortis je ustanovil z
+                          idejo ustvariti prostor, kjer se luksuz ne meri v glasnosti, ampak v
+                          kakovosti izbire, miru in avtentični povezavi z dišavo.
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return elements;
                 })}
               </div>
             );
           }
         )}
+      </div>
+
+      {/* ——— Pod slikami: tekst pod Lanom (levo) — samo desktop ——— */}
+      <div
+        className="o-nas-text-block o-nas-text-block-lan"
+        style={{
+          paddingTop: "4rem",
+          paddingLeft: "1rem",
+          paddingBottom: "8rem",
+          display: "flex",
+          justifyContent: "flex-start",
+        }}
+      >
+        <p
+          style={{
+            width: "calc(50% - 0.5rem)",
+            lineHeight: 1.6,
+            textAlign: "justify",
+            textAlignLast: "left",
+            hyphens: "auto",
+          }}
+        >
+          Lan Kraševec je obraz Fortis Niche Atelier in ambasador nišne
+          parfumerije z dolgoletnimi izkušnjami profesionalnega svetovanja v svetu
+          artisanal dišav. Njegov pristop temelji na zgodbi: kaj parfum pomeni, od
+          kod prihaja, in zakaj določena hiša izstopa. Svoje znanje in naravno
+          sposobnost pripovedovanja je dokazal tudi na različnih dogodkih, kjer je
+          ljudi pritegnil z iskrenimi vpogledi v svet dišav. Fortis je ustanovil z
+          idejo ustvariti prostor, kjer se luksuz ne meri v glasnosti, ampak v
+          kakovosti izbire, miru in avtentični povezavi z dišavo.
+        </p>
+      </div>
+
+      {/* ——— Pod slikami: tekst pod Fortisom (desno) ——— */}
+      <div
+        className="o-nas-text-block"
+        style={{
+          paddingTop: "2rem",
+          paddingRight: "1rem",
+          paddingBottom: "8rem",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <p
+          style={{
+            width: "calc(50% - 0.5rem)",
+            lineHeight: 1.6,
+            textAlign: "justify",
+            textAlignLast: "left",
+            hyphens: "auto",
+          }}
+        >
+          Fortis Niche Atelier je nišna parfumerija v središču Ljubljane za
+          ljudi, ki hočejo več kot hitro testiranje na listič. Ne delujemo kot
+          klasična trgovina — pri nas dobiš osebno svetovanje in izbor dišav, ki
+          se ti dejansko prilegajo. Fokus je na značaju, zgodbi in tem, kako
+          parfum deluje na tvoji koži.
+        </p>
       </div>
     </section>
   );

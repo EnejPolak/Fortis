@@ -4,6 +4,7 @@ import "./contact.css";
 
 import { gsap } from "gsap";
 import { ReactLenis } from "@studio-freight/react-lenis";
+import { Footer } from "@/components/footer/Footer";
 
 const Page = () => {
   const container = useRef();
@@ -46,6 +47,7 @@ const Page = () => {
   }, []);
 
   return (
+    <>
     <ReactLenis root>
       <div
         className={`contact-page${isVisible ? " contact-page--visible" : ""}`}
@@ -113,6 +115,8 @@ const Page = () => {
         </div>
       </div>
     </ReactLenis>
+    <Footer />
+    </>
   );
 };
 
