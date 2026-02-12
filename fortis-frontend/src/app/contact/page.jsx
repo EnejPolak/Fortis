@@ -66,7 +66,7 @@ const Page = () => {
                   <p>Telefon</p>
                 </div>
                 <div className="item">
-                  <p>+386 70 168 863</p>
+                  <p>+386 40 168 863</p>
                 </div>
               </div>
             </div>

@@ -112,6 +112,8 @@
     min-height: 100svh;
     min-height: 100dvh;
     min-height: 100lvh;
+    /* Small extra buffer so next section does not peek in first viewport */
+    padding-bottom: calc(2.5rem + var(--sab));
   }
 
   .counter {
