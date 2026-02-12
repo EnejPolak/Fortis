@@ -16,7 +16,7 @@ const HERO_IMAGES = [
   "/lan.jpeg",
   "/Hero/FortisHero.png",
   "/Hero/LanIntruduction.jpeg",
-  "/baruti.jpg",
+  "/Hero/lan2.jpeg?v=20260212",
 ];
 
 export function HeroReveal() {

@@ -9,8 +9,8 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 
 /* ——— Slike za scroll-reveal kartice ——— */
 const IMAGES = [
-  { src: "/oNas/LanIntruduction.jpeg", title: "Lan Kraševec" },
-  { src: "/oNas/prostor.jpeg", title: "Fortis Atelier" },
+  { src: "/Hero/lan2.jpeg", title: "Lan Kraševec" },
+  { src: "/oNas/prostor.jpeg", title: "Fortis Niche Atelier" },
   // Dodaj 3. sliko tukaj ko bo pripravljena:
   // { src: "/oNas/tretja.jpeg", title: "Naslov" },
 ];
@@ -136,7 +136,7 @@ export default function ONas() {
             letterSpacing: "-0.06rem",
           }}
         >
-          Vsaka dišava tukaj ima razlog&nbsp;— zgodbo, izvor in človeka, ki jo
+          Vsaka dišava tukaj ima razlog&nbsp; zgodbo, izvor in človeka, ki jo
           zna postaviti na pravo mesto.
         </h2>
       </div>
