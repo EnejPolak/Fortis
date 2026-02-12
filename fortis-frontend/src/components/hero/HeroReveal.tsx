@@ -9,6 +9,8 @@ import styles from "./HeroReveal.module.css";
 gsap.registerPlugin(CustomEase, SplitText);
 CustomEase.create("hop", "0.85, 0, 0.15, 1");
 
+const HERO_REVEAL_STORAGE_KEY = "fortis.heroRevealPlayed.v1";
+
 const HERO_IMAGES = [
   "/Hero/prostor.jpeg",
   "/lan.jpeg",
@@ -28,7 +30,34 @@ export function HeroReveal() {
 
   useEffect(() => {
     if (!rootRef.current || !counterRef.current || !heroTitleRef.current) return;
+
+    const imgs = imageRefs.current.filter(Boolean);
+    const sideImgs = imgs.filter((_, idx) => idx !== 2);
+    const centerImg = imgs[2];
+
+    const applyFinalState = () => {
+      if (counterRef.current) counterRef.current.textContent = "100";
+      if (overlayTextRef.current) gsap.set(overlayTextRef.current, { y: "-6rem" });
+      if (imagesWrapRef.current) gsap.set(imagesWrapRef.current, { gap: "0.75vw" });
+      gsap.set(imgs, { y: 0, opacity: 1, scale: 1 });
+      gsap.set(sideImgs, { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
+      if (centerImg) gsap.set(centerImg, { scale: 2 });
+      if (overlayRef.current) {
+        gsap.set(overlayRef.current, {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+        });
+      }
+    };
+
+    const hasPlayed = window.localStorage.getItem(HERO_REVEAL_STORAGE_KEY) === "1";
+    if (hasPlayed) {
+      applyFinalState();
+      document.body.classList.remove("hero-reveal-lock-ui");
+      return;
+    }
+
     document.body.classList.add("hero-reveal-lock-ui");
+    window.localStorage.setItem(HERO_REVEAL_STORAGE_KEY, "1");
 
     const ctx = gsap.context(() => {
       const split = SplitText.create(heroTitleRef.current, {
@@ -40,10 +69,6 @@ export function HeroReveal() {
       gsap.set(split.words, { yPercent: 100 });
 
       const counter = { value: 0 };
-      const imgs = imageRefs.current.filter(Boolean);
-      const sideImgs = imgs.filter((_, idx) => idx !== 2);
-      const centerImg = imgs[2];
-
       const counterTl = gsap.timeline({ delay: 0.5 });
       const overlayTextTl = gsap.timeline({ delay: 0.75 });
       const revealTl = gsap.timeline({ delay: 0.5 });
