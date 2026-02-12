@@ -115,7 +115,7 @@
 
   .counter {
     right: calc(1rem + var(--sar));
-    bottom: calc(1rem + var(--sab));
+    bottom: calc(2.5rem + var(--sab));
   }
 
   .overlayTextContainer {
@@ -130,7 +130,7 @@
   }
 
   .heroHeader {
-    bottom: calc(9rem + var(--sab));
+    bottom: calc(12rem + var(--sab));
   }
 
   .img {
