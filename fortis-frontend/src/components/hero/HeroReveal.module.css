@@ -107,15 +107,16 @@
 
 @media (max-width: 1000px) {
   .hero {
-    /* Fallback chain: oldest -> newest */
+    /* Fallback chain: oldest -> newest (better full-screen stability on mobile) */
     min-height: 100vh;
     min-height: 100svh;
+    min-height: 100dvh;
     min-height: 100lvh;
   }
 
   .counter {
     right: calc(1rem + var(--sar));
-    bottom: calc(2.5rem + var(--sab));
+    bottom: calc(5rem + var(--sab));
   }
 
   .overlayTextContainer {
@@ -130,7 +131,7 @@
   }
 
   .heroHeader {
-    bottom: calc(12rem + var(--sab));
+    bottom: calc(16rem + var(--sab));
   }
 
   .img {
