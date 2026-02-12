@@ -1,9 +1,12 @@
 .hero {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+
   position: relative;
   width: 100%;
   min-height: 100svh;
-  min-height: 100dvh;
-  height: 100dvh;
   overflow: hidden;
   background: #0f0f0f;
 }
@@ -19,8 +22,8 @@
 
 .counter {
   position: absolute;
-  right: calc(2rem + env(safe-area-inset-right));
-  bottom: calc(2rem + env(safe-area-inset-bottom));
+  right: calc(2rem + var(--sar));
+  bottom: calc(2rem + var(--sab));
   color: #ededed;
 }
 
@@ -32,8 +35,8 @@
 
 .overlayTextContainer {
   position: absolute;
-  top: calc(2rem + env(safe-area-inset-top));
-  left: calc(2rem + env(safe-area-inset-left));
+  top: calc(2rem + var(--sat));
+  left: calc(2rem + var(--sal));
   height: 2rem;
   overflow: hidden;
 }
@@ -85,7 +88,7 @@
 
 .heroHeader {
   position: absolute;
-  bottom: calc(8rem + env(safe-area-inset-bottom));
+  bottom: calc(8rem + var(--sab));
   width: 100%;
   z-index: 1;
   pointer-events: none;
@@ -103,14 +106,21 @@
 }
 
 @media (max-width: 1000px) {
+  .hero {
+    /* Fallback chain: oldest -> newest */
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100lvh;
+  }
+
   .counter {
-    right: calc(1rem + env(safe-area-inset-right));
-    bottom: calc(1rem + env(safe-area-inset-bottom));
+    right: calc(1rem + var(--sar));
+    bottom: calc(1rem + var(--sab));
   }
 
   .overlayTextContainer {
-    top: calc(1rem + env(safe-area-inset-top));
-    left: calc(1rem + env(safe-area-inset-left));
+    top: calc(1rem + var(--sat));
+    left: calc(1rem + var(--sal));
   }
 
   .heroImages {
@@ -120,7 +130,7 @@
   }
 
   .heroHeader {
-    bottom: calc(9rem + env(safe-area-inset-bottom));
+    bottom: calc(9rem + var(--sab));
   }
 
   .img {
