@@ -481,10 +481,18 @@ body.hero-reveal-lock-ui .footer {
 
   .kolekcija-mobile-info {
     display: block;
+    margin-top: 0.2rem;
+    padding-top: 0.35rem;
   }
 
   .kolekcija-hover-info {
     display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .kolekcija-hover-info {
+    display: none !important;
   }
 }
 

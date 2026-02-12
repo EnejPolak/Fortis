@@ -3,7 +3,7 @@
 import { Footer } from "@/components/footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KOLEKCIJA_ITEMS, getShortDescription } from "@/data/parfumi";
 
 type HoverInfo = { brand: string; name: string } | null;
@@ -15,11 +15,24 @@ const ROWS = Array.from({ length: Math.ceil(KOLEKCIJA_ITEMS.length / ROW_SIZE) }
 
 export default function KolekcijaPage() {
   const [activePerfume, setActivePerfume] = useState<HoverInfo>(null);
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setCanHover(mq.matches);
+
+    update();
+    mq.addEventListener?.("change", update);
+
+    return () => {
+      mq.removeEventListener?.("change", update);
+    };
+  }, []);
 
   return (
     <>
       <main className="site-content kolekcija-page">
-        {activePerfume && (
+        {canHover && activePerfume && (
           <div className="kolekcija-hover-info" aria-hidden="true">
             <div className="kolekcija-hover-brand">{activePerfume.brand}</div>
             <div className="kolekcija-hover-name">{activePerfume.name}</div>
@@ -35,8 +48,13 @@ export default function KolekcijaPage() {
                 <Link
                   href={`/parfum/${item.slug}`}
                   className="kolekcija-image-wrap"
-                  onMouseEnter={() => setActivePerfume({ brand: item.brand, name: item.name })}
-                  onMouseLeave={() => setActivePerfume(null)}
+                  onMouseEnter={() => {
+                    if (canHover) setActivePerfume({ brand: item.brand, name: item.name });
+                  }}
+                  onMouseLeave={() => {
+                    if (canHover) setActivePerfume(null);
+                  }}
+                  onTouchStart={() => setActivePerfume(null)}
                 >
                   {item.imageSrc.includes("%23") ? (
                     <img
