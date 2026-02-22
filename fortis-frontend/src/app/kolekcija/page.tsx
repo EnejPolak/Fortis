@@ -29,6 +29,20 @@ export default function KolekcijaPage() {
     };
   }, []);
 
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash.slice(1) : "";
+    if (!hash) return;
+
+    const scrollToEl = () => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    scrollToEl();
+    const t = setTimeout(scrollToEl, 100);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <>
       <main className="site-content kolekcija-page">
@@ -44,7 +58,7 @@ export default function KolekcijaPage() {
             className={rowIndex === 0 ? "kolekcija-row" : "kolekcija-row kolekcija-row-offset"}
           >
             {rowItems.map((item) => (
-              <div key={item.slug} className="kolekcija-item-wrap">
+              <div key={item.slug} id={item.slug} className="kolekcija-item-wrap">
                 <Link
                   href={`/parfum/${item.slug}`}
                   className="kolekcija-image-wrap"

@@ -20,6 +20,7 @@ export default function ParfumPage() {
 
   return (
     <ParfumDetail
+      slug={slug}
       imageSrc={parfum.imageSrc}
       name={parfum.name}
       metaLine1={parfum.metaLine1}

@@ -7,6 +7,7 @@ import { getParfumBySlug } from "@/data/parfumi";
 export type ParfumDetailTab = "name" | "notes" | "ingredients";
 
 export interface ParfumDetailProps {
+  slug: string;
   imageSrc: string;
   name: string;
   metaLine1: string;
@@ -17,6 +18,7 @@ export interface ParfumDetailProps {
 }
 
 export function ParfumDetail({
+  slug,
   imageSrc,
   name,
   metaLine1,
@@ -53,7 +55,7 @@ export function ParfumDetail({
             {/* Samostojen gumb – position absolute, premik le njega, ne 3 gumbov */}
             <div className="parfum-detail-back-link absolute left-0" style={{ top: "-9rem" }}>
               <Link
-                href="/kolekcija"
+                href={`/kolekcija#${slug}`}
                 className="text-sm font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity"
               >
                 Nazaj na kolekcijo
@@ -160,5 +162,5 @@ const DEMO_SLUG = "kinetic-aura";
 export function ParfumDetailDemo() {
   const parfum = getParfumBySlug(DEMO_SLUG);
   if (!parfum) return null;
-  return <ParfumDetail {...parfum} />;
+  return <ParfumDetail slug={DEMO_SLUG} {...parfum} />;
 }
