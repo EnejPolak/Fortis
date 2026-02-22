@@ -525,7 +525,7 @@ body.hero-reveal-lock-ui .footer {
 .kolekcija-hover-info {
   position: fixed;
   top: 20px;
-  left: 350px;
+  left: calc(50% - 700px + 50px + 437px - 150px);
   z-index: 70;
   color: #fff;
   pointer-events: none;

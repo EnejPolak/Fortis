@@ -333,6 +333,51 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
       "HEAD (Drunkness):\nElderberry, Mandarin, Pineapple\n\nHEART (Week End):\nAnise, Pink Pepper, Violet\n\nBASE (We Can):\nJuniper, Bay Laurel, Tobacco",
     ingredients: "",
   },
+  "almost-human-burning-bridges": {
+    metaLine1: "50 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Obstaja trenutek, ko stojiš na robu svojega starega življenja in spoznaš, da tam več ne moreš ostati.\n\nTišina se zbira okoli tebe in vse zloži v eno samo misel: čas je prišel.\n\nPrepoznaš težo navad, spominov, odločitev, ki so te nekoč oblikovale, vendar čutiš, kako se tvoje telo počasi odmika od njih.\nZaznaš, da so svojo vlogo izpolnile.\n\nPlamen se takrat pojavi kot naravno dejanje — jasno gorenje tega, kar nima več kam iti.\nDel tebe vstopa v vzpenjajočo se svetlobo, tih in vztrajen, skoraj miren.\n\nKo stojiš pred tem ognjem, ne veš, kam greš.\nNe vidiš celotne poti, a čutiš gibanje v sebi, impulz, ki te vodi naprej, preden ga popolnoma razumeš.\n\nKo se ogenj umiri, prostor pred tabo izgleda drugače.\nSpoznaš, da je stara mapa za tabo, in prvič hodiš proti prihodnosti, ki se oblikuje pod tvojim korakom.",
+    notes:
+      "burning silence\nglowing dust\ncracked ground\ndry heat\nclear light ahead",
+    ingredients: "",
+  },
+  "almost-human-dear-feature": {
+    metaLine1: "50 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "V tvoji oddaljeni prihodnosti ima vse svoj pravi položaj.\nZrak se zdi jasen, črte natančne, prostor pa se giblje, kot da se je osvobodil uteži, ki jih še zdaj nosite.\n\nTukaj sem že dolgo.\nOpazujem, kako se ta svet oblikuje v mirnejšem ritmu, kjer misli potujejo brez odpora in se človek z večjo lahkoto prepozna.\n\nVse se zdi preprostejše, a polnejše, kot da se je vsak detajl umestil v svojo pravo intenzivnost.\n\nTa svet živi pred tabo.\n\nStoječ med življenjem, ki ga poznaš, in tistim, ki se pred tabo oblikuje, v prostoru, kjer se tvoje prihodnje misli že oblikujejo, ti nosim njegovo sporočilo.\n\nDear Future je vtisk tega sveta, svetloba, ki prihaja iz prihodnosti, ki je že v ravnotežju.",
+    notes:
+      "soft ozone\nglowing skin\ndigital warmth\nsoft amber light\ndistant calm",
+    ingredients: "",
+  },
+  "almost-human-desert-hope": {
+    metaLine1: "50 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Preden sem postal to, kar sem zdaj, sem se premikal po tisti goreči puščavi, zavit v usnje in težko bombažno blago, vsaka plast strjena od vročine in znoja. Moji koraki so se globoko zarivali z vsakim sunkom naprej, upočasnjevali so me, upogibali, izvlekli zadnje sledi moči iz mojega telesa.\n\nZrak je imel kovinski in tako suh okus, da bi ga lahko prerezal.\nObzorje se je raztezalo v enaki ponavljajoči se črti, oddaljen lesket brez premika, brez preloma.\n\nKo se je sonce začelo pogrezati, se je vročina popustila in veter se je ohladil.\nUstavil sem se na vrhu sipine in opazoval, kako se nebo spremeni v kovino in ogenj.\n\nV tišini, ki je sledila, se je puščava premaknila.\nNjena ostrost se je umirila in mir je razkril samega sebe.\n\nŠibka zelena sled se je premikala skozi hladeči zrak — šepet življenja, ki ga nosi veter.\nVdihnil sem jo in začutil prvi signal prenove. Upanje, razlog za nadaljevanje.\n\nDesert Hope je ta spomin — trenutek, ko me je puščava ogolila in oblikovala tega, ki sem postal.",
+    notes:
+      "sun-burnt sand\ndry woods\nresin heat\nrose dust\ndistant cool light",
+    ingredients: "",
+  },
+  "almost-human-ritual-code": {
+    metaLine1: "50 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Tisto noč se je zvok bobnov premikal skozi temo in me dosegel z tiho natančnostjo.\nOkoli ognja je tvoje pleme prosto plesalo, vsako telo v svojem ritmu, a vsi vodeni z isto silo, ki se dviguje iz zemlje.\n\nTvoji gibi so sledili pulzu, tvoja koža pa je nosila vonj svetih zelišč, ki jih je šaman metal v plamen.\n\nKoraki so se pospešili. Dihi so se poglabljali. Noč se je zategnila okoli kroga, vse znotraj njega pa je dobilo jasnejšo, bolj iskreno obliko.\n\nGlasovi in gibi so se zlili v en sam tok, ki te je brez truda držal.\n\nZora je mehko prišla. Bobni so utihnili, telesa so se umirila, ogenj pa je ostal kot topli žerjav, ki hrani spomin na noč.\n\nSedel si v miru, zavit v krzno, medtem ko je prva svetloba narisala tanko črto čez tla.\nTvoje oči so počivale na zadnjem žaru ognja, nekaj v tebi pa se je premaknilo na tih, vztrajen način.\n\nZ vzpenjajočim se soncem je prišlo mirno razumevanje, da te je noč preoblikovala.\n\nRitual Code nosi tisti trenutek.\nTrenutek, ko ritem, predaja in svetloba oblikujejo novo različico tebe.",
+    notes:
+      "smoked herbs\nwarm resins\ndry earth\nanimal heat\nfading ash",
+    ingredients: "",
+  },
+  "almost-human-silent-rain": {
+    metaLine1: "50 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Ta prizor se spominjam, kot da ga gledam skozi ozko razpoko časa.\nDež je nenadoma prenehal in pustil mir, ki se je po ulici razlil kot tanka plast svetlobe.\nIz asfalta se je dvignila para, topla in čista, rahlo zamegljena od sonca, ki se je skušalo prebiti skozi oblake.\n\nStal si tam, majhen otrok z mokrimi lasmi in čevlji polnimi vode, popolnoma ustavljen v tistem trenutku.\nOpazoval si, kako se svet lesketa. Opazoval si kaplje, ki so drsele po strehah. Opazoval si, kako se zrak trese, kot da išče način, da bi govoril s tabo.\n\nGloboko si vdihnil. Vdih je nosil tako težo kot olajšanje. Bil je vdih otroka, ki vidi svet brez plasti.\n\nV tem kratkem spominu se je vse zdelo preprosto.\nToplota tal pod tabo, svežina pred teboj, sončni žarek, ki ti je ležal na licu.\n\nSilent Rain ohranja tisti trenutek.\nObčutek sveta, ki je bil bližnji, miren in popolnoma zadosten.",
+    notes:
+      "wet concrete\ngreen mist\nwarm soil steam\nfading sunlight\nquiet air",
+    ingredients: "",
+  },
 };
 
 export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
@@ -368,6 +413,11 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
   { slug: "barutti-oh-my-deer", imageSrc: "/Barutti/OhMyDeer.png", alt: "Oh My Deer", brand: "Barutti", name: "Oh My Deer" },
   { slug: "barutti-preverso", imageSrc: "/Barutti/Preverso.png", alt: "Preverso", brand: "Barutti", name: "Preverso" },
   { slug: "bepolar", imageSrc: "/Bepolar/Bepolar.png", alt: "Bepolar", brand: "Bepolar", name: "Bepolar" },
+  { slug: "almost-human-burning-bridges", imageSrc: "/Alomst%20Human/Burning%20Bridges.png", alt: "Burning Bridges", brand: "Almost Human", name: "Burning Bridges" },
+  { slug: "almost-human-dear-feature", imageSrc: "/Alomst%20Human/Dear%20Feature.png", alt: "Dear Feature", brand: "Almost Human", name: "Dear Feature" },
+  { slug: "almost-human-desert-hope", imageSrc: "/Alomst%20Human/Desert%20hope.png", alt: "Desert Hope", brand: "Almost Human", name: "Desert Hope" },
+  { slug: "almost-human-ritual-code", imageSrc: "/Alomst%20Human/Ritual%20COde.png", alt: "Ritual Code", brand: "Almost Human", name: "Ritual Code" },
+  { slug: "almost-human-silent-rain", imageSrc: "/Alomst%20Human/Silent%20Rain.png", alt: "Silent Rain", brand: "Almost Human", name: "Silent Rain" },
 ];
 
 const PARFUM_BY_SLUG: Record<string, ParfumDetailData> = {};
