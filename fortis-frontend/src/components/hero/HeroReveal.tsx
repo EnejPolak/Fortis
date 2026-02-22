@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { SplitText } from "gsap/SplitText";
@@ -8,8 +9,6 @@ import styles from "./HeroReveal.module.css";
 
 gsap.registerPlugin(CustomEase, SplitText);
 CustomEase.create("hop", "0.85, 0, 0.15, 1");
-
-const HERO_REVEAL_STORAGE_KEY = "fortis.heroRevealPlayed.v1";
 
 const HERO_IMAGES = [
   "/Hero/prostor.jpeg",
@@ -20,6 +19,7 @@ const HERO_IMAGES = [
 ];
 
 export function HeroReveal() {
+  const searchParams = useSearchParams();
   const rootRef = useRef<HTMLElement | null>(null);
   const counterRef = useRef<HTMLHeadingElement | null>(null);
   const overlayTextRef = useRef<HTMLDivElement | null>(null);
@@ -49,15 +49,17 @@ export function HeroReveal() {
       }
     };
 
-    const hasPlayed = window.localStorage.getItem(HERO_REVEAL_STORAGE_KEY) === "1";
-    if (hasPlayed) {
+    const skipReveal = searchParams.get("skipReveal") === "1";
+    if (skipReveal) {
+      if (typeof window !== "undefined") {
+        window.history.replaceState(null, "", "/");
+      }
       applyFinalState();
       document.body.classList.remove("hero-reveal-lock-ui");
       return;
     }
 
     document.body.classList.add("hero-reveal-lock-ui");
-    window.localStorage.setItem(HERO_REVEAL_STORAGE_KEY, "1");
 
     const ctx = gsap.context(() => {
       const split = SplitText.create(heroTitleRef.current, {

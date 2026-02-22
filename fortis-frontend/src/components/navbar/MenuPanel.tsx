@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
 interface MenuPanelProps {
@@ -10,6 +11,7 @@ interface MenuPanelProps {
 }
 
 export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
+  const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement | null>(null);
   const backdropRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -154,7 +156,11 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
               </Link>
             </div>
             <div className="cg-menu-link">
-              <Link href="/" className="cg-menu-link-default" onClick={onClose}>
+              <Link
+                href={pathname && pathname !== "/" ? "/?skipReveal=1" : "/"}
+                className="cg-menu-link-default"
+                onClick={onClose}
+              >
                 Domov
               </Link>
             </div>

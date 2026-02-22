@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MenuPanel } from "./MenuPanel";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,12 +17,14 @@ export function Navbar() {
     setIsMenuOpen(false);
   };
 
+  const homeHref = pathname && pathname !== "/" ? "/?skipReveal=1" : "/";
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50">
         <div className="navbar-container">
           <Link
-            href="/"
+            href={homeHref}
             className="navbar-logo"
             style={{
               fontFamily: "Libre Baskerville, serif",
