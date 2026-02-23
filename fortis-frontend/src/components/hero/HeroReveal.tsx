@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { SplitText } from "gsap/SplitText";
+import { useScrollLock } from "@/hooks/useScrollLock";
 import styles from "./HeroReveal.module.css";
 
 gsap.registerPlugin(CustomEase, SplitText);
@@ -20,6 +21,9 @@ const HERO_IMAGES = [
 
 export function HeroReveal() {
   const searchParams = useSearchParams();
+  const [isIntroAnimating, setIntroAnimating] = useState(false);
+  useScrollLock(isIntroAnimating);
+
   const rootRef = useRef<HTMLElement | null>(null);
   const counterRef = useRef<HTMLHeadingElement | null>(null);
   const overlayTextRef = useRef<HTMLDivElement | null>(null);
@@ -27,6 +31,15 @@ export function HeroReveal() {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const heroTitleRef = useRef<HTMLHeadingElement | null>(null);
   const imageRefs = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    if (!isIntroAnimating) return;
+    const lenis = typeof window !== "undefined" ? (window as any).__fortisLenis : null;
+    if (lenis && typeof lenis.stop === "function") lenis.stop();
+    return () => {
+      if (lenis && typeof lenis.start === "function") lenis.start();
+    };
+  }, [isIntroAnimating]);
 
   useEffect(() => {
     if (!rootRef.current || !counterRef.current || !heroTitleRef.current) return;
@@ -60,6 +73,7 @@ export function HeroReveal() {
     }
 
     document.body.classList.add("hero-reveal-lock-ui");
+    setIntroAnimating(true);
 
     const ctx = gsap.context(() => {
       const split = SplitText.create(heroTitleRef.current, {
@@ -155,6 +169,7 @@ export function HeroReveal() {
         .add("titleReveal", "-=0.5")
         .call(() => {
           document.body.classList.remove("hero-reveal-lock-ui");
+          setIntroAnimating(false);
         }, undefined, "titleReveal")
         .to(
           split.words,
@@ -170,6 +185,7 @@ export function HeroReveal() {
 
     return () => {
       document.body.classList.remove("hero-reveal-lock-ui");
+      setIntroAnimating(false);
       ctx.revert();
     };
   }, []);

@@ -33,7 +33,7 @@ export function PerfumesBrands() {
   return (
     <>
       <section className="intro">
-        <h1>Brendi, s katerimi sodelujemo</h1>
+        <h1>Znamke, s katerimi sodelujemo</h1>
         <TrailContainer />
       </section>
       
@@ -50,7 +50,7 @@ export function PerfumesBrands() {
           <div className="card-wrapper">
             <div className="card-content">
               <div className="card-title">
-                <h1>Kinetic Parfumes Barcelona</h1>
+                <h1>Kinetic Parfumes <span className="block sm:inline">Barcelona</span></h1>
               </div>
               <div className="card-description">
                 <p>

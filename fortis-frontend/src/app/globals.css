@@ -24,7 +24,7 @@ html {
 body {
   background: #0f0f0f;
   color: var(--foreground);
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   overflow-x: hidden;
   overflow-y: auto;
   height: auto;
@@ -61,6 +61,11 @@ p {
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25;
+}
+
+/* Stran parfuma: prejšnji font (Inter) za vsebino strani parfuma */
+.parfum-detail-main {
+  font-family: "Inter", sans-serif;
 }
 
 /* Stran parfuma: vse besedilo (100 ml, Eau de Parfum, opis) enake velikosti kot gumbi, obojestranska poravnava kot v knjigi */
@@ -120,6 +125,14 @@ body.hero-reveal-lock-ui .footer {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Med landing reveal animacijo blokiraj scroll – omogočen šele po končani animaciji */
+body.hero-reveal-lock-ui {
+  overflow: hidden;
+}
+html:has(body.hero-reveal-lock-ui) {
+  overflow: hidden;
 }
 
 .site-content {
@@ -208,7 +221,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .delovni-cas-heading {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(26px, 4vw, 34px);
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -242,7 +255,7 @@ body.hero-reveal-lock-ui .footer {
   justify-content: center;
   gap: 0.4rem;
   padding: 0.35rem 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(16px, 2.5vw, 19px);
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
@@ -332,7 +345,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .svetovanje-heading {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(26px, 4vw, 34px);
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -355,7 +368,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .svetovanje-intro {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(14px, 2vw, 16px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
@@ -381,7 +394,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .svetovanje-card-title {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(17px, 2.5vw, 20px);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -390,7 +403,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .svetovanje-card-opis {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(14px, 1.9vw, 16px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.78);
@@ -398,7 +411,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .svetovanje-card-cena {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(15px, 2vw, 17px);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
@@ -443,7 +456,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .kolekcija-mobile-name {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
@@ -451,7 +464,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .kolekcija-mobile-desc {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 0.25rem;
@@ -536,7 +549,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .kolekcija-hover-brand {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 16px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -544,14 +557,14 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .kolekcija-hover-name {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 24px;
   font-weight: 500;
 }
 
 /* CG clip menu */
 .cg-menu-toggle {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   color: #fff;
   background: none;
   outline: none;
@@ -577,6 +590,8 @@ body.hero-reveal-lock-ui .footer {
   inset: 0;
   z-index: 49;
   pointer-events: none;
+  /* Isti font kot FORTIS v navbarju (O nas, Kolekcija, Kontakt, itd.) */
+  font-family: "Libre Baskerville", serif;
 }
 
 .cg-menu-open {
@@ -599,7 +614,7 @@ body.hero-reveal-lock-ui .footer {
 
 .cg-menu-link a {
   text-decoration: none;
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   color: #fff;
   position: relative;
   display: inline-block;
@@ -698,7 +713,7 @@ body.hero-reveal-lock-ui .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
@@ -885,7 +900,7 @@ body.hero-reveal-lock-ui .footer {
 }
 
 .footer-link {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 13px;
   color: white;
   cursor: pointer;
@@ -982,6 +997,79 @@ body.hero-reveal-lock-ui .footer {
 
   .cg-row-5 {
     font-size: clamp(30px, 8.5vw, 60px);
+  }
+}
+
+/* Zelo majhni zasloni (npr. Instagram in-app, majhni telefoni) – večji razmiki, da vse ni skupaj */
+@media (max-width: 430px) {
+  .intro,
+  .outro {
+    padding: 2rem 1.25rem;
+    min-height: 100svh;
+  }
+
+  .intro h1,
+  .outro h1 {
+    width: 92%;
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .outro {
+    padding-top: 6vh;
+    padding-bottom: 8vh;
+  }
+
+  .outro .kolekcija-label {
+    margin-top: 2rem;
+  }
+
+  .kolekcija-text {
+    margin-top: 1rem;
+    font-size: 15px;
+  }
+
+  .kolekcija-text span {
+    width: 12px;
+  }
+
+  .cards {
+    gap: 28svh;
+    padding: 0 0.5rem;
+  }
+
+  .card {
+    padding: 2rem 1.25rem;
+    min-height: 85svh;
+  }
+
+  .card-content .card-description {
+    width: 92%;
+    margin-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card-marquee .marquee h1 {
+    font-size: 9vw;
+    margin-right: 20px;
+  }
+
+  .cg-menu-inner {
+    padding: 0 1.5rem;
+  }
+
+  .footer {
+    padding: 14px 12px 18px;
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+
+  .footer-content {
+    gap: 0.75rem;
+  }
+
+  .footer-nav {
+    gap: 0.75rem;
   }
 }
 
