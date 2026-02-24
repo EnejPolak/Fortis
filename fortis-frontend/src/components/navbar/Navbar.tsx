@@ -27,8 +27,7 @@ export function Navbar() {
             href={homeHref}
             className="navbar-logo"
             style={{
-              fontFamily: "Libre Baskerville, serif",
-              fontWeight: "bold",
+              fontFamily: '"JMH Typewriter", "Courier New", monospace',
               textTransform: "uppercase",
               fontSize: "18px",
               letterSpacing: "0.05em",

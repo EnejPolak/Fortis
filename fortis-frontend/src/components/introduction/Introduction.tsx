@@ -3,10 +3,10 @@ import Image from "next/image";
 export function Introduction() {
   return (
     <section className="relative w-full py-12 md:py-20">
-      {/* Na telefonu: samo slika mobileIntruduction.png */}
+      {/* Na telefonu: slika Lana (LanHeroIntruduction.png) */}
       <div className="block w-full md:hidden">
         <Image
-          src="/mobileIntruduction.png"
+          src="/LanHeroIntruduction.png"
           alt="Fortis ni moda. Je namen."
           width={1080}
           height={1350}
@@ -69,7 +69,20 @@ export function Introduction() {
             opacity: 0.75,
             textAlign: "justify"
           }}>
-            Fortis ni za vsak okus. In to je namen. To niso parfumi za všečke, niti za množico. So za tiste, ki jim tišina bolj pristaja kot razlaga. Če ga razumeš takoj verjetno ni zate.
+            Fortis ni ustvarjen, da bi bil opažen.
+            Ustvarjen je, da ostane.
+
+            Ne pripada času, trendu ali trenutku.
+            Pripada tistim, ki razumejo vrednost redkosti.
+
+            Fortis ni za vsakogar.
+            Nikoli ne prosi za pozornost. Nikoli se ne razlaga.
+
+            To niso parfumi za množico.
+            So prisotnost. Podpis. Tiha moč.
+
+            Če ga moraš razumeti, ni zate.
+            Če ga čutiš, potem že veš.
           </div>
         </div>
       </div>

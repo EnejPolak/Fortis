@@ -95,7 +95,7 @@
 }
 
 .heroHeader h1 {
-  font-family: "Libre Baskerville", serif;
+  font-family: "JMH Typewriter", "Courier New", monospace;
   text-transform: uppercase;
   text-align: center;
   font-size: clamp(4rem, 15vw, 16rem);
