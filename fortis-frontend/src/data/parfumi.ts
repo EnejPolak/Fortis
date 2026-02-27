@@ -378,6 +378,51 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
       "wet concrete\ngreen mist\nwarm soil steam\nfading sunlight\nquiet air",
     ingredients: "",
   },
+  "spiritica-lynch": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "LYNCH je skrivnostna in hipnotična dišava, olfaktorni portal, ki se klanja Davidu Lynchu – eni najpomembnejših in odločilnih oseb v mojem življenju. Ne le filmski režiser, temveč vodilna sila, vzporedna zavest, ki me je z nevidno močjo simbolov in sanj zaznamovala. Ta parfum sta v sodelovanju z Daniele Muratori Caputo ustvarila dva velika mojstra parfumerije: Leonardo Opali in Paolo Cerizza.",
+    notes:
+      "HEAD NOTES:\nSaffron\nCloves\nNight-blooming jasmine\nCherry cake\n\nHEART NOTES:\nXanthorrea Australis\nLatakia tobacco\nOud\nMyrrh\nStyrax\n\nFEET NOTES:\nDark woody notes\nBenzoin\nPatchouli\nLatakia tobacco\nVanilla with gourmand accord",
+    ingredients: "",
+  },
+  "spiritica-yuzu-yakuza": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Čast diši po dežju. Moč, hitra kot črnilo in denar.\n\nTokio, pozno ponoči. Neonske luči utripljejo v odsevu mokrega asfalta, tihe stopinje drsijo skozi uličice Kabukicha.\nYUZUYAKUZA je parfum, ki pripoveduje nenapisani kodeks japonske mafije, ritual iniciacijskega tetoviranja Irezumi, razkošje in nevarnost življenja v senci.\nUvod je oster kot rezilo katane: yuzu in sudachi eksplodirata s svežino citrusov in kovine, natančen udarec, ki prebudi čute, kot prva kaplja dežja na topli koži.\nV srcu dišave mesto diha. Vonj indijskega črnila se zliva z električnim duhom mokrega asfalta in spomladanskega cvetenja sakure, evocira tihi ritual Irezumi: igla reže kožo, risba oživi, bolečina je le prehod.\nV ozadju šepet moči: bankovci v rokah izkušenih prstov, vonj človeške kože, nejasna dišava dima v ekskluzivnem klubu. Magnetna sled, nezmotljiva, kot spoštovanje, pridobljeno s krvjo in tišino.",
+    notes:
+      "HEAD NOTES:\nYuzu\nSudachi (Japanese Lime)\nPineapple\nGrapefruit\nGunpowder\n\nHEART NOTES:\nSakura Blossom\nInk Accord\nPetrichor\nSun-soaked Asphalt\n\nFEET NOTES:\nMahogany Wood\nBanknote Smell\nCedar Wood\nIncense\nSuede",
+    ingredients: "",
+  },
+  "spiritica-mango-macumba": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Rio de Janeiro. Na obrobju brazilske metropole, v senci vegetacije nacionalnega parka Tijuca, potekajo rituali macumbe.\nMacumba je izraz iz afriškega jezika bantu, ki označuje religiozne prakse, ki združujejo poganske elemente afriškega izvora z vplivi ljudskega krščanstva in številnimi vplivi brazilske kulture. V nasprotju s tem, kar misli zahodna kultura, macumba ni nujno povezana z rituali »negativne« narave: v večini teh sincretičnih spravnih obredov gre za zaščito, zdravje, blagostanje, srečo in dobrobit.\nV teh paranormalnih ritualih potekajo tudi živalske žrtve, da bi spodbudile pozitivne vplive božanstev.\nMANGOMACUMBA je prva referenca OSCURATA COLLECTION znamke Spiritica.",
+    notes:
+      "HEAD NOTES:\nMango\nPapaya\nMint\nLime\nPineapple\nOzonic notes\n\nHEART NOTES:\nBlood\nFerrous chord\nMango\nGuava\nPapaya\nTiare flower\n\nFEET NOTES:\nRed earth\nAnimalic notes\nWhite musk\nTobacco absolute\nEbony\nMilk",
+    ingredients: "",
+  },
+  "spiritica-jeffrey": {
+    metaLine1: "50 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      `Imel sem te obsesivne misli in želje, ki sem jih skušal obvladovati, a nisem mogel. Bil sem popolnoma obseden.
+Nisem jih ubijal, ker bi bil nanje jezen, ne zato, ker bi jih sovražil – ubijal sem, ker sem jih hotel obdržati pri sebi.
+In ko je moja obsedenost rasla, sem začel ohranjevati dele njihovih teles – lobanje in okostnjake.«
+Med letoma 1978 in 1991 je Jeffrey Dahmer umoril sedemnajst moških.
+Mamil jih je s spokojnostjo in nežnostjo, nato jih je odrugiral, jih ubil in ohranil.
+Nekatere je risal, druge fotografiral. Poskušal jih je obdržati za vedno.
+Na sodišču je izjavil: »Nisem ravnal iz sovraštva.«
+Rekel je, da je to storil iz ljubezni – iz neobvladljive potrebe po posedovanju, da ga nikoli ne zapustijo, da se oklepa tega, kar bi sicer izginilo.
+V tej obsedenosti se je rodilo nekaj paranormalnega: sobivanje dveh prisotnosti v enem telesu, dveh narav, neločljivih in v spopadu.
+V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen serijskemu morilcu, in drugo poglavje Spiritica Crime Collection.`,
+    notes:
+      "TOP NOTES:\nIced beer\nPopper accord\nWhite orange\nLive yeast\nAcidic aldehydes\n\nHEART NOTES:\nDirty carpet\nCarnation\nCoagulated blood\nHuman sweat\nSharp blade\n\nFEET NOTES:\nMelted plastic\nDamp cellar\nAmber\nBirch\nVetiver",
+    ingredients: "",
+  },
 };
 
 export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
@@ -418,6 +463,10 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
   { slug: "almost-human-desert-hope", imageSrc: "/Alomst%20Human/Desert%20hope.png", alt: "Desert Hope", brand: "Almost Human", name: "Desert Hope" },
   { slug: "almost-human-ritual-code", imageSrc: "/Alomst%20Human/Ritual%20COde.png", alt: "Ritual Code", brand: "Almost Human", name: "Ritual Code" },
   { slug: "almost-human-silent-rain", imageSrc: "/Alomst%20Human/Silent%20Rain.png", alt: "Silent Rain", brand: "Almost Human", name: "Silent Rain" },
+  { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
+  { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },
+  { slug: "spiritica-mango-macumba", imageSrc: "/Spiritica/MangoMavcuma.png", alt: "Mango Macumba", brand: "Spiritica", name: "Mango Macumba" },
+  { slug: "spiritica-jeffrey", imageSrc: "/Spiritica/jeffrey.png", alt: "Jeffrey", brand: "Spiritica", name: "Jeffrey" },
 ];
 
 const PARFUM_BY_SLUG: Record<string, ParfumDetailData> = {};
