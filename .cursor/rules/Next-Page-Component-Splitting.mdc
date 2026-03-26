@@ -1,0 +1,21 @@
+---
+globs: **/page.tsx
+alwaysApply: false
+---
+Page files must stay thin.
+
+- `page.tsx` should be a composition/orchestration layer, not a large implementation file.
+- Do not place large UI sections or complex repeated markup directly in `page.tsx`.
+- If a page has multiple distinct sections, split them into child components.
+
+When implementing a page:
+- create separate child component files for meaningful sections
+- export them properly
+- import and use them in `page.tsx`
+- do not leave placeholder comments instead of creating components
+
+Prefer multiple focused `.tsx` files over one oversized page file.
+Use typed props (avoid `any`) for child components.
+Follow the existing project folder convention (prefer page-specific `_components` when appropriate).
+
+In the final response, list all created/modified files.

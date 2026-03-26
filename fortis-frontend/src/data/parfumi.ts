@@ -82,6 +82,16 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     ingredients:
       "ALCOHOL DENAT., PARFUM, LIMONENE, AQUA, LINALOOL, BENZYL SALICYLATE, CITRAL, CITRONELLOL, EUGENOL, HEXYL CINNAMAL.",
   },
+  "kinetic-neo-sillage": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Francoska beseda sillage označuje sled, ki jo v vodi pusti jadrnica. NEO SILLAGE je nadaljevanje te sledi – trenutek, ko sled ne izgine več, temveč se preobrazi. Kjer je SILLAGE obstajal kot spomin, se NEO SILLAGE razgrne kot živa prisotnost, razkrita v realnem času.",
+    notes:
+      "TOP NOTES:\nPassion Fruit, Mango, Violet, Saffron, Bergamot\n\nHEART NOTES:\nCardamom, Suede, Olibanum\n\nBASE NOTES:\nAkigalawood DMC, Cedar, Leather, Tonka Bean, Amber, Musk",
+    ingredients:
+      "ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, HEXAMETHYLINDANOPYRAN, HEXYL CINNAMAL, LAVANDULA OIL/EXTRACT, LIMONENE, LINALOOL, LINALYL ACETATE, PINENE, ROSE KETONES, TERPINEOL, TERPINOLENE, VANILLIN, BENZALDEHYDE, BENZYL ALCOHOL, BENZYL SALICYLATE, BETA-CARYOPHYLLENE, CAMPHOR, CINNAMAL, CITRAL, CITRUS AURANTIUM BERGAMIA PEEL OIL, CITRUS AURANTIUM FLOWER OIL, CITRUS LIMON PEEL OIL, COUMARIN, DIMETHYL PHENETHYL ACETATE, GERANIOL, GERANYL ACETATE.",
+  },
   "hedonik-divine-perversion": {
     metaLine1: "30 ml",
     metaLine2: "Extrait de Parfum",
@@ -423,9 +433,34 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
       "TOP NOTES:\nIced beer\nPopper accord\nWhite orange\nLive yeast\nAcidic aldehydes\n\nHEART NOTES:\nDirty carpet\nCarnation\nCoagulated blood\nHuman sweat\nSharp blade\n\nFEET NOTES:\nMelted plastic\nDamp cellar\nAmber\nBirch\nVetiver",
     ingredients: "",
   },
+  "floramara-erotico-70": {
+    metaLine1: "30 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Desetletje svobode, ustvarjalnosti in transgresije.\n\nLeta revolucionarnih inovacij, velikih upov, dobre glasbe in svobodne ljubezni.\n\nNajbolj ekskluzivni nočni klubi, med plesalkami, znojem in ugasnjenimi cigaretnimi ogorki.\n\nNostalgičen pogled na pristno lepoto, ki je danes že minila.",
+    notes: "Neznano",
+    ingredients: "",
+  },
+  "floramara-nitro-flora": {
+    metaLine1: "30 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Ta parfum je sad razdora med instinktom in racionalnostjo.\n\nPredstavlja privlačnost naključja ter nemoč pred nepredvidljivim tokom dogodkov.\n\nNapaka je sprejeta ne kot neuspeh, temveč kot spodbuda in del ustvarjalnega procesa.",
+    notes: "Neznano",
+    ingredients: "",
+  },
+  "floramara-sete": {
+    metaLine1: "30 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Tam, kjer tudi svetloba težko prodre, vsi elementi sobivajo pod vladavino nežne harmonije.\n\nTa parfum predstavlja premišljen razmislek o popolnosti tistih naravnih procesov, ki niso vidni, a so bistveni za obstoj.\n\nNerazložljiva privlačnost do nekoga ali nečesa.\n\nNamen je z jasnostjo in popolno natančnostjo priklicati to subtilno in krhko ravnovesje.",
+    notes: "Neznano",
+    ingredients: "",
+  },
 };
 
 export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
+  { slug: "kinetic-neo-sillage", imageSrc: "/Kinetic/Neo.png", alt: "Néo Sillage", brand: "Kinetic Parfums Barcelona", name: "Néo Sillage" },
   { slug: "kinetic-aura", imageSrc: "/Kinetic/Aura.png", alt: "Aura", brand: "Kinetic Parfums Barcelona", name: "Aura" },
   { slug: "kinetic-insomnia", imageSrc: "/Kinetic/Insomnia.png", alt: "Insomnia", brand: "Kinetic Parfums Barcelona", name: "Insomnia" },
   { slug: "kinetic-kayu", imageSrc: "/Kinetic/Kayu.png", alt: "Kayu", brand: "Kinetic Parfums Barcelona", name: "Kayu" },
@@ -463,6 +498,9 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
   { slug: "almost-human-desert-hope", imageSrc: "/Alomst%20Human/Desert%20hope.png", alt: "Desert Hope", brand: "Almost Human", name: "Desert Hope" },
   { slug: "almost-human-ritual-code", imageSrc: "/Alomst%20Human/Ritual%20COde.png", alt: "Ritual Code", brand: "Almost Human", name: "Ritual Code" },
   { slug: "almost-human-silent-rain", imageSrc: "/Alomst%20Human/Silent%20Rain.png", alt: "Silent Rain", brand: "Almost Human", name: "Silent Rain" },
+  { slug: "floramara-erotico-70", imageSrc: "/Floramara/Erotico_70.png", alt: "Erotico 70", brand: "Floramara", name: "Erotico 70" },
+  { slug: "floramara-nitro-flora", imageSrc: "/Floramara/NitroFlora.png", alt: "Nitro Flora", brand: "Floramara", name: "Nitro Flora" },
+  { slug: "floramara-sete", imageSrc: "/Floramara/SETE.png", alt: "SETE", brand: "Floramara", name: "SETE" },
   { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
   { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },
   { slug: "spiritica-mango-macumba", imageSrc: "/Spiritica/MangoMavcuma.png", alt: "Mango Macumba", brand: "Spiritica", name: "Mango Macumba" },
