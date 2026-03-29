@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HeroReveal } from "@/components/hero/HeroReveal";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 import { Introduction } from "@/components/introduction/Introduction";
 import { PerfumesBrands } from "@/components/perfumesbrands/PerfumesBrands";
 import { Footer } from "@/components/footer/Footer";

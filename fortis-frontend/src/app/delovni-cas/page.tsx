@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/footer/Footer";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Delovni čas",
+  description:
+    "Delovni čas Fortis Niche Atelier, Ljubljana. Preveri odprtost pred obiskom.",
+  alternates: { canonical: "/delovni-cas" },
+  openGraph: {
+    title: "Delovni čas | Fortis Niche Atelier",
+    description:
+      "Delovni čas Fortis Niche Atelier, Ljubljana. Preveri odprtost pred obiskom.",
+    url: "/delovni-cas",
+  },
+};
 
 const DELOVNI_CAS = [
   { dan: "Ponedeljek", en: "Monday", ura: "10:00 – 18:00" },

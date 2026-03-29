@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/footer/Footer";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Svetovanje",
+  description:
+    "Vodeno svetovanje pri izbiri parfuma v Fortis Niche Atelier – individualno, za skupine in podjetja.",
+  alternates: { canonical: "/svetovanje" },
+  openGraph: {
+    title: "Svetovanje | Fortis Niche Atelier",
+    description:
+      "Vodeno svetovanje pri izbiri parfuma v Fortis Niche Atelier – individualno, za skupine in podjetja.",
+    url: "/svetovanje",
+  },
+};
 
 const SVETOVANJE_PONUDBE = [
   {
