@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import { CookieConsent } from "@/components/cookie-consent/CookieConsent";
 import { Navbar } from "@/components/navbar/Navbar";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site-brand";
@@ -99,6 +100,7 @@ export default function RootLayout({
         <SiteJsonLd />
         <Navbar />
         {children}
+        <CookieConsent />
         <Analytics />
       </body>
     </html>
