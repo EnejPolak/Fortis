@@ -52,7 +52,7 @@ const Page = () => {
                   <p>Lokacija</p>
                 </div>
                 <div className="item">
-                  <p>Poljanska cesta 1</p>
+                  <p>Poljanska cesta 7</p>
                 </div>
                 <div className="item">
                   <p>1000 Ljubljana</p>
