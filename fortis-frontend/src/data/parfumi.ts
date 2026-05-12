@@ -415,6 +415,15 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
       "HEAD NOTES:\nMango\nPapaya\nMint\nLime\nPineapple\nOzonic notes\n\nHEART NOTES:\nBlood\nFerrous chord\nMango\nGuava\nPapaya\nTiare flower\n\nFEET NOTES:\nRed earth\nAnimalic notes\nWhite musk\nTobacco absolute\nEbony\nMilk",
     ingredients: "",
   },
+  "spiritica-leonarda": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Ubila, razčlenila in izkoščenila je tri ženske. Njihovo maščobo je uporabila za izdelavo milnih tablic. Njihovo kri je sušila v pečici, da bi jo drobila v testo in pripravila okusne piškote, ki jih je ponujala prijateljem ob čaju.\n\nBila je Leonarda Cianciulli. Prva italijanska serijska morilka, znana tudi kot izdelovalka mila iz Correggia, ki je, žrtev vraževerja, pod vplivom pokvarljene in nenormalne materinske ljubezni, hotela žrtvovati življenja treh žensk:\n\nNa ta način se je zdelo, da pomirja zle duhove, ki naj bi po prerokbah čarovnice ubili njene otroke.\n\nZnamka luksuznih paranormalnih parfumov Spiritica želi olfaktorno pripovedati zgodbo te zelo zapletene zgodovinske osebnosti in to stori z LEONARDA: prvim parfumom zbirke Crime Collection.",
+    notes:
+      "HEAD NOTES:\nHomemade soap\nBlood orange\nCaustic soda accord\nBlack pepper\nBlood\n\nHEART NOTES:\nChantilly cream\nHomemade biscuits\nRaspberry syrup\nMetallic notes\n\nFEET NOTES:\nOud\nSulfur\nDark chocolate\nGrey amber",
+    ingredients: "",
+  },
   "spiritica-jeffrey": {
     metaLine1: "50 ml",
     metaLine2: "Extrait de Parfum",
@@ -456,6 +465,25 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
       "Tam, kjer tudi svetloba težko prodre, vsi elementi sobivajo pod vladavino nežne harmonije.\n\nTa parfum predstavlja premišljen razmislek o popolnosti tistih naravnih procesov, ki niso vidni, a so bistveni za obstoj.\n\nNerazložljiva privlačnost do nekoga ali nečesa.\n\nNamen je z jasnostjo in popolno natančnostjo priklicati to subtilno in krhko ravnovesje.",
     notes: "Neznano",
     ingredients: "",
+  },
+  "french-cowboy-mezcal-chocolat": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Mezcal Chocolat temelji na izjemno redkih surovinah. Udari kakor strel mezcalja: uvaja bleščeče olje limete, zaostreno s somalijskim olibanumom, ki doda dimno globino. Parfumer je šel še dlje z izjemno redkim izvlečkom ruma – tako dragim, kot je v parfumeriji lahko najboljši iris!\n\nNamesto zgolj sintetičnega kakavovega akorda Mezcal Chocolat postavi vse na kakavov absolut: najdragocenejšo obliko kakava, tukaj v doslej neprimerljivih količinah. Njegova kremnost se zlije v podlago lesa: virginski cedrov les, cenjen po mehki dimni kremnosti, in olje cypriola iz Indije, ki prinese senco, globino in temno, zemeljsko toploto.",
+    notes:
+      "NOTES:\nChili Pepper\nSalted Lime\nFruity Mezcal\nCacao Absolute\nSmoky Vanilla\nCreamy Woods",
+    ingredients:
+      "Alcohol Denat., Parfum/Fragrance, Tetramethyl Acetyloctahydronaphthalenes, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Limonene, Aqua/Water/Eau, Coumarin, Pinene, Linalyl Acetate, Linalool, Vanillin, Citral, Beta-Caryophyllene, Juniperus Virginiana Oil, Alpha-Isomethyl Ionone, Terpinolene, Geranyl Acetate, Terpineol, Alpha-Terpinene, Benzyl Benzoate, Benzyl Alcohol, Geraniol, Carvone",
+  },
+  "french-cowboy-pear-pavlova": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Pear Pavlova združuje nekatere najbolj izjemne sestavine parfumerije. V prvem trenutku zasije ekstrakt rožnatega popra v CO₂, ki velja za eno najbolj rafiniranih in dragocenih pridobitev, znan po žarem sadnem značaju in iskrivi svežini, ob tem pa grenko mandljevo olje, redka naravna surovina, ki da pristno sadno noto, medtem ko se mnoge druge kreacije zanašajo na sintetični akord.",
+    notes: "NOTES:\nJuicy Pear\nFluffy Musk\nWhipped Meringue",
+    ingredients:
+      "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Tetramethyl Acetyloctahydronaphthalenes, Alpha-Isomethyl Ionone, Limonene, Coumarin, Acetyl Cedrene, Linalyl Acetate, Trimethylcyclopentenyl Methylisopentenol, Benzyl Salicylate, Pinene, Linalool, Amyl Salicylate, Beta-Caryophyllene, Lavandula Oil/Extract, Terpineol, Hexyl Cinnamal, Hexadecanolactone, Geranyl Acetate, Citronellol, Pelargonium Graveolens Flower Oil, Citral, Benzaldehyde, Terpinolene, Rose ketones, Camphor, Geraniol, Alpha-Terpinene, Benzyl Benzoate, Vanillin, Benzyl Alcohol, Farnesol, Carvone",
   },
 };
 
@@ -501,9 +529,24 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
   { slug: "floramara-erotico-70", imageSrc: "/Floramara/Erotico_70.png", alt: "Erotico 70", brand: "Floramara", name: "Erotico 70" },
   { slug: "floramara-nitro-flora", imageSrc: "/Floramara/NitroFlora.png", alt: "Nitro Flora", brand: "Floramara", name: "Nitro Flora" },
   { slug: "floramara-sete", imageSrc: "/Floramara/SETE.png", alt: "SETE", brand: "Floramara", name: "SETE" },
+  {
+    slug: "french-cowboy-mezcal-chocolat",
+    imageSrc: "/French%20cowboy/Mezcal%20Chocolat.png",
+    alt: "Mezcal Chocolat",
+    brand: "French Cowboy",
+    name: "Mezcal Chocolat",
+  },
+  {
+    slug: "french-cowboy-pear-pavlova",
+    imageSrc: "/French%20cowboy/Pear%20Pavlova.png",
+    alt: "Pear Pavlova",
+    brand: "French Cowboy",
+    name: "Pear Pavlova",
+  },
   { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
   { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },
   { slug: "spiritica-mango-macumba", imageSrc: "/Spiritica/MangoMavcuma.png", alt: "Mango Macumba", brand: "Spiritica", name: "Mango Macumba" },
+  { slug: "spiritica-leonarda", imageSrc: "/Spiritica/Leonarda.png", alt: "Leonarda", brand: "Spiritica", name: "Leonarda" },
   { slug: "spiritica-jeffrey", imageSrc: "/Spiritica/jeffrey.png", alt: "Jeffrey", brand: "Spiritica", name: "Jeffrey" },
 ];
 

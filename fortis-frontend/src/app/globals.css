@@ -13,7 +13,6 @@
 
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -1127,7 +1126,7 @@ button.footer-link-button {
   .parfum-detail-main aside {
     margin-top: 0.5rem !important;
     margin-left: 0 !important;
-    padding-top: 0.25rem;
+    padding: 0.25rem, 0.25rem !important;
   }
 
   .parfum-detail-main .grid {
