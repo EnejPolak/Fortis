@@ -19,6 +19,7 @@
 :root {
   --background: #0f0f0f;
   --foreground: #ededed;
+  --site-max-width: 1920px;
 }
 
 html {
@@ -26,6 +27,7 @@ html {
   overflow-y: auto;
   height: auto;
   min-height: 100%;
+  background-color: #0f0f0f;
 }
 
 body {
@@ -36,6 +38,10 @@ body {
   overflow-y: auto;
   height: auto;
   min-height: 100%;
+  max-width: var(--site-max-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 html,
@@ -101,7 +107,7 @@ section {
 .navbar-logo {
   position: fixed;
   top: 20px;
-  left: 20px;
+  left: max(20px, calc(50vw - var(--site-max-width) / 2 + 20px));
   color: white;
   z-index: 51;
 }
@@ -116,7 +122,7 @@ section {
 .navbar-menu-right {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: max(20px, calc(50vw - var(--site-max-width) / 2 + 20px));
   z-index: 60;
 }
 
@@ -585,7 +591,10 @@ html:has(body.hero-reveal-lock-ui) {
 
 .cg-menu-backdrop {
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: max(0px, calc(50vw - var(--site-max-width) / 2));
+  right: max(0px, calc(50vw - var(--site-max-width) / 2));
   z-index: 48;
   pointer-events: none;
   background: rgba(15, 15, 15, 0.9);
@@ -594,7 +603,10 @@ html:has(body.hero-reveal-lock-ui) {
 
 .cg-menu {
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: max(0px, calc(50vw - var(--site-max-width) / 2));
+  right: max(0px, calc(50vw - var(--site-max-width) / 2));
   z-index: 49;
   pointer-events: none;
   /* Isti font kot FORTIS v navbarju (O nas, Kolekcija, Kontakt, itd.) */
@@ -869,9 +881,8 @@ html:has(body.hero-reveal-lock-ui) {
 .footer {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
+  left: max(0px, calc(50vw - var(--site-max-width) / 2));
+  right: max(0px, calc(50vw - var(--site-max-width) / 2));
   box-sizing: border-box;
   z-index: 100;
   padding: 12px 16px 16px;
@@ -1193,8 +1204,8 @@ button.footer-link-button {
 /* GDPR / piškotki – isti ton kot ostala stran (Libre Baskerville, #0f0f0f) */
 .cookie-consent-bar {
   position: fixed;
-  left: 0;
-  right: 0;
+  left: max(0px, calc(50vw - var(--site-max-width) / 2));
+  right: max(0px, calc(50vw - var(--site-max-width) / 2));
   bottom: 0;
   z-index: 110;
   background: rgba(15, 15, 15, 0.97);
