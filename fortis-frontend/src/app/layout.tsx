@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Libre_Baskerville } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { CookieConsent } from "@/components/cookie-consent/CookieConsent";
@@ -7,6 +7,8 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site-brand";
 import { getMetadataBase } from "@/lib/site";
+
+const FAVICON_IMAGE = "/fortis-favicon.webp";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +18,18 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const libreBaskerville = Libre_Baskerville({
+  variable: "--font-libre-baskerville",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -40,8 +54,8 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   category: "perfume",
   icons: {
-    icon: "/fortis.png",
-    apple: "/fortis.png",
+    icon: [{ url: FAVICON_IMAGE, sizes: "256x256", type: "image/webp" }],
+    apple: [{ url: FAVICON_IMAGE, sizes: "256x256", type: "image/webp" }],
   },
   verification: {
     google: "wdfYRNTPeFt3kF60B7EzfC973OBpScNVlR9IDkDnaGU",
@@ -95,7 +109,7 @@ export default function RootLayout({
   return (
     <html lang="sl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${libreBaskerville.variable} antialiased`}
       >
         <SiteJsonLd />
         <Navbar />

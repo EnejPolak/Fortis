@@ -1,22 +1,24 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { SplitText } from "gsap/SplitText";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { hasHeroRevealPlayed, markHeroRevealPlayed } from "@/lib/hero-reveal-session";
 import styles from "./HeroReveal.module.css";
 
 gsap.registerPlugin(CustomEase, SplitText);
 CustomEase.create("hop", "0.85, 0, 0.15, 1");
 
 const HERO_IMAGES = [
-  "/Hero/prostor.jpeg",
-  "/lan.jpeg",
-  "/Hero/FortisHero.png",
-  "/Hero/LanIntruduction.jpeg",
-  "/Hero/lan2.jpeg?v=20260212",
+  "/Hero/optimized/prostor.webp",
+  "/Hero/optimized/lan.webp",
+  "/Hero/optimized/fortis-hero.webp",
+  "/Hero/optimized/lan-introduction.webp",
+  "/Hero/optimized/lan2.webp",
 ];
 
 export function HeroReveal() {
@@ -62,10 +64,12 @@ export function HeroReveal() {
       }
     };
 
-    const skipReveal = searchParams.get("skipReveal") === "1";
+    const hasSkipParam = searchParams.get("skipReveal") === "1";
+    const skipReveal = hasSkipParam || hasHeroRevealPlayed();
     if (skipReveal) {
-      if (typeof window !== "undefined") {
+      if (hasSkipParam && typeof window !== "undefined") {
         window.history.replaceState(null, "", "/");
+        markHeroRevealPlayed();
       }
       applyFinalState();
       document.body.classList.remove("hero-reveal-lock-ui");
@@ -180,7 +184,8 @@ export function HeroReveal() {
             ease: "power3.out",
           },
           "titleReveal"
-        );
+        )
+        .eventCallback("onComplete", markHeroRevealPlayed);
     }, rootRef);
 
     return () => {
@@ -215,7 +220,13 @@ export function HeroReveal() {
             }}
             className={styles.img}
           >
-            <img src={src} alt="" />
+            <Image
+              src={src}
+              alt=""
+              fill
+              priority={idx === 2}
+              sizes="(max-width: 1000px) 20vw, 10vw"
+            />
           </div>
         ))}
       </div>

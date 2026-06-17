@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 @import "tailwindcss";
 
 @font-face {
@@ -33,7 +30,7 @@ html {
 body {
   background: #0f0f0f;
   color: var(--foreground);
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   overflow-x: hidden;
   overflow-y: auto;
   height: auto;
@@ -78,7 +75,7 @@ p {
 
 /* Stran parfuma: prejšnji font (Inter) za vsebino strani parfuma */
 .parfum-detail-main {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 /* Stran parfuma: vse besedilo (100 ml, Eau de Parfum, opis) enake velikosti kot gumbi, obojestranska poravnava kot v knjigi */
@@ -205,7 +202,7 @@ html:has(body.hero-reveal-lock-ui) {
 
 .delovni-cas-hero-tagline {
   margin-top: 0.25rem;
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: lowercase;
@@ -234,7 +231,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .delovni-cas-heading {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(26px, 4vw, 34px);
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -268,7 +265,7 @@ html:has(body.hero-reveal-lock-ui) {
   justify-content: center;
   gap: 0.4rem;
   padding: 0.35rem 0;
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(16px, 2.5vw, 19px);
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
@@ -332,7 +329,7 @@ html:has(body.hero-reveal-lock-ui) {
 
 .svetovanje-hero-tagline {
   margin-top: 0.25rem;
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: lowercase;
@@ -358,7 +355,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .svetovanje-heading {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(26px, 4vw, 34px);
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -381,7 +378,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .svetovanje-intro {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(14px, 2vw, 16px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
@@ -407,7 +404,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .svetovanje-card-title {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(17px, 2.5vw, 20px);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -416,7 +413,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .svetovanje-card-opis {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(14px, 1.9vw, 16px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.78);
@@ -424,7 +421,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .svetovanje-card-cena {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(15px, 2vw, 17px);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
@@ -469,7 +466,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .kolekcija-mobile-name {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
@@ -477,7 +474,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .kolekcija-mobile-desc {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 0.25rem;
@@ -562,7 +559,7 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .kolekcija-hover-brand {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 16px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -570,14 +567,14 @@ html:has(body.hero-reveal-lock-ui) {
 }
 
 .kolekcija-hover-name {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 24px;
   font-weight: 500;
 }
 
 /* CG clip menu */
 .cg-menu-toggle {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   color: #fff;
   background: none;
   outline: none;
@@ -610,7 +607,7 @@ html:has(body.hero-reveal-lock-ui) {
   z-index: 49;
   pointer-events: none;
   /* Isti font kot FORTIS v navbarju (O nas, Kolekcija, Kontakt, itd.) */
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
 }
 
 .cg-menu-open {
@@ -633,7 +630,7 @@ html:has(body.hero-reveal-lock-ui) {
 
 .cg-menu-link a {
   text-decoration: none;
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   color: #fff;
   position: relative;
   display: inline-block;
@@ -732,7 +729,7 @@ html:has(body.hero-reveal-lock-ui) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
@@ -894,16 +891,15 @@ html:has(body.hero-reveal-lock-ui) {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
-  column-gap: 0;
+  flex-wrap: nowrap;
+  gap: clamp(0.35rem, 1.8vw, 1.5rem);
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }
 
 .footer-logo {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
@@ -912,11 +908,11 @@ html:has(body.hero-reveal-lock-ui) {
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
 .footer-link {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 13px;
   color: white;
   cursor: pointer;
@@ -924,6 +920,7 @@ html:has(body.hero-reveal-lock-ui) {
   position: relative;
   transition: all 0.2s ease;
   white-space: nowrap;
+  flex: 0 0 auto;
   display: inline-block;
 }
 
@@ -1071,6 +1068,38 @@ button.footer-link-button {
   .footer {
     padding: 14px 12px 18px;
     padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+
+  .footer-content {
+    gap: 0.45rem;
+  }
+
+  .footer-logo {
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  .footer-link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .footer-content {
+    gap: 0.35rem;
+  }
+
+  .footer-logo {
+    font-size: 11px;
+  }
+
+  .footer-link {
+    font-size: 10px;
   }
 }
 
@@ -1220,7 +1249,7 @@ button.footer-link-button {
 }
 
 .cookie-consent-title {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(15px, 2.2vw, 18px);
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -1243,7 +1272,7 @@ button.footer-link-button {
 }
 
 .cookie-consent-text {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(13px, 1.9vw, 15px);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.78);
@@ -1271,7 +1300,7 @@ button.footer-link-button {
 }
 
 .cookie-consent-btn {
-  font-family: "Libre Baskerville", serif;
+  font-family: var(--font-libre-baskerville), serif;
   font-size: 15px;
   letter-spacing: 0.04em;
   cursor: pointer;

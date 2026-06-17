@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
@@ -10,10 +10,26 @@ import {
   readMarketingConsent,
   writeMarketingConsent,
 } from "@/lib/cookie-consent";
+import {
+  HERO_REVEAL_COMPLETE_EVENT,
+  hasHeroRevealPlayed,
+} from "@/lib/hero-reveal-session";
 
 const FACEBOOK_PIXEL_ID = "919444914037646";
 
 type UiConsent = "pending" | "accepted" | "declined";
+
+const getHeroRevealCompleteSnapshot = () => hasHeroRevealPlayed();
+const getHeroRevealCompleteServerSnapshot = () => false;
+
+function subscribeToHeroRevealComplete(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+
+  window.addEventListener(HERO_REVEAL_COMPLETE_EVENT, onStoreChange);
+  return () => {
+    window.removeEventListener(HERO_REVEAL_COMPLETE_EVENT, onStoreChange);
+  };
+}
 
 declare global {
   interface Window {
@@ -24,7 +40,13 @@ declare global {
 export function CookieConsent() {
   const pathname = usePathname();
   const [consent, setConsent] = useState<UiConsent>("pending");
+  const heroRevealComplete = useSyncExternalStore(
+    subscribeToHeroRevealComplete,
+    getHeroRevealCompleteSnapshot,
+    getHeroRevealCompleteServerSnapshot
+  );
   const skipNextPathPageView = useRef(true);
+  const canShowConsent = pathname !== "/" || heroRevealComplete;
 
   useEffect(() => {
     const stored = readMarketingConsent();
@@ -85,7 +107,7 @@ export function CookieConsent() {
         </Script>
       ) : null}
 
-      {consent === "pending" ? (
+      {consent === "pending" && canShowConsent ? (
         <div
           className="cookie-consent-bar"
           role="dialog"

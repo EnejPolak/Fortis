@@ -6,7 +6,7 @@ export function HeroTagline({ text }: HeroTaglineProps) {
   return (
     <p
       style={{
-        fontFamily: "Libre Baskerville, serif",
+        fontFamily: "var(--font-libre-baskerville), serif",
         fontStyle: "italic",
         lineHeight: "140%",
         letterSpacing: "2%",

@@ -37,7 +37,7 @@ export function Introduction() {
           <div style={{ 
             width: "364px",
             height: "90px",
-            fontFamily: "Libre Baskerville, serif",
+            fontFamily: "var(--font-libre-baskerville), serif",
             fontWeight: "bold",
             fontSize: "40px",
             lineHeight: "45px",
@@ -54,7 +54,7 @@ export function Introduction() {
           </div>
           <div style={{
             marginTop: "30px",
-            fontFamily: "Libre Baskerville, serif",
+            fontFamily: "var(--font-libre-baskerville), serif",
             color: "#a9a9a9",
             opacity: 0.6,
             textAlign: "center"
@@ -64,7 +64,7 @@ export function Introduction() {
           <div style={{
             marginTop: "40px",
             width: "250px",
-            fontFamily: "Libre Baskerville, serif",
+            fontFamily: "var(--font-libre-baskerville), serif",
             color: "#a9a9a9",
             opacity: 0.75,
             textAlign: "justify"

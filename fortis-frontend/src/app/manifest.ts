@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site-brand";
 
+const FAVICON_IMAGE = "/fortis-favicon.webp";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,
@@ -14,9 +16,9 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: "ltr",
     icons: [
       {
-        src: "/fortis.png",
-        sizes: "512x512",
-        type: "image/png",
+        src: FAVICON_IMAGE,
+        sizes: "256x256",
+        type: "image/webp",
         purpose: "any",
       },
     ],
