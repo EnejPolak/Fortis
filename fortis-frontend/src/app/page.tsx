@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HeroReveal } from "@/components/hero/HeroReveal";
+import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -18,6 +19,7 @@ export default function Home() {
         </Suspense>
         <Introduction />
         <PerfumesBrands />
+        <NewsletterSignup />
       </div>
       <Footer />
     </>

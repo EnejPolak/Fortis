@@ -154,7 +154,7 @@ html:has(body.hero-reveal-lock-ui) {
   background: #0f0f0f;
   min-height: 100vh;
   padding-top: 170px;
-  padding-bottom: 400px;
+  padding-bottom: 3rem;
 }
 
 /* Delovni čas page – vse v enem kontejnerju, centrirano na sredino */
