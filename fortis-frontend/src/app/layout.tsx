@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { CookieConsent } from "@/components/cookie-consent/CookieConsent";
 import { Navbar } from "@/components/navbar/Navbar";
+import { CartProvider } from "@/context/CartProvider";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site-brand";
 import { getMetadataBase } from "@/lib/site";
@@ -112,8 +113,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${libreBaskerville.variable} antialiased`}
       >
         <SiteJsonLd />
-        <Navbar />
-        {children}
+        <CartProvider>
+          <Navbar />
+          {children}
+        </CartProvider>
         <CookieConsent />
         <Analytics />
       </body>

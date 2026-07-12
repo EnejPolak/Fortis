@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MenuPanel } from "./MenuPanel";
+import { CartNavLink } from "./CartNavLink";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +33,7 @@ export function Navbar() {
             FORTIS
           </Link>
           <div className="navbar-menu-right">
+            <CartNavLink />
             <button
               type="button"
               className="cg-menu-toggle"

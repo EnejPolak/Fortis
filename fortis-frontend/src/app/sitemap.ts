@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { KOLEKCIJA_ITEMS } from "@/data/parfumi";
+import { getAllWineSlugs } from "@/data/wine";
 import { getSiteUrl } from "@/lib/site";
 
 const STATIC_PATHS = [
@@ -28,5 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...parfumEntries];
+  const wineEntries: MetadataRoute.Sitemap = getAllWineSlugs().map((slug) => ({
+    url: `${base}/vino/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
+  return [...staticEntries, ...wineEntries, ...parfumEntries];
 }
