@@ -1,0 +1,328 @@
+.main {
+  width: 100%;
+  background: #0f0f0f;
+  padding-bottom: 6rem;
+}
+
+/* ——— Full-bleed hero (ista scena kot na domači) ——— */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: min(88svh, 920px);
+  overflow: hidden;
+}
+
+.heroImageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0.35) 0%,
+    rgba(15, 15, 15, 0.08) 40%,
+    rgba(15, 15, 15, 0.55) 72%,
+    rgba(15, 15, 15, 0.98) 100%
+  );
+  pointer-events: none;
+}
+
+.backLink {
+  position: absolute;
+  top: calc(5.5rem + env(safe-area-inset-top, 0px));
+  left: clamp(1rem, 4vw, 2.5rem);
+  z-index: 3;
+  font-size: 0.875rem;
+  color: rgba(252, 252, 252, 0.85);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: #fcfcfc;
+}
+
+.heroCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem) clamp(2.5rem, 7vw, 5rem);
+  max-width: 44rem;
+}
+
+.eyebrow {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--wine-gold, #b8956a);
+  margin-bottom: 0.85rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: clamp(3rem, 11vw, 6.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #fcfcfc;
+}
+
+.vintage {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+  letter-spacing: 0.2em;
+  color: var(--wine-gold, #b8956a);
+}
+
+.rule {
+  width: 4rem;
+  height: 1px;
+  background: var(--wine-gold, #b8956a);
+  margin: 1rem 0 1.25rem;
+  opacity: 0.9;
+}
+
+.tagline {
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  line-height: 1.45;
+  color: rgba(252, 252, 252, 0.9);
+  max-width: 28rem;
+}
+
+/* ——— Spodnji del: vsebina + nakup ——— */
+.body {
+  position: relative;
+  margin-top: -1px;
+  background: #0f0f0f;
+}
+
+.bodyInner {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2rem) 2rem;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(184, 149, 106, 0.25);
+}
+
+.producer {
+  font-size: 0.95rem;
+  color: rgba(237, 237, 237, 0.55);
+  letter-spacing: 0.02em;
+}
+
+.price {
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: #fcfcfc;
+}
+
+.copy {
+  margin-bottom: 2.5rem;
+}
+
+.description {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(237, 237, 237, 0.82);
+  text-align: justify;
+  margin-bottom: 1.15rem;
+}
+
+.description:last-child {
+  margin-bottom: 0;
+}
+
+.purchase {
+  padding-top: 0.5rem;
+}
+
+.ageCheck {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: rgba(237, 237, 237, 0.75);
+  cursor: pointer;
+}
+
+.ageCheck input {
+  margin-top: 0.2rem;
+  accent-color: var(--wine-gold, #b8956a);
+}
+
+.buyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 12rem;
+  padding: 0.95rem 2.5rem;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0f0f0f;
+  background: var(--wine-gold, #b8956a);
+  border: 1px solid var(--wine-gold, #b8956a);
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.buyBtn:hover:not(:disabled) {
+  background: transparent;
+  color: var(--wine-gold, #b8956a);
+}
+
+.buyBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #e8a090;
+}
+
+.qtyRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.qtyLabel {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(237, 237, 237, 0.55);
+}
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(184, 149, 106, 0.45);
+}
+
+.qtyBtn {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  border: none;
+  color: #ededed;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.qtyBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qtyValue {
+  min-width: 2.25rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.lineTotal {
+  font-size: 1rem;
+  color: var(--wine-gold, #b8956a);
+}
+
+.checkoutHint {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(237, 237, 237, 0.5);
+  margin-bottom: 1.5rem;
+  max-width: 28rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.cartBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 12rem;
+  padding: 0.95rem 2rem;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wine-gold, #b8956a);
+  background: transparent;
+  border: 1px solid var(--wine-gold, #b8956a);
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.cartBtn:hover:not(:disabled) {
+  background: rgba(184, 149, 106, 0.12);
+}
+
+.cartBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cartMessage {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--wine-gold, #b8956a);
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 78svh;
+  }
+
+  .heroCaption {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .bodyInner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .metaRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

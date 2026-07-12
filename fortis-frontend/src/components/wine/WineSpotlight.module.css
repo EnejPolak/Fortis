@@ -1,0 +1,134 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 92svh;
+  overflow: hidden;
+  background: #0f0f0f;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(15, 15, 15, 0.92) 0%,
+    rgba(15, 15, 15, 0.55) 42%,
+    rgba(15, 15, 15, 0.15) 68%,
+    rgba(15, 15, 15, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  min-height: 92svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4.5rem) clamp(3rem, 8vw, 6rem);
+  max-width: 52rem;
+}
+
+.eyebrow {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--wine-gold, #b8956a);
+  margin-bottom: 1rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: clamp(3.5rem, 12vw, 7.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #fcfcfc;
+}
+
+.vintage {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  letter-spacing: 0.2em;
+  color: var(--wine-gold, #b8956a);
+}
+
+.rule {
+  width: 4.5rem;
+  height: 1px;
+  background: var(--wine-gold, #b8956a);
+  margin: 1.25rem 0 1.5rem;
+  opacity: 0.85;
+}
+
+.tagline {
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  line-height: 1.45;
+  color: rgba(252, 252, 252, 0.92);
+  margin-bottom: 0.5rem;
+}
+
+.producer {
+  font-size: 0.95rem;
+  color: rgba(252, 252, 252, 0.55);
+  margin-bottom: 2rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0f0f0f;
+  background: var(--wine-gold, #b8956a);
+  border: 1px solid var(--wine-gold, #b8956a);
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.cta:hover {
+  background: transparent;
+  color: var(--wine-gold, #b8956a);
+}
+
+@media (max-width: 767px) {
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 15, 15, 0.1) 0%,
+      rgba(15, 15, 15, 0.45) 45%,
+      rgba(15, 15, 15, 0.88) 100%
+    );
+  }
+
+  .content {
+    max-width: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
