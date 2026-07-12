@@ -10,7 +10,11 @@
     "upscale": "node scripts/upscale-almost-human.cjs"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^6.7.0",
+    "@stripe/stripe-js": "^9.9.0",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.110.2",
     "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -21,6 +25,7 @@
     "ogl": "^1.0.11",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "stripe": "^22.3.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
