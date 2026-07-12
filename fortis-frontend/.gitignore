@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Supabase (migracije se zaganjajo ročno v dashboardu)
+supabase/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
