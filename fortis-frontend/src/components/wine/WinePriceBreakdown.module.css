@@ -1,0 +1,27 @@
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: rgba(237, 237, 237, 0.65);
+}
+
+.total {
+  margin-top: 0.35rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(184, 149, 106, 0.25);
+  font-size: 1rem;
+  color: #fcfcfc;
+}
+
+.total span:last-child {
+  font-size: 1.15rem;
+  font-weight: 500;
+}

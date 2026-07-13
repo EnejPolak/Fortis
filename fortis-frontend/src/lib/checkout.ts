@@ -107,6 +107,8 @@ export function buildOrderSummary(
   deliveryMethod: DeliveryMethod = "delivery"
 ): {
   lines: OrderLine[];
+  netSubtotalCents: number;
+  vatSubtotalCents: number;
   subtotalCents: number;
   shippingCents: number;
   totalCents: number;
@@ -114,6 +116,8 @@ export function buildOrderSummary(
   deliveryMethod: DeliveryMethod;
 } | null {
   const lines: OrderLine[] = [];
+  let netSubtotalCents = 0;
+  let vatSubtotalCents = 0;
   let subtotalCents = 0;
   let currency = "eur";
 
@@ -129,6 +133,8 @@ export function buildOrderSummary(
       unitCents: wine.priceCents,
       lineCents,
     });
+    netSubtotalCents += wine.priceNetCents * item.quantity;
+    vatSubtotalCents += wine.vatCents * item.quantity;
     subtotalCents += lineCents;
     currency = wine.currency;
   }
@@ -139,6 +145,8 @@ export function buildOrderSummary(
 
   return {
     lines,
+    netSubtotalCents,
+    vatSubtotalCents,
     subtotalCents,
     shippingCents,
     totalCents: subtotalCents + shippingCents,

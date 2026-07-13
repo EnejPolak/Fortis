@@ -6,7 +6,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
 import { buildOrderSummary } from "@/lib/checkout";
-import { formatWinePrice, getWineBySlug } from "@/data/wine";
+import { formatMoneyCents, formatWinePrice, getWineBySlug } from "@/data/wine";
+import { WinePriceBreakdown } from "@/components/wine/WinePriceBreakdown";
 import styles from "./CartPage.module.css";
 
 export function CartPage() {
@@ -23,12 +24,6 @@ export function CartPage() {
     .filter(Boolean) as { wine: NonNullable<ReturnType<typeof getWineBySlug>>; quantity: number }[];
 
   const order = items.length ? buildOrderSummary(items) : null;
-
-  const formatMoney = (cents: number) =>
-    new Intl.NumberFormat("sl-SI", {
-      style: "currency",
-      currency: "EUR",
-    }).format(cents / 100);
 
   const handleCheckout = () => {
     if (!ageConfirmed || lines.length === 0) return;
@@ -105,31 +100,24 @@ export function CartPage() {
                     </div>
                   </div>
                   <p className={styles.lineTotal}>
-                    {new Intl.NumberFormat("sl-SI", {
-                      style: "currency",
-                      currency: "EUR",
-                    }).format((wine.priceCents * quantity) / 100)}
+                    {formatMoneyCents(wine.priceCents * quantity)}
                   </p>
                 </li>
               ))}
             </ul>
 
             <div className={styles.summary}>
-              <div className={styles.summaryRows}>
-                <div className={styles.summaryRow}>
-                  <span>Vmesna vsota</span>
-                  <span>{order ? formatMoney(order.subtotalCents) : "—"}</span>
-                </div>
-              </div>
+              {order ? (
+                <WinePriceBreakdown
+                  netCents={order.netSubtotalCents}
+                  vatCents={order.vatSubtotalCents}
+                  grossCents={order.subtotalCents}
+                  className={styles.summaryBreakdown}
+                />
+              ) : null}
               <p className={styles.summaryNote}>
                 Prevzem ali dostavo izberete pri plačilu. Poštnina velja le pri dostavi.
               </p>
-              <div className={styles.summaryTotal}>
-                <p className={styles.totalLabel}>Skupaj</p>
-                <p className={styles.totalValue}>
-                  {order ? formatMoney(order.subtotalCents) : "—"}
-                </p>
-              </div>
             </div>
 
             <label className={styles.ageCheck}>

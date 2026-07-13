@@ -7,6 +7,11 @@ export type WineProduct = {
   description: string;
   heroImageSrc: string;
   imageSrc: string;
+  /** Cena brez DDV na kos (centi). */
+  priceNetCents: number;
+  /** DDV na kos (centi). */
+  vatCents: number;
+  /** Cena z DDV na kos (centi) — znesek za plačilo. */
   priceCents: number;
   currency: "eur";
   maxQuantity: number;
@@ -17,12 +22,14 @@ export const PRIMO_WINE: WineProduct = {
   name: "PRIMO",
   vintage: "2023",
   producer: "Klet — podrobnosti kmalu",
-  tagline: "Bela, ki diši po morju in soncu.",
+  tagline: "Vino, ki pripoveduje zgodbo sonca, morja in briških gričev.",
   description:
-    "PRIMO je belo vino, rojeno tam, kjer se morje sreča s soncem in kamnom. V kozarcu je svetloba jutra nad obalo — čista, topla, nežno slana.\n\nRedka izbira Fortis Niche Atelier. Ne za množico, temveč za trenutek, ko želite, da večer diši po pomladi in morju.",
+    "Redka izbira Fortis Niche Atelier. Ne za množico, temveč za trenutek, ko želite, da večer diši po poletju in morju.",
   heroImageSrc: "/wine/primo-hero.webp",
   imageSrc: "/wine/primo-bottle.png",
-  priceCents: 2800,
+  priceNetCents: 1500,
+  vatCents: 300,
+  priceCents: 1800,
   currency: "eur",
   maxQuantity: 12,
 };
@@ -39,9 +46,16 @@ export function getAllWineSlugs(): string[] {
   return Object.keys(WINES_BY_SLUG);
 }
 
-export function formatWinePrice(wine: WineProduct): string {
+export function formatMoneyCents(
+  cents: number,
+  currency: string = "EUR"
+): string {
   return new Intl.NumberFormat("sl-SI", {
     style: "currency",
-    currency: wine.currency.toUpperCase(),
-  }).format(wine.priceCents / 100);
+    currency: currency.toUpperCase(),
+  }).format(cents / 100);
+}
+
+export function formatWinePrice(wine: WineProduct): string {
+  return formatMoneyCents(wine.priceCents, wine.currency);
 }
