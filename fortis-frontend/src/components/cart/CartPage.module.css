@@ -93,6 +93,12 @@
 .linePrice {
   font-size: 0.85rem;
   color: rgba(237, 237, 237, 0.55);
+  margin-bottom: 0.35rem;
+}
+
+.stockHint {
+  font-size: 0.8rem;
+  color: rgba(237, 237, 237, 0.45);
   margin-bottom: 0.85rem;
 }
 
@@ -232,6 +238,23 @@
 .checkoutBtn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.stockAlert {
+  margin: 1.25rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(232, 160, 144, 0.35);
+  background: rgba(232, 160, 144, 0.08);
+}
+
+.stockAlert p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #e8a090;
+}
+
+.stockAlert p + p {
+  margin-top: 0.35rem;
 }
 
 .error {

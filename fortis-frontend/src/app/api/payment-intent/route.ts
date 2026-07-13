@@ -5,6 +5,7 @@ import {
   parseCheckoutItems,
   parseDeliveryMethod,
 } from "@/lib/checkout";
+import { assertItemsInStock } from "@/lib/inventory";
 import { getStripe } from "@/lib/stripe";
 
 export async function POST(request: Request) {
@@ -20,6 +21,14 @@ export async function POST(request: Request) {
     const order = buildOrderSummary(items, deliveryMethod);
     if (!order) {
       return NextResponse.json({ error: "Vino ni najdeno." }, { status: 404 });
+    }
+
+    try {
+      await assertItemsInStock(items);
+    } catch (stockError) {
+      const message =
+        stockError instanceof Error ? stockError.message : "Ni dovolj zaloge.";
+      return NextResponse.json({ error: message }, { status: 400 });
     }
 
     const stripe = getStripe();

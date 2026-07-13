@@ -260,6 +260,11 @@
   color: var(--wine-gold, #b8956a);
 }
 
+.stockHint {
+  font-size: 0.85rem;
+  color: rgba(237, 237, 237, 0.55);
+}
+
 .checkoutHint {
   font-size: 0.85rem;
   line-height: 1.5;

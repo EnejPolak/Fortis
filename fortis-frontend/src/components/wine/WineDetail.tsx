@@ -12,9 +12,10 @@ import styles from "./WineDetail.module.css";
 
 type WineDetailProps = {
   wine: WineProduct;
+  stock: number;
 };
 
-export function WineDetail({ wine }: WineDetailProps) {
+export function WineDetail({ wine, stock }: WineDetailProps) {
   const router = useRouter();
   const { addItem } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -26,8 +27,10 @@ export function WineDetail({ wine }: WineDetailProps) {
   const paragraphs = wine.description.split("\n\n").filter(Boolean);
   const lineTotal = formatMoneyCents(wine.priceCents * quantity);
 
+  const maxQuantity = Math.min(stock, wine.maxQuantity);
+
   const clampQty = (value: number) =>
-    Math.max(1, Math.min(wine.maxQuantity, Math.floor(value)));
+    Math.max(1, Math.min(maxQuantity, Math.floor(value)));
 
   const handleBuyNow = () => {
     if (!ageConfirmed || loading) return;
@@ -114,13 +117,18 @@ export function WineDetail({ wine }: WineDetailProps) {
                   type="button"
                   className={styles.qtyBtn}
                   aria-label="Povečaj količino"
-                  disabled={quantity >= wine.maxQuantity}
+                  disabled={quantity >= maxQuantity}
                   onClick={() => setQuantity((q) => clampQty(q + 1))}
                 >
                   +
                 </button>
               </div>
               <span className={styles.lineTotal}>Skupaj: {lineTotal}</span>
+              {stock <= wine.maxQuantity ? (
+                <span className={styles.stockHint}>
+                  Na zalogi: {stock} {stock === 1 ? "kos" : "kosov"}
+                </span>
+              ) : null}
             </div>
 
             <label className={styles.ageCheck}>

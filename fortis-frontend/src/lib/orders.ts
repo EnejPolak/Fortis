@@ -1,6 +1,7 @@
 import type Stripe from "stripe";
 import type { DeliveryMethod } from "@/lib/checkout";
 import { getWineBySlug } from "@/data/wine";
+import { decrementStock } from "@/lib/inventory";
 import { getStripe } from "@/lib/stripe";
 import { createAdminClient } from "@/utils/supabase/admin";
 
@@ -206,6 +207,8 @@ export async function saveOrderFromPaymentIntent(
   if (itemsError) {
     throw new Error(itemsError.message);
   }
+
+  await decrementStock(metaItems);
 
   return {
     id: order.id,
