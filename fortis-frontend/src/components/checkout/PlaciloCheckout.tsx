@@ -219,7 +219,7 @@ function OrderSummaryAside({
         <span>{shippingLabel}</span>
       </div>
       <div className={styles.summaryTotal}>
-        <span>Skupaj</span>
+        <span>Skupaj za plačilo</span>
         <span>
           {deliveryMethod
             ? formatMoney(order.totalCents, order.currency)

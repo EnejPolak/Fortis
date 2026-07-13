@@ -6,13 +6,15 @@ import { useCart } from "@/context/CartProvider";
 export function CartNavLink() {
   const { count } = useCart();
 
+  if (count === 0) return null;
+
   return (
     <Link
       href="/kosarica"
       className="navbar-cart-link"
-      aria-label={count > 0 ? `Košarica, ${count} izdelkov` : "Košarica"}
+      aria-label={`Košarica, ${count} izdelkov`}
     >
-      Košarica{count > 0 ? ` (${count})` : ""}
+      Košarica ({count})
     </Link>
   );
 }

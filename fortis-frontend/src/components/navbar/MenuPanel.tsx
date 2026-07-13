@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
+import { useCart } from "@/context/CartProvider";
 
 interface MenuPanelProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface MenuPanelProps {
 }
 
 export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
+  const { count } = useCart();
   const menuRef = useRef<HTMLDivElement | null>(null);
   const backdropRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -136,11 +138,13 @@ export function MenuPanel({ isOpen, onClose }: MenuPanelProps) {
             </div>
           </div>
           <div className="cg-menu-row cg-row-4">
-            <div className="cg-menu-link">
-              <Link href="/kosarica" className="cg-menu-link-default" onClick={onClose}>
-                Košarica
-              </Link>
-            </div>
+            {count > 0 ? (
+              <div className="cg-menu-link">
+                <Link href="/kosarica" className="cg-menu-link-default" onClick={onClose}>
+                  Košarica ({count})
+                </Link>
+              </div>
+            ) : null}
             <div className="cg-menu-link">
               <Link href="/svetovanje" className="cg-menu-link-default" onClick={onClose}>
                 Svetovanje

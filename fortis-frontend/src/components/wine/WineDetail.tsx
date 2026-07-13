@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
 import type { WineProduct } from "@/data/wine";
-import { formatWinePrice } from "@/data/wine";
+import { formatMoneyCents, formatWinePrice } from "@/data/wine";
 import { saveDirectCheckout } from "@/lib/direct-checkout";
 import styles from "./WineDetail.module.css";
 
@@ -24,10 +24,7 @@ export function WineDetail({ wine }: WineDetailProps) {
   const [cartMessage, setCartMessage] = useState("");
 
   const paragraphs = wine.description.split("\n\n").filter(Boolean);
-  const lineTotal = new Intl.NumberFormat("sl-SI", {
-    style: "currency",
-    currency: "EUR",
-  }).format((wine.priceCents * quantity) / 100);
+  const lineTotal = formatMoneyCents(wine.priceCents * quantity);
 
   const clampQty = (value: number) =>
     Math.max(1, Math.min(wine.maxQuantity, Math.floor(value)));
@@ -134,11 +131,6 @@ export function WineDetail({ wine }: WineDetailProps) {
               />
               <span>Potrjujem, da sem star/a najmanj 18 let.</span>
             </label>
-
-            <p className={styles.checkoutHint}>
-              Plačilo poteka na strani Fortis. Stripe varno obdela plačilo in pošlje
-              potrdilo na email.
-            </p>
 
             <div className={styles.actions}>
               <button
