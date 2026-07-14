@@ -485,6 +485,24 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
     ingredients:
       "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Tetramethyl Acetyloctahydronaphthalenes, Alpha-Isomethyl Ionone, Limonene, Coumarin, Acetyl Cedrene, Linalyl Acetate, Trimethylcyclopentenyl Methylisopentenol, Benzyl Salicylate, Pinene, Linalool, Amyl Salicylate, Beta-Caryophyllene, Lavandula Oil/Extract, Terpineol, Hexyl Cinnamal, Hexadecanolactone, Geranyl Acetate, Citronellol, Pelargonium Graveolens Flower Oil, Citral, Benzaldehyde, Terpinolene, Rose ketones, Camphor, Geraniol, Alpha-Terpinene, Benzyl Benzoate, Vanillin, Benzyl Alcohol, Farnesol, Carvone",
   },
+  "french-cowboy-fig-lemonade": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Fig Lemonade temelji na sanjah o pravi, sočni limoni, ki je končno postavljena v središče. Odpre se z žarečim italijanskim limoninim oljem, skrivnost pa je v paru z izjemnim in ekskluzivnim Bergamot Integrale iz Kalabrije: redka kakovost, ki nosi srčne note, kjer so citrusi običajno le bežne vrhunske note. Tako limonada dobi nežno citrusno cvetličnost in — še pomembneje — limona ostane bleščeča in živahna še ure.\n\nRezultat je akord limonade nenavadne kompleksnosti: peneč, sočen in sladek, ki ujame tisto pravo svežo limono, ki jo v parfumeriji redko vidimo kot glavno junakinjo. To je poletje in Dolce Vita, ujet v stekleničko.\n\nTo svetlost uravnoteži akord fige in figovega lista. Figov list ni na voljo kot naravna surovina, zato smo akord zgradili z buchu listom iz Južne Afrike, cenjenim zaradi sočne zelenosti. Buchu olje prinese intenziven zeliščen, metin značaj, s kamforjem in sadnimi plastmi ter celo odtenkom črnega ribeza. Ščepet cedrovega olja iz Virginije zaključi akord in doda zeleno mlečnost, ki jo najdemo v pravem figovem listu.\n\nUčinek je peneč, svež in osvežilen; figov list prinese nepričakovano eleganco, zaradi katere je Fig Lemonade tiho, a prepričljivo prefinjen.",
+    notes: "NOTES:\nLemonade\nFig Leaves\nVirginia Cedarwood",
+    ingredients:
+      "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Limonene, Citrus Limon (Lemon) Peel Oil, Tetramethyl Acetyloctahydronaphthalenes, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Pinene, Citral, Linalyl Acetate, Linalool, Ethylhexyl Salicylate, Alpha-Isomethyl Ionone, Geraniol, Butyl Methoxydibenzoylmethane, Coumarin, Hydroxycitronellal, Citronellol, Beta-Caryophyllene, Geranyl Acetate, Terpinolene, Eucalyptus Globulus Oil, Rose ketones, Terpineol, Alpha-Terpinene, Camphor",
+  },
+  "french-cowboy-vanilla-for-breakfast": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Vanilla for Breakfast je vanilija, ki jo iščemo vse življenje — ustvarjena, da zacveti že v prvem trenutku. Njena skrivnost se začne z ekstraktom sladkega mandlja, kakovostjo, ekskluzivno za Givaudan in upcycled iz mandljevega mleka, ki v uvod prinese vso to nežno mlečnost. Mandelj in vanilija delita določene hlapne spojine, zato mandelj vaniliji omogoči, da se razglasi že na vrhu. To daje dišavi moč: medtem ko večina vanilij potrebuje pol ure, da zacveti, in nato ostane blizu kože, ta takoj izžareva — z resničnim sillageom in prisotnostjo. Ščepet benjoina zaokroži uvod s toplino.\n\nV srcu leži obsesija: štiri različne vanilije, vsaka izbrana zaradi obraza, ki ga razkrije njen način ekstrakcije. Vanilijeva tinktura na osnovi etanola se dvigne prva ob sladkem mandlju. Vanilija CO₂ premosti vrh in srce. Vanilijev absolut iz Madagaskarja se usede v srce in bazo. In končno — Vanilijev Twentyfold absolut, najbolj ovojen od vseh, tisti, ki ostane s tabo za vedno. Štiri vanilije, ne zaradi marketinga, ampak ker vanilija ponuja tako malo vrhunskih not, da jo je treba graditi od vrha naprej — in to zahteva prav ta spekter.\n\nZa zaokrožitev in še več elegance uporabimo pečen tonkin absolut — božanski in nepozaben, s praženo globino, kakršne še nisi zaznal.",
+    notes: "NOTES:\nAlmond Milk\nVanilla Absolute\nRoasted Tonka",
+    ingredients:
+      "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Coumarin, Linalool, Ethylhexyl Salicylate, Benzaldehyde, Linalyl Acetate, Benzyl Cinnamate, Vanillin, Benzyl Benzoate, Alcohol, Tris(Tetramethylhydroxypiperidinol) Citrate, Isoeugenol",
+  },
 };
 
 export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
@@ -542,6 +560,20 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
     alt: "Pear Pavlova",
     brand: "French Cowboy",
     name: "Pear Pavlova",
+  },
+  {
+    slug: "french-cowboy-fig-lemonade",
+    imageSrc: "/French%20cowboy/FIgLemonade.png",
+    alt: "Fig Lemonade",
+    brand: "French Cowboy",
+    name: "Fig Lemonade",
+  },
+  {
+    slug: "french-cowboy-vanilla-for-breakfast",
+    imageSrc: "/French%20cowboy/VanillaForBreakfast.png",
+    alt: "Vanilla for Breakfast",
+    brand: "French Cowboy",
+    name: "Vanilla for Breakfast",
   },
   { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
   { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },
