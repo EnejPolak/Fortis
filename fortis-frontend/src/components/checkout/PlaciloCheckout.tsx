@@ -456,7 +456,7 @@ export function PlaciloCheckout() {
                   <p>
                     Prevzem v atelierju: {PICKUP_LOCATION.line1},{" "}
                     {PICKUP_LOCATION.postalCode} {PICKUP_LOCATION.city}. Delovni čas:{" "}
-                    <Link href="/delovni-cas">pon–sob 12:00–20:00</Link>.
+                    <Link href="/delovni-cas">pon–sob 16:00–20:00</Link>.
                   </p>
                 </div>
               ) : null}
