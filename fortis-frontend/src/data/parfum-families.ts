@@ -15,6 +15,9 @@ export const PARFUM_SCENT_FAMILIES: Partial<Record<string, ScentFamilySlug[]>> =
   "art-brut-weltschmerz": ["woody", "amber", "floral"],
   "art-brut-chasing-ghosts": ["woody", "amber", "weird"],
   "art-brut-wet-dreams": ["aquatic", "floral", "chypre"],
+  bepolar: ["weird"],
+  "spiritica-jeffrey": ["weird"],
+  "spiritica-leonarda": ["weird"],
 };
 
 export function getParfumScentFamilies(slug: string): ScentFamilySlug[] {
