@@ -494,6 +494,87 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
     ingredients:
       "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Limonene, Citrus Limon (Lemon) Peel Oil, Tetramethyl Acetyloctahydronaphthalenes, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Pinene, Citral, Linalyl Acetate, Linalool, Ethylhexyl Salicylate, Alpha-Isomethyl Ionone, Geraniol, Butyl Methoxydibenzoylmethane, Coumarin, Hydroxycitronellal, Citronellol, Beta-Caryophyllene, Geranyl Acetate, Terpinolene, Eucalyptus Globulus Oil, Rose ketones, Terpineol, Alpha-Terpinene, Camphor",
   },
+  "zoologist-cow": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 18 %",
+    description:
+      "Predstavlja miren zelen pašnik pod gorami. Čreda se pase, majhno tele pa prvič vstane na noge in poišče materino mleko. Ideja parfuma je občutek varnosti, narave in doma. Ni narejen tako, da bi dejansko dišal po kravi, ampak kot čista interpretacija travnika, svežega jabolka in mehkega mleka.\n\nKarakter: zelen, čist, mehak in rahlo kremast.",
+    notes:
+      "TOP NOTES:\nSage, Apple\n\nHEART NOTES:\nMilk, Lily of the Valley, Heliotrope, Violet, Jasmine\n\nBASE NOTES:\nCedarwood, Vetiver, Benzoin, Musk, Amber",
+    ingredients: "",
+  },
+  "zoologist-squid": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 20 %",
+    description:
+      "Dogaja se globoko v oceanu. Jata lignjev beži pred plenilci in izpušča črnilo, nato pa se pojavi ogromni kit glavač. Parfum povezuje temne oceanske globine, črnilo, slanost in ambergris. Ni tipičen svež morski parfum, ampak precej temnejša in skrivnostnejša interpretacija oceana.\n\nKarakter: temen, slan, smolnat, kadilen in skrivnosten.",
+    notes:
+      "TOP NOTES:\nPink Pepper, Solar Salicylate, Incense\n\nHEART NOTES:\nBlack Ink Accord, Salty Accord, Opoponax\n\nBASE NOTES:\nAmbergris, Benzoin, Musk",
+    ingredients: "",
+  },
+  "zoologist-portuguese-man-o-war": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 20 %",
+    description:
+      "Portugalska ladjica plava na površini razburkanega tropskega oceana, medtem ko pod njo visijo dolge strupene lovke. Na prvi pogled deluje kot svež ocean, nato pa pride oster, skoraj električen občutek, ki predstavlja njen strupeni pik.\n\nKarakter: slan ocean, oster ingver in kovinsko-smodniški občutek.",
+    notes:
+      "TOP NOTES:\nGinger, Saffron, Immortelle\n\nHEART NOTES:\nCaribbean Gunpowder, Jasmine Sambac, Geranium\n\nBASE NOTES:\nSeaweed Absolute, Sandalwood, Tonka Bean",
+    ingredients: "",
+  },
+  "zoologist-harvest-mouse": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 20 %",
+    description:
+      "Pozno poletje oziroma začetek jeseni. Zlata polja pšenice, seno in zahajajoče sonce. Majhne poljske miši pridejo iz skrivališč po semena in sadje, preden se pojavi nočna sova. Parfum predstavlja topel, varen dom sredi žitnih polj.\n\nKarakter: toplo seno, žito, rahla pivska nota, vanilija in les.",
+    notes:
+      "TOP NOTES:\nBergamot, Clove, Roman Chamomile, Orange Blossom\n\nHEART NOTES:\nDavana, Hay Absolute, Benzoin, Opoponax, Rose Absolute, Beer CO₂ Extract\n\nBASE NOTES:\nFir Balsam, Oakmoss, Cedarwood, Sandalwood, Peru Balsam, Vanilla",
+    ingredients: "",
+  },
+  "zoologist-bee": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 18 %",
+    description:
+      "Na površini je miren pomladni travnik, v ozadju pa na tisoče čebel neprestano dela. Nabirajo nektar in cvetni prah ter ju nosijo v panj, kjer nastajajo med in čebelji vosek. Parfum zato ne predstavlja samo sladkega medu, ampak celoten gost, vroč in voskast občutek panja.\n\nKarakter: zelo gost med, vosek, cvetje, smole in vanilija.",
+    notes:
+      "TOP NOTES:\nOrange, Ginger Syrup, Royal Jelly Accord\n\nHEART NOTES:\nBroom, Heliotrope, Mimosa, Orange Blossom\n\nBASE NOTES:\nBenzoin, Labdanum, Musk, Sandalwood, Tonka Bean, Vanilla",
+    ingredients: "",
+  },
+  "zoologist-penguin": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 20 %",
+    description:
+      "Cesarski pingvini živijo v brutalnem antarktičnem okolju. Samica preda jajce samcu in odide proti morju po hrano, samec pa ostane v koloniji ter ga skozi veter in mraz varuje. Parfum predstavlja ledeno naravo Antarktike in toplino življenja, ki obstaja sredi nje.\n\nKarakter: leden, slan, suh in rahlo usnjeno-semišast.",
+    notes:
+      "TOP NOTES:\nAntarctic Air, Ice Accord, Juniper Berry\n\nHEART NOTES:\nPink Pepper, Saffron, Cistus Absolute\n\nBASE NOTES:\nSandalwood, Musk, Sea Moss, Suede",
+    ingredients: "",
+  },
+  "zoologist-tyrannosaurus-rex": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 23 %",
+    description:
+      "Dogajanje je postavljeno v obdobje krede. Ogromna drevesa, divja vegetacija, požari in udari strel ustvarjajo kaotično okolje, skozi katerega vlada T-Rex. Nato se na nebu pojavi dogodek, ki pomeni konec njegovega sveta. Parfum je zato namenoma agresiven, dimen in skoraj apokaliptičen.\n\nKarakter: požar, dim, smole, vroč les in usnje.",
+    notes:
+      "TOP NOTES:\nBergamot, Black Pepper, Fir, Laurel Leaf, Neroli, Nutmeg\n\nHEART NOTES:\nChampaca, Geranium, Jasmine, Osmanthus, Rose, Ylang-Ylang\n\nBASE NOTES:\nResins, Cade, Cedarwood, Civet, Frankincense, Leather, Patchouli, Sandalwood, Vanilla",
+    ingredients: "",
+  },
+  "zoologist-snowy-owl": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 25 %",
+    description:
+      "Neskončna bela arktična pokrajina. Snežna sova leti nad snegom in zaznava majhne živali, ki se premikajo pod ledeno površino. Parfum združuje občutek ekstremnega mraza zunaj in mehko toplino perja oziroma telesa sove.\n\nKarakter: hladen, pudrast, mehak in nekoliko zemeljski.",
+    notes:
+      "TOP NOTES:\nSnow Accord, Lily of the Valley, Mint, Coconut\n\nHEART NOTES:\nIris, Snowdrop, White Rose, Mate, Frankincense, Galbanum\n\nBASE NOTES:\nAmbrette, Cedarwood, Civet, Musk, Oakmoss, Tonka Bean, Vanilla",
+    ingredients: "",
+  },
+  "zoologist-hummingbird": {
+    metaLine1: "60 ml",
+    metaLine2: "Extrait de Parfum · 23 %",
+    description:
+      "Svet skozi oči kolibrija je eksplozija barv in cvetja. Leti od cveta do cveta in išče sladek nektar, nato pa se vrne v mehko gnezdo iz lišajev in mahu. Celoten parfum predstavlja sladek sadni nektar in ogromen cvetlični šopek.\n\nKarakter: sladek sadni nektar, med, češnja, sliva, cvetje in kremasta baza.",
+    notes:
+      "TOP NOTES:\nApple, Cherry, Citrus, Lilac, Lily of the Valley, Plum, Rose, Violet Leaf\n\nHEART NOTES:\nHoney, Honeysuckle, Mimosa, Peony, Tulip, Ylang-Ylang\n\nBASE NOTES:\nAmber, Coumarin, Cream, Moss, Musk, Sandalwood, White Woods",
+    ingredients: "",
+  },
   "french-cowboy-vanilla-for-breakfast": {
     metaLine1: "100 ml",
     metaLine2: "Eau de Parfum",
@@ -575,6 +656,27 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
     brand: "French Cowboy",
     name: "Vanilla for Breakfast",
   },
+  { slug: "zoologist-cow", imageSrc: "/Zoologist/Cow.png", alt: "Cow", brand: "Zoologist", name: "Cow" },
+  { slug: "zoologist-squid", imageSrc: "/Zoologist/Squid.png", alt: "Squid", brand: "Zoologist", name: "Squid" },
+  {
+    slug: "zoologist-portuguese-man-o-war",
+    imageSrc: "/Zoologist/ManOfWar.png",
+    alt: "Portuguese Man O' War",
+    brand: "Zoologist",
+    name: "Portuguese Man O' War",
+  },
+  { slug: "zoologist-harvest-mouse", imageSrc: "/Zoologist/Mouse.png", alt: "Harvest Mouse", brand: "Zoologist", name: "Harvest Mouse" },
+  { slug: "zoologist-bee", imageSrc: "/Zoologist/Bee.png", alt: "Bee", brand: "Zoologist", name: "Bee" },
+  { slug: "zoologist-penguin", imageSrc: "/Zoologist/Penguin.png", alt: "Penguin", brand: "Zoologist", name: "Penguin" },
+  {
+    slug: "zoologist-tyrannosaurus-rex",
+    imageSrc: "/Zoologist/Trex.png",
+    alt: "Tyrannosaurus Rex",
+    brand: "Zoologist",
+    name: "Tyrannosaurus Rex",
+  },
+  { slug: "zoologist-snowy-owl", imageSrc: "/Zoologist/Owl.png", alt: "Snowy Owl", brand: "Zoologist", name: "Snowy Owl" },
+  { slug: "zoologist-hummingbird", imageSrc: "/Zoologist/Humingbird.png", alt: "Hummingbird", brand: "Zoologist", name: "Hummingbird" },
   { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
   { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },
   { slug: "spiritica-mango-macumba", imageSrc: "/Spiritica/MangoMavcuma.png", alt: "Mango Macumba", brand: "Spiritica", name: "Mango Macumba" },

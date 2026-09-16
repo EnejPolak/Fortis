@@ -20,16 +20,7 @@ export function Navbar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50">
         <div className="navbar-container">
-          <Link
-            href="/"
-            className="navbar-logo"
-            style={{
-              fontFamily: '"JMH Typewriter", "Courier New", monospace',
-              textTransform: "uppercase",
-              fontSize: "18px",
-              letterSpacing: "0.05em",
-            }}
-          >
+          <Link href="/" className="navbar-logo">
             FORTIS
           </Link>
           <div className="navbar-menu-right">
