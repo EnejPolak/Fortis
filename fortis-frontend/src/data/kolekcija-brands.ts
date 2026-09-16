@@ -25,8 +25,8 @@ export const KOLEKCIJA_BRAND_META: Record<string, KolekcijaBrandMeta> = {
     displayName: "HEADSPACE",
     logo: "/Trail/Headspace.png",
   },
-  Barutti: {
-    displayName: "BARUTTI",
+  Baruti: {
+    displayName: "BARUTI",
     logo: "/Trail/Baruti.png",
   },
   Bepolar: {
