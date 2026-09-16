@@ -17,6 +17,7 @@
   --background: #0f0f0f;
   --foreground: #ededed;
   --site-max-width: 1920px;
+  --wine-gold: #b8956a;
 }
 
 html {
@@ -105,8 +106,14 @@ section {
   position: fixed;
   top: 20px;
   left: max(20px, calc(50vw - var(--site-max-width) / 2 + 20px));
-  color: white;
   z-index: 51;
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: white;
+  text-decoration: none;
 }
 
 .navbar-menu {
@@ -121,6 +128,23 @@ section {
   top: 20px;
   right: max(20px, calc(50vw - var(--site-max-width) / 2 + 20px));
   z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbar-cart-link {
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.navbar-cart-link:hover {
+  color: #fff;
 }
 
 .navbar-logo,
@@ -155,6 +179,315 @@ html:has(body.hero-reveal-lock-ui) {
   min-height: 100vh;
   padding-top: 170px;
   padding-bottom: 3rem;
+}
+
+.kolekcija-brand-section {
+  width: 100%;
+}
+
+.kolekcija-brand-section:not(:last-child) {
+  padding-bottom: 9rem;
+}
+
+.kolekcija-brand-products {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.kolekcija-brand-products .kolekcija-row + .kolekcija-row {
+  margin-top: 3.5rem;
+}
+
+/* Mobile-only break between brand collections; no layout impact on desktop */
+.kolekcija-collection-transition {
+  display: none;
+}
+
+.kolekcija-brand-header {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 0 50px;
+  text-align: center;
+  font-family: var(--font-libre-baskerville), serif;
+}
+
+.kolekcija-brand-header-label {
+  margin: 0 0 1.25rem;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.kolekcija-brand-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem 2rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.kolekcija-brand-header-name {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.2;
+}
+
+.kolekcija-brand-header-divider {
+  width: 1px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
+}
+
+.kolekcija-brand-header-logo {
+  display: flex;
+  align-items: center;
+  max-height: 72px;
+}
+
+.kolekcija-brand-header-logo-img {
+  width: auto;
+  height: auto;
+  max-height: 72px;
+  max-width: min(320px, 42vw);
+  object-fit: contain;
+  object-position: center;
+}
+
+.kolekcija-brand-header-tagline {
+  margin: 1.35rem 0 0;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.5;
+}
+
+/* Kolekcija – filtri */
+.kolekcija-filters {
+  max-width: 1400px;
+  margin: 0 auto 2.5rem;
+  padding: 0 50px;
+  font-family: var(--font-libre-baskerville), serif;
+}
+
+.kolekcija-filters-bar--desktop {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.kolekcija-filters-title {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  flex-shrink: 0;
+}
+
+.kolekcija-filters-triggers {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.kolekcija-filter-dropdown-wrap {
+  position: relative;
+}
+
+.kolekcija-filter-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s ease;
+}
+
+.kolekcija-filter-trigger:hover,
+.kolekcija-filter-trigger--open,
+.kolekcija-filter-trigger--active {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.kolekcija-filter-panel {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 0;
+  z-index: 80;
+  min-width: 220px;
+  max-width: min(320px, 80vw);
+  max-height: min(360px, 50vh);
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f0f0f;
+}
+
+.kolekcija-filters-bar-end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.kolekcija-filters-count {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.kolekcija-filter-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.kolekcija-filter-reset:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.kolekcija-filters-mobile-trigger {
+  display: none;
+}
+
+.kolekcija-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.kolekcija-filter-tag {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.kolekcija-filter-tag:hover {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.kolekcija-filter-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+
+.kolekcija-filter-check-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.kolekcija-filter-check-box {
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  position: relative;
+}
+
+.kolekcija-filter-check-input:focus-visible + .kolekcija-filter-check-box {
+  outline: 1px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+}
+
+.kolekcija-filter-check-input:checked + .kolekcija-filter-check-box::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.kolekcija-filter-check-label {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.35;
+}
+
+.kolekcija-filter-group-title {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kolekcija-filter-group + .kolekcija-filter-group {
+  margin-top: 1.75rem;
+}
+
+.kolekcija-filter-group-list--panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.kolekcija-filter-drawer-root {
+  display: none;
+}
+
+.kolekcija-results {
+  animation: kolekcija-results-fade 0.35s ease;
+}
+
+@keyframes kolekcija-results-fade {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.kolekcija-filter-empty {
+  text-align: center;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 3rem 1rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Delovni čas page – vse v enem kontejnerju, centrirano na sredino */
@@ -485,9 +818,191 @@ html:has(body.hero-reveal-lock-ui) {
   .kolekcija-page {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .kolekcija-filters {
+    padding: 0 0.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .kolekcija-filters-bar--desktop {
+    display: none;
+  }
+
+  .kolekcija-filters-mobile-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-libre-baskerville), serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .kolekcija-filters-mobile-badge {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .kolekcija-filter-drawer-root {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+  }
+
+  .kolekcija-filter-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    cursor: pointer;
+  }
+
+  .kolekcija-filter-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: min(88vh, 640px);
+    display: flex;
+    flex-direction: column;
+    background: #0f0f0f;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .kolekcija-filter-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.25rem 0.75rem;
+  }
+
+  .kolekcija-filter-drawer-title {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .kolekcija-filter-drawer-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.25rem;
+  }
+
+  .kolekcija-filter-drawer-body {
+    overflow-y: auto;
+    padding: 0.5rem 1.25rem 1rem;
+  }
+
+  .kolekcija-filter-drawer-foot {
+    padding: 1rem 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .kolekcija-filter-drawer-apply {
+    width: 100%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+  }
+
+  .kolekcija-filter-drawer-reset {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+  }
+
+  .kolekcija-brand-section:not(:last-child) {
+    padding-bottom: 0;
+  }
+
+  .kolekcija-brand-products {
+    gap: 1.35rem;
+  }
+
+  .kolekcija-brand-products .kolekcija-row + .kolekcija-row {
+    margin-top: 0;
+  }
+
+  .kolekcija-collection-transition {
+    display: block;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  .kolekcija-collection-transition-line {
+    width: 70%;
+    max-width: 100%;
+    height: 1px;
+    margin: 0 auto;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.16),
+      transparent
+    );
+  }
+
+  .kolekcija-brand-header {
+    margin-bottom: 2.75rem;
+    padding: 0 0.25rem;
+  }
+
+  .kolekcija-brand-header-row {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .kolekcija-brand-header-name {
+    letter-spacing: 0.18em;
+    font-size: clamp(20px, 5.5vw, 26px);
+  }
+
+  .kolekcija-brand-header-divider {
+    display: none;
+  }
+
+  .kolekcija-brand-header-logo-img {
+    max-height: 58px;
+    max-width: min(280px, 78vw);
+    object-position: center;
+  }
+
+  .kolekcija-brand-header-tagline {
+    margin-top: 1rem;
+    letter-spacing: 0.22em;
+    font-size: 9px;
+    padding: 0 0.5rem;
   }
 
   .kolekcija-row {
@@ -506,7 +1021,7 @@ html:has(body.hero-reveal-lock-ui) {
   .kolekcija-mobile-info {
     display: block;
     margin-top: 0.2rem;
-    padding-top: 0.35rem;
+    padding: 0.35rem 0.5rem 0.5rem;
   }
 
   .kolekcija-hover-info {
@@ -518,10 +1033,6 @@ html:has(body.hero-reveal-lock-ui) {
   .kolekcija-hover-info {
     display: none !important;
   }
-}
-
-.kolekcija-row-offset {
-  margin-top: 500px;
 }
 
 .kolekcija-image {
@@ -893,16 +1404,14 @@ html:has(body.hero-reveal-lock-ui) {
   justify-content: space-between;
   flex-wrap: nowrap;
   gap: clamp(0.35rem, 1.8vw, 1.5rem);
-  max-width: 1400px;
-  margin: 0 auto;
   width: 100%;
 }
 
 .footer-logo {
-  font-family: var(--font-libre-baskerville), serif;
-  font-weight: bold;
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-weight: normal;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 0.05em;
   color: white;
   text-decoration: none;
@@ -961,12 +1470,16 @@ button.footer-link-button {
     padding-bottom: max(18px, env(safe-area-inset-bottom));
   }
 
-  .footer-logo {
-    font-size: 18px;
-  }
-
   .footer-link {
     font-size: 16px;
+  }
+}
+
+/* Footer poravnan z navbarjem (FORTIS ↔ Menu) – enak 20px inset znotraj site pasu */
+@media (min-width: 769px) {
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
