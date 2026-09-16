@@ -49,6 +49,10 @@ export const KOLEKCIJA_BRAND_META: Record<string, KolekcijaBrandMeta> = {
     displayName: "ZOOLOGIST",
     logo: "/Trail/zoologist.png",
   },
+  "Art Brüt": {
+    displayName: "ART BRÜT",
+    logo: "/Trail/Art%20Brut.png",
+  },
   Spiritica: {
     displayName: "SPIRITICA",
     logo: "/Trail/Spiritica.png",

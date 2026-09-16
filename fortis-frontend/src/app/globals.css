@@ -273,6 +273,223 @@ html:has(body.hero-reveal-lock-ui) {
   line-height: 1.5;
 }
 
+/* Kolekcija – filtri */
+.kolekcija-filters {
+  max-width: 1400px;
+  margin: 0 auto 2.5rem;
+  padding: 0 50px;
+  font-family: var(--font-libre-baskerville), serif;
+}
+
+.kolekcija-filters-bar--desktop {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.kolekcija-filters-title {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  flex-shrink: 0;
+}
+
+.kolekcija-filters-triggers {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.kolekcija-filter-dropdown-wrap {
+  position: relative;
+}
+
+.kolekcija-filter-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s ease;
+}
+
+.kolekcija-filter-trigger:hover,
+.kolekcija-filter-trigger--open,
+.kolekcija-filter-trigger--active {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.kolekcija-filter-panel {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 0;
+  z-index: 80;
+  min-width: 220px;
+  max-width: min(320px, 80vw);
+  max-height: min(360px, 50vh);
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f0f0f;
+}
+
+.kolekcija-filters-bar-end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.kolekcija-filters-count {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.kolekcija-filter-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.kolekcija-filter-reset:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.kolekcija-filters-mobile-trigger {
+  display: none;
+}
+
+.kolekcija-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.kolekcija-filter-tag {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.kolekcija-filter-tag:hover {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.kolekcija-filter-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+
+.kolekcija-filter-check-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.kolekcija-filter-check-box {
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  position: relative;
+}
+
+.kolekcija-filter-check-input:focus-visible + .kolekcija-filter-check-box {
+  outline: 1px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+}
+
+.kolekcija-filter-check-input:checked + .kolekcija-filter-check-box::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.kolekcija-filter-check-label {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.35;
+}
+
+.kolekcija-filter-group-title {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kolekcija-filter-group + .kolekcija-filter-group {
+  margin-top: 1.75rem;
+}
+
+.kolekcija-filter-group-list--panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.kolekcija-filter-drawer-root {
+  display: none;
+}
+
+.kolekcija-results {
+  animation: kolekcija-results-fade 0.35s ease;
+}
+
+@keyframes kolekcija-results-fade {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.kolekcija-filter-empty {
+  text-align: center;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 3rem 1rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 /* Delovni čas page – vse v enem kontejnerju, centrirano na sredino */
 .delovni-cas-page {
   background: #0f0f0f;
@@ -604,6 +821,125 @@ html:has(body.hero-reveal-lock-ui) {
     gap: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .kolekcija-filters {
+    padding: 0 0.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .kolekcija-filters-bar--desktop {
+    display: none;
+  }
+
+  .kolekcija-filters-mobile-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-libre-baskerville), serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .kolekcija-filters-mobile-badge {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .kolekcija-filter-drawer-root {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+  }
+
+  .kolekcija-filter-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    cursor: pointer;
+  }
+
+  .kolekcija-filter-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: min(88vh, 640px);
+    display: flex;
+    flex-direction: column;
+    background: #0f0f0f;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .kolekcija-filter-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.25rem 0.75rem;
+  }
+
+  .kolekcija-filter-drawer-title {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .kolekcija-filter-drawer-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.25rem;
+  }
+
+  .kolekcija-filter-drawer-body {
+    overflow-y: auto;
+    padding: 0.5rem 1.25rem 1rem;
+  }
+
+  .kolekcija-filter-drawer-foot {
+    padding: 1rem 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .kolekcija-filter-drawer-apply {
+    width: 100%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+  }
+
+  .kolekcija-filter-drawer-reset {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
   }
 
   .kolekcija-brand-section:not(:last-child) {

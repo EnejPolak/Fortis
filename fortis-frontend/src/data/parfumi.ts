@@ -1,3 +1,5 @@
+import type { ScentFamilySlug } from "./scent-families";
+
 export type ParfumDetailData = {
   imageSrc: string;
   name: string;
@@ -15,6 +17,7 @@ export type KolekcijaItem = {
   brand: string;
   name: string;
   imageClassName?: string;
+  families?: ScentFamilySlug[];
 };
 
 const META_PLACEHOLDER = "100 ml";
@@ -575,6 +578,42 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
       "TOP NOTES:\nApple, Cherry, Citrus, Lilac, Lily of the Valley, Plum, Rose, Violet Leaf\n\nHEART NOTES:\nHoney, Honeysuckle, Mimosa, Peony, Tulip, Ylang-Ylang\n\nBASE NOTES:\nAmber, Coumarin, Cream, Moss, Musk, Sandalwood, White Woods",
     ingredients: "",
   },
+  "art-brut-german-angst": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 30 %",
+    description:
+      "Včasih je ostati točno tam, kjer si.\n\nNeznano ni vedno nevarnost.\n\nNapredek med potekom redko deluje udobno.\n\nLes in živalske note kompoziciji pod površjem dodata temnejšo plast. Bergamot, meta in zelene note prerežejo znano.\n\nGERMAN ANGST postavlja pod vprašaj nagon, da varuješ to, kar že obstaja.\n\nPogosto gre le za strah z boljšimi manirami.\n\nZdrava pamet. Rutina. Temu rečemo varnost.\n\nStrah ljubi znano.",
+    notes:
+      "NOTES:\nBergamot Essence · Mandarin · Pink Pepper Extract · Juniper Essence · Fig · Elemi Essence · Peppermint Essence · Patchouli Essence · Animal Notes · Cashmere Wood · Modern Woods\n\nSmells like: Fougère · Green · Aromatic",
+    ingredients: "",
+  },
+  "art-brut-weltschmerz": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 30 %",
+    description:
+      "V vsakem primeru ena pijača več ne bo odgovorila na vprašanje.\n\nMorda gre le za osamljenost v lepem ovitku. Morda je obilje svoboda.\n\nNoč se zdi neskončna, dokler jutro ne dokaže nasprotnega.\n\nWhiskey, tobak in začimbe poskrbijo, da nikoli ne postane nedolžno. Breskev in med ponudita sladkobo.\n\nWELTSCHMERZ živi nekje med užitkom in melanholijo.\n\nPijemo, da tišino naredimo zanimivejšo. Praznujemo, da pozabimo.\n\nLepe stvari so lahko kljub temu zlomljene.",
+    notes:
+      "NOTES:\nPeach · Cinnamon Oil · Clove · Elemi Oil · Labdanum Absolute · Whiskey · Ylang-Extra Oil · Rose · Honey · Tobacco · Vanilla · Atlas and Virginia Cedar Wood\n\nSmells like: Woody · Spicy · Fruity",
+    ingredients: "",
+  },
+  "art-brut-chasing-ghosts": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 25 %",
+    description:
+      "Zasleduješ občutek, ki si ga imel, preden si vedel, kako se bo končalo.\n\nNe zasleduješ preteklosti, ker jo hočeš nazaj.\n\nKar je nekoč bolelo, postane nenadoma blagodejno. Riž, beli mošus in topli lesi nelagodo spremenijo v domačnost. Nato vse mehče.\n\nCHASING GHOSTS se začne z udarcem — oster rabarbar, grenivka in nekaj nedvomno zelenega.\n\nDrugi se preprosto naučijo skrivati. Nekateri spomini izginejo.\n\nPrvi rez je vedno najgloblji.",
+    notes:
+      "NOTES:\nRhubarb · Marijuana Note · Grapefruit · Canapa Sativa Essence · Pink Pepper Extract · Solar Notes · Orange Blossom Absolute · Tea · Rice · White Musk · Cashmere Wood · Ambroxan · Modern Woods\n\nSmells like: Powdery Warm · Gourmand · Woody",
+    ingredients: "",
+  },
+  "art-brut-wet-dreams": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 30 %",
+    description:
+      "Drugi te spremljajo domov. Nekatera skrivnost izgine, ko se ugasnejo luči v pisarni.\n\nKarkoli, le ne od spodaj. Na površju profesionalno.\n\nBeli mošus in kašmir ostaneta bližje koži. Malina, freesia in lokvanj stvari ohranjajo zavajajoče čiste.\n\nWET DREAMS obstaja nekje med zadržanostjo in skušnjavo.\n\nPotem so trenutki, ko jih nikogar ne zanimajo. Obstajajo pravila.\n\nNekatera stvari je bolje pustiti neizrečene.",
+    notes:
+      "NOTES:\nFresh Raspberry · Maritime Notes · Freesia · Peony · Water Lily · White Musk · Cashmere\n\nSmells like: Aldehydic · Aquatic · Floral",
+    ingredients: "",
+  },
   "french-cowboy-vanilla-for-breakfast": {
     metaLine1: "100 ml",
     metaLine2: "Eau de Parfum",
@@ -677,6 +716,34 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
   },
   { slug: "zoologist-snowy-owl", imageSrc: "/Zoologist/Owl.png", alt: "Snowy Owl", brand: "Zoologist", name: "Snowy Owl" },
   { slug: "zoologist-hummingbird", imageSrc: "/Zoologist/Humingbird.png", alt: "Hummingbird", brand: "Zoologist", name: "Hummingbird" },
+  {
+    slug: "art-brut-german-angst",
+    imageSrc: "/Art%20Brut/German%20Angist.png",
+    alt: "German Angst",
+    brand: "Art Brüt",
+    name: "German Angst",
+  },
+  {
+    slug: "art-brut-weltschmerz",
+    imageSrc: "/Art%20Brut/Weltschmerz.png",
+    alt: "Weltschmerz",
+    brand: "Art Brüt",
+    name: "Weltschmerz",
+  },
+  {
+    slug: "art-brut-chasing-ghosts",
+    imageSrc: "/Art%20Brut/Chasing%20Ghost.png",
+    alt: "Chasing Ghosts",
+    brand: "Art Brüt",
+    name: "Chasing Ghosts",
+  },
+  {
+    slug: "art-brut-wet-dreams",
+    imageSrc: "/Art%20Brut/Wet%20Dreams.png",
+    alt: "Wet Dreams",
+    brand: "Art Brüt",
+    name: "Wet Dreams",
+  },
   { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
   { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },
   { slug: "spiritica-mango-macumba", imageSrc: "/Spiritica/MangoMavcuma.png", alt: "Mango Macumba", brand: "Spiritica", name: "Mango Macumba" },
