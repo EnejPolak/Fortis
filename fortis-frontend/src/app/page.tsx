@@ -7,6 +7,7 @@ import { WineSpotlight } from "@/components/wine/WineSpotlight";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
+import { OurPartners } from "@/components/partners/OurPartners";
 import { Introduction } from "@/components/introduction/Introduction";
 import { PerfumesBrands } from "@/components/perfumesbrands/PerfumesBrands";
 import { Footer } from "@/components/footer/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
         <WineSpotlight />
         <Introduction />
         <PerfumesBrands />
+        <OurPartners />
         <NewsletterSignup />
       </div>
       <Footer />

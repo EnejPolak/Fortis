@@ -479,6 +479,244 @@ html:has(body.hero-reveal-lock-ui) {
   }
 }
 
+/* Naši partnerji – domača stran */
+.partnerji-section {
+  width: 100%;
+  padding: 3.75rem 0 3.25rem;
+  background: #0f0f0f;
+  position: relative;
+  overflow: hidden;
+}
+
+.partnerji-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.partnerji-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.partnerji-heading-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.partnerji-title {
+  margin: 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  white-space: nowrap;
+}
+
+.partnerji-carousel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 100%;
+}
+
+.partnerji-nav {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.partnerji-nav:hover,
+.partnerji-nav:focus-visible {
+  color: rgba(255, 255, 255, 0.75);
+  outline: none;
+}
+
+.partnerji-viewport {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+.partnerji-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.partnerji-slide {
+  flex: 0 0 var(--partner-slide-width, 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+}
+
+.partnerji-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 88px;
+}
+
+.partnerji-logo {
+  width: auto;
+  height: auto;
+  max-width: min(100%, 220px);
+  object-fit: contain;
+  opacity: 0.82;
+  transition: opacity 0.25s ease;
+  user-select: none;
+}
+
+.partnerji-slide:hover .partnerji-logo {
+  opacity: 1;
+}
+
+.partnerji-static {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem 2.5rem;
+}
+
+.partnerji-static .partnerji-slide {
+  flex: 0 1 auto;
+  max-width: 240px;
+}
+
+.partnerji-progress {
+  width: min(200px, 42%);
+  height: 1px;
+  margin: 1.5rem auto 0;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.partnerji-progress-fill {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  transition: width 0.08s linear;
+  transform-origin: left center;
+}
+
+.partnerji-tagline {
+  margin: 1.35rem 0 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+@media (min-width: 640px) {
+  .partnerji-inner {
+    padding: 0 2rem;
+  }
+
+  .partnerji-heading {
+    gap: 1.75rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .partnerji-heading-line {
+    max-width: 160px;
+  }
+
+  .partnerji-slide {
+    padding: 0 1rem;
+  }
+
+  .partnerji-carousel {
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .partnerji-section {
+    padding: 4.25rem 0 3.75rem;
+  }
+
+  .partnerji-inner {
+    padding: 0 50px;
+  }
+
+  .partnerji-title {
+    font-size: 12px;
+  }
+
+  .partnerji-tagline {
+    font-size: 10px;
+    margin-top: 1.5rem;
+  }
+
+  .partnerji-logo-wrap {
+    min-height: 96px;
+  }
+}
+
+@media (max-width: 639px) {
+  .partnerji-title {
+    letter-spacing: 0.28em;
+    font-size: 10px;
+  }
+
+  .partnerji-heading-line {
+    max-width: 48px;
+  }
+
+  .partnerji-slide {
+    padding: 0 0.5rem;
+  }
+
+  .partnerji-logo-wrap {
+    min-height: 72px;
+  }
+
+  .partnerji-logo {
+    max-width: min(100%, 168px);
+  }
+
+  .partnerji-static .partnerji-slide {
+    max-width: 200px;
+  }
+}
+
 .kolekcija-filter-empty {
   text-align: center;
   font-family: var(--font-libre-baskerville), serif;
