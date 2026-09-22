@@ -6,6 +6,7 @@ import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
+import { OurPartners } from "@/components/partners/OurPartners";
 import { Introduction } from "@/components/introduction/Introduction";
 import { PerfumesBrands } from "@/components/perfumesbrands/PerfumesBrands";
 import { Footer } from "@/components/footer/Footer";
@@ -19,6 +20,7 @@ export default function Home() {
         </Suspense>
         <Introduction />
         <PerfumesBrands />
+        <OurPartners />
         <NewsletterSignup />
       </div>
       <Footer />
