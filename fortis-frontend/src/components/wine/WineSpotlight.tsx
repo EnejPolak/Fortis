@@ -60,6 +60,17 @@ export function WineSpotlight() {
         <div className={styles.rule} aria-hidden="true" />
         <p className={styles.tagline}>{wine.tagline}</p>
         <p className={styles.producer}>{wine.producer}</p>
+        <p className={styles.pickup}>
+          Prevzem v atelierju ·{" "}
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Fortis+Niche+Atelier,+Poljanska+cesta+7,+1000+Ljubljana"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.pickupLink}
+          >
+            Poljanska cesta 7, Ljubljana
+          </a>
+        </p>
         <Link href={`/vino/${wine.slug}`} className={styles.cta}>
           Odkrij PRIMO
         </Link>

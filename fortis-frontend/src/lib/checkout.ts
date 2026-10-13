@@ -21,10 +21,18 @@ export const PICKUP_LOCATION = {
   country: "SI",
 } as const;
 
+export const PICKUP_ADDRESS_LABEL = `${PICKUP_LOCATION.line1}, ${PICKUP_LOCATION.postalCode} ${PICKUP_LOCATION.city}`;
+
+export const PICKUP_MAP_URL =
+  "https://www.google.com/maps/search/?api=1&query=Fortis+Niche+Atelier,+Poljanska+cesta+7,+1000+Ljubljana";
+
+/** Vino je trenutno na voljo le z prevzemom v atelierju. */
+export const WINE_FULFILLMENT: DeliveryMethod = "pickup";
+
 export function parseDeliveryMethod(body: unknown): DeliveryMethod {
-  if (!body || typeof body !== "object") return "delivery";
+  if (!body || typeof body !== "object") return WINE_FULFILLMENT;
   const method = (body as Record<string, unknown>).deliveryMethod;
-  return method === "pickup" ? "pickup" : "delivery";
+  return method === "delivery" ? "delivery" : WINE_FULFILLMENT;
 }
 
 export function parseCheckoutItems(body: unknown): CheckoutItem[] | null {
@@ -104,7 +112,7 @@ export type OrderLine = {
 
 export function buildOrderSummary(
   items: CheckoutItem[],
-  deliveryMethod: DeliveryMethod = "delivery"
+  deliveryMethod: DeliveryMethod = WINE_FULFILLMENT
 ): {
   lines: OrderLine[];
   netSubtotalCents: number;

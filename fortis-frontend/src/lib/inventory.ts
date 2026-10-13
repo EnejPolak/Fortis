@@ -123,7 +123,7 @@ export async function decrementStock(
 
     if (updateError) throw new Error(updateError.message);
     if (!updated) {
-      throw new Error(`Zaloga za ${slug} se je spremenila — poskusi znova.`);
+      throw new Error(`Zaloga za ${slug} se je spremenila. Poskusi znova.`);
     }
   }
 }

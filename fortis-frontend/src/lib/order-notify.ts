@@ -24,18 +24,18 @@ function buildOrderEmailHtml(order: SavedOrder): string {
   const itemsHtml = order.items
     .map(
       (item) =>
-        `<li>${item.wine_name} ${item.wine_vintage} × ${item.quantity} — ${formatMoney(item.line_cents, order.currency)}</li>`
+        `<li>${item.wine_name} ${item.wine_vintage} × ${item.quantity}, ${formatMoney(item.line_cents, order.currency)}</li>`
     )
     .join("");
 
   return `
-    <h2>Novo naročilo — Fortis Selection</h2>
+    <h2>Novo naročilo, Fortis Selection</h2>
     <p><strong>ID:</strong> ${order.id}</p>
     <p><strong>Stripe PI:</strong> ${order.stripe_payment_intent_id}</p>
     <hr />
     <p><strong>Stranka:</strong> ${order.full_name}</p>
     <p><strong>Email:</strong> ${order.email}</p>
-    <p><strong>Telefon:</strong> ${order.phone ?? "—"}</p>
+    <p><strong>Telefon:</strong> ${order.phone ?? "-"}</p>
     <p><strong>Način:</strong> ${order.fulfillment === "pickup" ? "Prevzem v atelierju" : "Dostava na naslov"}</p>
     <p><strong>Naslov:</strong> ${formatAddress(order)}</p>
     <hr />
@@ -51,19 +51,19 @@ function buildOrderEmailText(order: SavedOrder): string {
   const itemsText = order.items
     .map(
       (item) =>
-        `- ${item.wine_name} ${item.wine_vintage} × ${item.quantity} — ${formatMoney(item.line_cents, order.currency)}`
+        `- ${item.wine_name} ${item.wine_vintage} × ${item.quantity}, ${formatMoney(item.line_cents, order.currency)}`
     )
     .join("\n");
 
   return [
-    "Novo naročilo — Fortis Selection",
+    "Novo naročilo, Fortis Selection",
     "",
     `ID: ${order.id}`,
     `Stripe PI: ${order.stripe_payment_intent_id}`,
     "",
     `Stranka: ${order.full_name}`,
     `Email: ${order.email}`,
-    `Telefon: ${order.phone ?? "—"}`,
+    `Telefon: ${order.phone ?? "-"}`,
     `Način: ${order.fulfillment === "pickup" ? "Prevzem v atelierju" : "Dostava na naslov"}`,
     `Naslov: ${formatAddress(order)}`,
     "",
@@ -84,7 +84,7 @@ export async function notifyNewOrder(order: SavedOrder): Promise<void> {
 
   if (!apiKey || !to) {
     console.warn(
-      "[order-notify] RESEND_API_KEY or ORDER_NOTIFY_EMAIL not set — skipping email"
+      "[order-notify] RESEND_API_KEY or ORDER_NOTIFY_EMAIL not set, skipping email"
     );
     return;
   }
@@ -98,7 +98,7 @@ export async function notifyNewOrder(order: SavedOrder): Promise<void> {
     body: JSON.stringify({
       from,
       to: [to],
-      subject: `Novo naročilo — ${order.full_name} (${formatMoney(order.total_cents, order.currency)})`,
+      subject: `Novo naročilo, ${order.full_name} (${formatMoney(order.total_cents, order.currency)})`,
       html: buildOrderEmailHtml(order),
       text: buildOrderEmailText(order),
     }),

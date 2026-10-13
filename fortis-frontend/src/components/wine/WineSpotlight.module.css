@@ -91,7 +91,24 @@
 .producer {
   font-size: 0.95rem;
   color: rgba(252, 252, 252, 0.55);
+  margin-bottom: 0.65rem;
+}
+
+.pickup {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: rgba(252, 252, 252, 0.5);
   margin-bottom: 2rem;
+}
+
+.pickupLink {
+  color: var(--wine-gold, #b8956a);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.pickupLink:hover {
+  color: #d4b896;
 }
 
 .cta {

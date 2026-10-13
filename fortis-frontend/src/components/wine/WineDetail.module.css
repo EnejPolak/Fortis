@@ -180,6 +180,23 @@
   accent-color: var(--wine-gold, #b8956a);
 }
 
+.fulfillmentNote {
+  margin: -0.75rem 0 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(237, 237, 237, 0.58);
+}
+
+.mapLink {
+  color: var(--wine-gold, #b8956a);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.mapLink:hover {
+  color: #d4b896;
+}
+
 .buyBtn {
   display: inline-flex;
   align-items: center;

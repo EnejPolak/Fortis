@@ -12,12 +12,14 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { useCart } from "@/context/CartProvider";
+import { readCart } from "@/lib/cart-storage";
 import type { CheckoutItem, DeliveryMethod } from "@/lib/checkout";
 import {
   buildOrderSummary,
   PICKUP_LOCATION,
-  SHIPPING_CENTS,
+  WINE_FULFILLMENT,
 } from "@/lib/checkout";
+import { PickupLocationLink } from "@/components/wine/PickupLocationLink";
 import {
   clearDirectCheckout,
   readDirectCheckout,
@@ -171,11 +173,7 @@ function OrderSummaryAside({
   step: 1 | 2;
 }) {
   const shippingLabel =
-    deliveryMethod === "pickup"
-      ? "Brezplačno"
-      : deliveryMethod === "delivery"
-        ? formatMoney(order.shippingCents, order.currency)
-        : `od ${formatMoney(SHIPPING_CENTS, order.currency)}`;
+    deliveryMethod === "pickup" ? "Brezplačno (prevzem v atelierju)" : "-";
 
   return (
     <aside className={styles.summary}>
@@ -227,9 +225,7 @@ function OrderSummaryAside({
         </span>
       </div>
       {!deliveryMethod ? (
-        <p className={styles.summaryHint}>
-          Končni znesek se izračuna po izbiri prevzema ali dostave.
-        </p>
+        <p className={styles.summaryHint}>Prevzem v atelierju, brez poštnine.</p>
       ) : null}
     </aside>
   );
@@ -237,10 +233,10 @@ function OrderSummaryAside({
 
 export function PlaciloCheckout() {
   const router = useRouter();
-  const { items: cartItems } = useCart();
+  const { items: cartItems, hydrated: cartHydrated } = useCart();
   const [checkoutItems, setCheckoutItems] = useState<CheckoutItem[] | null>(null);
   const [step, setStep] = useState<1 | 2>(1);
-  const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod | null>(null);
+  const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod>(WINE_FULFILLMENT);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [initError, setInitError] = useState("");
   const [loadingPayment, setLoadingPayment] = useState(false);
@@ -255,6 +251,8 @@ export function PlaciloCheckout() {
   });
 
   useEffect(() => {
+    if (!cartHydrated) return;
+
     const direct = readDirectCheckout();
     if (direct?.items.length) {
       setCheckoutItems(direct.items);
@@ -265,13 +263,22 @@ export function PlaciloCheckout() {
       setCheckoutItems(cartItems);
       return;
     }
+    const stored = readCart().items;
+    if (stored.length) {
+      setCheckoutItems(stored);
+      return;
+    }
     router.replace("/kosarica");
-  }, [cartItems, router]);
+  }, [cartHydrated, cartItems, router]);
+
+  useEffect(() => {
+    setDeliveryMethod(WINE_FULFILLMENT);
+  }, []);
 
   const order = useMemo(
     () =>
       checkoutItems
-        ? buildOrderSummary(checkoutItems, deliveryMethod ?? "delivery")
+        ? buildOrderSummary(checkoutItems, deliveryMethod)
         : null,
     [checkoutItems, deliveryMethod]
   );
@@ -324,7 +331,6 @@ export function PlaciloCheckout() {
         contact.postalCode.trim().length > 2));
 
   const handleContinue = () => {
-    if (!deliveryMethod) return;
     setStep(2);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -335,7 +341,7 @@ export function PlaciloCheckout() {
     setInitError("");
   };
 
-  if (!checkoutItems || !order) {
+  if (!cartHydrated || !checkoutItems || !order) {
     return (
       <main className={styles.main}>
         <p className={styles.loading}>Nalagam …</p>
@@ -394,50 +400,30 @@ export function PlaciloCheckout() {
 
           {step === 1 ? (
             <div className={styles.deliveryStep}>
-              <p className={styles.sectionLabel}>Kako želite prejeti naročilo?</p>
+              <p className={styles.sectionLabel}>Prevzem naročila</p>
               <div className={styles.deliveryOptions}>
-                <button
-                  type="button"
-                  className={`${styles.deliveryOption} ${
-                    deliveryMethod === "pickup" ? styles.deliveryOptionActive : ""
-                  }`}
-                  onClick={() => setDeliveryMethod("pickup")}
+                <div
+                  className={`${styles.deliveryOption} ${styles.deliveryOptionActive}`}
+                  role="status"
                 >
                   <span className={styles.deliveryOptionTitle}>Prevzem v atelierju</span>
                   <span className={styles.deliveryOptionDesc}>
-                    Brez poštnine. Prevzemite v Fortis Niche Atelier, Ljubljana.
+                    Vino je na voljo izključno z osebnim prevzemom v Fortis Niche
+                    Atelier. Ko je naročilo pripravljeno, vas obvestimo po emailu ali
+                    telefonu.
                   </span>
                   <span className={styles.deliveryOptionMeta}>
-                    {PICKUP_LOCATION.line1}, {PICKUP_LOCATION.postalCode}{" "}
-                    {PICKUP_LOCATION.city}
+                    <PickupLocationLink className={styles.mapLink}>
+                      {PICKUP_LOCATION.line1}, {PICKUP_LOCATION.postalCode}{" "}
+                      {PICKUP_LOCATION.city}
+                    </PickupLocationLink>
                   </span>
-                  <span className={styles.deliveryOptionPrice}>Brezplačno</span>
-                </button>
-
-                <button
-                  type="button"
-                  className={`${styles.deliveryOption} ${
-                    deliveryMethod === "delivery" ? styles.deliveryOptionActive : ""
-                  }`}
-                  onClick={() => setDeliveryMethod("delivery")}
-                >
-                  <span className={styles.deliveryOptionTitle}>Dostava na naslov</span>
-                  <span className={styles.deliveryOptionDesc}>
-                    Pošljemo na vaš naslov v Sloveniji in sosednjih državah.
-                  </span>
-                  <span className={styles.deliveryOptionPrice}>
-                    +{formatMoney(SHIPPING_CENTS, order.currency)}
-                  </span>
-                </button>
+                  <span className={styles.deliveryOptionPrice}>Brez poštnine</span>
+                </div>
               </div>
 
-              <button
-                type="button"
-                className={styles.continueBtn}
-                disabled={!deliveryMethod}
-                onClick={handleContinue}
-              >
-                Nadaljuj
+              <button type="button" className={styles.continueBtn} onClick={handleContinue}>
+                Nadaljuj na plačilo
               </button>
             </div>
           ) : (
@@ -447,19 +433,22 @@ export function PlaciloCheckout() {
                 className={styles.backStepBtn}
                 onClick={handleBackToStep1}
               >
-                ← Spremeni način prevzema
+                ← Nazaj na prevzem
               </button>
 
-              {deliveryMethod === "pickup" ? (
-                <div className={styles.pickupNote}>
-                  <p className={styles.sectionLabel}>Prevzem</p>
-                  <p>
-                    Prevzem v atelierju: {PICKUP_LOCATION.line1},{" "}
-                    {PICKUP_LOCATION.postalCode} {PICKUP_LOCATION.city}. Delovni čas:{" "}
-                    <Link href="/delovni-cas">pon–sob 16:00–20:00</Link>.
-                  </p>
-                </div>
-              ) : null}
+              <div className={styles.pickupNote}>
+                <p className={styles.sectionLabel}>Prevzem v atelierju</p>
+                <p>
+                  Prevzem na{" "}
+                  <PickupLocationLink className={styles.mapLink}>
+                    {PICKUP_LOCATION.line1}, {PICKUP_LOCATION.postalCode}{" "}
+                    {PICKUP_LOCATION.city}
+                  </PickupLocationLink>
+                  . Delovni čas:{" "}
+                  <Link href="/delovni-cas">pon–sob 10:00–19:00</Link>. Po plačilu vas
+                  kontaktiramo, ko je naročilo pripravljeno.
+                </p>
+              </div>
 
               <div className={styles.form}>
                 <p className={styles.sectionLabel}>Podatki</p>
@@ -503,67 +492,6 @@ export function PlaciloCheckout() {
                   />
                 </div>
 
-                {deliveryMethod === "delivery" ? (
-                  <>
-                    <div className={styles.field}>
-                      <label htmlFor="line1">Naslov za dostavo</label>
-                      <input
-                        id="line1"
-                        type="text"
-                        autoComplete="street-address"
-                        value={contact.line1}
-                        onChange={(e) =>
-                          setContact((c) => ({ ...c, line1: e.target.value }))
-                        }
-                        required
-                      />
-                    </div>
-                    <div className={styles.fieldRow}>
-                      <div className={styles.field}>
-                        <label htmlFor="city">Kraj</label>
-                        <input
-                          id="city"
-                          type="text"
-                          autoComplete="address-level2"
-                          value={contact.city}
-                          onChange={(e) =>
-                            setContact((c) => ({ ...c, city: e.target.value }))
-                          }
-                          required
-                        />
-                      </div>
-                      <div className={styles.field}>
-                        <label htmlFor="postalCode">Poštna št.</label>
-                        <input
-                          id="postalCode"
-                          type="text"
-                          autoComplete="postal-code"
-                          value={contact.postalCode}
-                          onChange={(e) =>
-                            setContact((c) => ({ ...c, postalCode: e.target.value }))
-                          }
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.field}>
-                      <label htmlFor="country">Država</label>
-                      <select
-                        id="country"
-                        value={contact.country}
-                        onChange={(e) =>
-                          setContact((c) => ({ ...c, country: e.target.value }))
-                        }
-                      >
-                        <option value="SI">Slovenija</option>
-                        <option value="HR">Hrvaška</option>
-                        <option value="AT">Avstrija</option>
-                        <option value="IT">Italija</option>
-                        <option value="DE">Nemčija</option>
-                      </select>
-                    </div>
-                  </>
-                ) : null}
               </div>
 
               {initError ? (

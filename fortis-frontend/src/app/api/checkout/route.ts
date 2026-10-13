@@ -3,6 +3,7 @@ import {
   buildStripeLineItems,
   checkoutMetadata,
   parseCheckoutItems,
+  WINE_FULFILLMENT,
 } from "@/lib/checkout";
 import { getStripe } from "@/lib/stripe";
 import { getSiteUrl } from "@/lib/site";
@@ -30,12 +31,9 @@ export async function POST(request: Request) {
       line_items: lineItems,
       success_url: `${siteUrl}/vino/uspeh?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: fromCart ? `${siteUrl}/kosarica` : `${siteUrl}/vino/${items[0].slug}`,
-      metadata: checkoutMetadata(items, "delivery"),
+      metadata: checkoutMetadata(items, WINE_FULFILLMENT),
       billing_address_collection: "required",
       phone_number_collection: { enabled: true },
-      shipping_address_collection: {
-        allowed_countries: ["SI", "HR", "AT", "IT", "DE"],
-      },
     });
 
     if (!session.url) {

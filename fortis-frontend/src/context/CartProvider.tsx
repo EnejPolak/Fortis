@@ -22,6 +22,7 @@ import {
 type CartContextValue = {
   items: CartLine[];
   count: number;
+  hydrated: boolean;
   stockBySlug: Record<string, number>;
   maxQuantityFor: (slug: string) => number;
   addItem: (slug: string, quantity: number) => void;
@@ -47,6 +48,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
   const [stockBySlug, setStockBySlug] = useState<Record<string, number>>({});
   const [availableBySlug, setAvailableBySlug] = useState<Record<string, number>>({});
+  const [inventoryReadySlugs, setInventoryReadySlugs] = useState<Set<string>>(
+    () => new Set()
+  );
 
   useEffect(() => {
     setItems(readCart().items);
@@ -56,11 +60,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const maxQuantityFor = useCallback(
     (slug: string) => {
       const wine = getWineBySlug(slug);
+      const cap = wine?.maxQuantity ?? 12;
       const available = availableBySlug[slug];
       if (available !== undefined) return available;
-      return wine?.maxQuantity ?? 12;
+      if (!inventoryReadySlugs.has(slug)) return cap;
+      return 0;
     },
-    [availableBySlug]
+    [availableBySlug, inventoryReadySlugs]
   );
 
   const persist = useCallback((next: CartLine[]) => {
@@ -72,6 +78,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (!hydrated || items.length === 0) {
       setStockBySlug({});
       setAvailableBySlug({});
+      setInventoryReadySlugs(new Set());
       return;
     }
 
@@ -93,6 +100,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setAvailableBySlug(
         Object.fromEntries(rows.map((row) => [row.slug, row.available]))
       );
+      setInventoryReadySlugs(new Set(rows.map((row) => row.slug)));
     });
   }, [hydrated, items]);
 
@@ -101,6 +109,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     let changed = false;
     const next = items.flatMap((item) => {
+      if (!inventoryReadySlugs.has(item.slug)) return [item];
+
       const max = maxQuantityFor(item.slug);
       if (max < 1) {
         changed = true;
@@ -117,7 +127,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (changed) {
       persist(next);
     }
-  }, [availableBySlug, hydrated, items, maxQuantityFor, persist]);
+  }, [availableBySlug, hydrated, inventoryReadySlugs, items, maxQuantityFor, persist]);
 
   const addItem = useCallback(
     (slug: string, quantity: number) => {
@@ -184,6 +194,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     () => ({
       items: hydrated ? items : [],
       count,
+      hydrated,
       stockBySlug,
       maxQuantityFor,
       addItem,
@@ -192,6 +203,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       clearCart: clear,
     }),
     [
+      hydrated,
       hydrated,
       items,
       count,

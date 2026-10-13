@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
 import type { WineProduct } from "@/data/wine";
 import { formatMoneyCents, formatWinePrice } from "@/data/wine";
-import { saveDirectCheckout } from "@/lib/direct-checkout";
+import { PickupLocationLink } from "@/components/wine/PickupLocationLink";
 import styles from "./WineDetail.module.css";
 
 type WineDetailProps = {
@@ -37,7 +37,7 @@ export function WineDetail({ wine, stock }: WineDetailProps) {
     setLoading("buy");
     setError("");
     setCartMessage("");
-    saveDirectCheckout({ items: [{ slug: wine.slug, quantity }] });
+    addItem(wine.slug, quantity);
     router.push("/placilo");
   };
 
@@ -139,6 +139,14 @@ export function WineDetail({ wine, stock }: WineDetailProps) {
               />
               <span>Potrjujem, da sem star/a najmanj 18 let.</span>
             </label>
+
+            <p className={styles.fulfillmentNote}>
+              Prevzem izključno v atelierju:{" "}
+              <PickupLocationLink className={styles.mapLink}>
+                Poljanska cesta 7, Ljubljana
+              </PickupLocationLink>
+              . Dostava na dom trenutno ni na voljo.
+            </p>
 
             <div className={styles.actions}>
               <button

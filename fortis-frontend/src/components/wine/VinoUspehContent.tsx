@@ -63,7 +63,7 @@ export function VinoUspehContent() {
       >
         {failed
           ? "Plačilo ni bilo zaključeno. Poskusite znova ali nas kontaktirajte."
-          : "Vaše plačilo je bilo uspešno. Stripe vam pošlje potrdilo na email. Kmalu vas bomo kontaktirali glede prevzema ali dostave."}
+          : "Vaše plačilo je bilo uspešno. Stripe vam pošlje potrdilo na email. Kmalu vas bomo kontaktirali, ko bo naročilo pripravljeno za prevzem v atelierju."}
       </p>
       <Link
         href={failed ? "/placilo" : "/"}

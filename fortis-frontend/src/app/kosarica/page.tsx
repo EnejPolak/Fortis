@@ -4,7 +4,7 @@ import { CartPage } from "@/components/cart/CartPage";
 
 export const metadata: Metadata = {
   title: "Košarica",
-  description: "Košarica Fortis Selection — vino PRIMO.",
+  description: "Košarica Fortis Selection, vino PRIMO.",
   robots: { index: false, follow: false },
 };
 

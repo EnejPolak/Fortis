@@ -21,7 +21,7 @@ export const PRIMO_WINE: WineProduct = {
   slug: "primo",
   name: "PRIMO",
   vintage: "2023",
-  producer: "Klet — podrobnosti kmalu",
+  producer: "Klet, podrobnosti kmalu",
   tagline: "Vino, ki pripoveduje zgodbo sonca, morja in briških gričev.",
   description:
     "Redka izbira Fortis Niche Atelier. Ne za množico, temveč za trenutek, ko želite, da večer diši po poletju in morju.",

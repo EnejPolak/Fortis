@@ -295,6 +295,16 @@
   color: rgba(237, 237, 237, 0.55);
 }
 
+.mapLink {
+  color: var(--wine-gold, #b8956a);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.mapLink:hover {
+  color: #d4b896;
+}
+
 .deliveryOptionPrice {
   margin-top: 0.25rem;
   font-size: 0.78rem;

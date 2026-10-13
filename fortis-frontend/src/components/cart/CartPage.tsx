@@ -7,12 +7,14 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartProvider";
 import { buildOrderSummary } from "@/lib/checkout";
 import { formatMoneyCents, formatWinePrice, getWineBySlug } from "@/data/wine";
+import { PickupLocationLink } from "@/components/wine/PickupLocationLink";
 import { WinePriceBreakdown } from "@/components/wine/WinePriceBreakdown";
 import styles from "./CartPage.module.css";
 
 export function CartPage() {
   const router = useRouter();
-  const { items, setQuantity, removeItem, maxQuantityFor, stockBySlug } = useCart();
+  const { items, setQuantity, removeItem, maxQuantityFor, stockBySlug, hydrated } =
+    useCart();
   const [ageConfirmed, setAgeConfirmed] = useState(false);
 
   const lines = items
@@ -23,7 +25,7 @@ export function CartPage() {
     })
     .filter(Boolean) as { wine: NonNullable<ReturnType<typeof getWineBySlug>>; quantity: number }[];
 
-  const order = items.length ? buildOrderSummary(items) : null;
+  const order = items.length ? buildOrderSummary(items, "pickup") : null;
 
   const stockWarnings = lines
     .map(({ wine, quantity }) => {
@@ -59,10 +61,12 @@ export function CartPage() {
         <h1 className={styles.title}>Košarica</h1>
         <p className={styles.hint}>
           Prijava ni potrebna. Na naslednji strani vnesete podatke in plačate prek
-          Stripe — potrdilo prejmete po emailu.
+          Stripe. Potrdilo prejmete po emailu.
         </p>
 
-        {lines.length === 0 ? (
+        { !hydrated ? (
+          <p className={styles.hint}>Nalagam košarico …</p>
+        ) : lines.length === 0 ? (
           <div className={styles.empty}>
             <p>Košarica je prazna.</p>
             <Link href="/vino/primo" className={styles.shopLink}>
@@ -145,7 +149,11 @@ export function CartPage() {
                 />
               ) : null}
               <p className={styles.summaryNote}>
-                Prevzem ali dostavo izberete pri plačilu. Poštnina velja le pri dostavi.
+                Prevzem izključno v atelierju:{" "}
+                <PickupLocationLink className={styles.mapLink}>
+                  Poljanska cesta 7, Ljubljana
+                </PickupLocationLink>
+                . Po uspešnem plačilu vas obvestimo, ko je naročilo pripravljeno.
               </p>
             </div>
 

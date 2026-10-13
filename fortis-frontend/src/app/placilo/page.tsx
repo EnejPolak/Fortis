@@ -4,7 +4,7 @@ import { PlaciloCheckout } from "@/components/checkout/PlaciloCheckout";
 
 export const metadata: Metadata = {
   title: "Plačilo",
-  description: "Varno plačilo Fortis Selection — Stripe.",
+  description: "Varno plačilo Fortis Selection, Stripe.",
   robots: { index: false, follow: false },
 };
 
