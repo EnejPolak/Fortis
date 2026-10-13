@@ -16,12 +16,12 @@ export const metadata: Metadata = {
 };
 
 const DELOVNI_CAS = [
-  { dan: "Ponedeljek", en: "Monday", ura: "16:00 – 20:00" },
-  { dan: "Torek", en: "Tuesday", ura: "16:00 – 20:00" },
-  { dan: "Sreda", en: "Wednesday", ura: "16:00 – 20:00" },
-  { dan: "Četrtek", en: "Thursday", ura: "16:00 – 20:00" },
-  { dan: "Petek", en: "Friday", ura: "16:00 – 20:00" },
-  { dan: "Sobota", en: "Saturday", ura: "16:00 – 20:00" },
+  { dan: "Ponedeljek", en: "Monday", ura: "10:00 – 19:00" },
+  { dan: "Torek", en: "Tuesday", ura: "10:00 – 19:00" },
+  { dan: "Sreda", en: "Wednesday", ura: "10:00 – 19:00" },
+  { dan: "Četrtek", en: "Thursday", ura: "10:00 – 19:00" },
+  { dan: "Petek", en: "Friday", ura: "10:00 – 19:00" },
+  { dan: "Sobota", en: "Saturday", ura: "10:00 – 19:00" },
   { dan: "Nedelja", en: "Sunday", ura: "Zaprto" },
 ];
 

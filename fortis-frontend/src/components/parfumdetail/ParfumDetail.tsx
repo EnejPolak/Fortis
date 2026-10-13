@@ -141,12 +141,12 @@ export function ParfumDetail({
               )}
               {activeTab === "notes" && (
                 <p className="text-[var(--foreground)] leading-relaxed whitespace-pre-line">
-                  {notes || "—"}
+                  {notes || "-"}
                 </p>
               )}
               {activeTab === "ingredients" && (
                 <p className="text-[var(--foreground)] leading-relaxed">
-                  {ingredients || "—"}
+                  {ingredients || "-"}
                 </p>
               )}
             </div>

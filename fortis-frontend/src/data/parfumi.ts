@@ -129,7 +129,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Vse se je začelo v Istanbulu. Vsak od nas v življenju doživi obred prehoda, zame pa je bilo to tisto potovanje — sredi kaotičnih glasov Velikega bazarja in vrtinčaste dišave začimb s starodavnega trga. 1# Nota di Viaggio (Rites de passage) je moj poklon nomadom, dušam, ki so vedno v gibanju, in uhajajočim duhovom. Topel in začinjen parfum, ki z uvodnimi notami črnega popra, grenivke in bergamota slavi vrata na Vzhod, ki jih je nekoč predstavljal Carigrad.",
+      "Vse se je začelo v Istanbulu. Vsak od nas v življenju doživi obred prehoda, zame pa je bilo to tisto potovanje, sredi kaotičnih glasov Velikega bazarja in vrtinčaste dišave začimb s starodavnega trga. 1# Nota di Viaggio (Rites de passage) je moj poklon nomadom, dušam, ki so vedno v gibanju, in uhajajočim duhovom. Topel in začinjen parfum, ki z uvodnimi notami črnega popra, grenivke in bergamota slavi vrata na Vzhod, ki jih je nekoč predstavljal Carigrad.",
     notes:
       "Bergamot, Birch, Cade, Cedar wood, Cinnamon, Elemi, Geranium, Ginger, Grapefruit, Incense, Jasmine, Oud, Patchouli, Pink Pepper, Saffron, Sichuan Pepper, Tobacco Abs, Vanilla, Vetiver",
     ingredients: "",
@@ -138,7 +138,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Potovanje v Maroko — himna radosti, sreči potovanja in lepoti srečanja. Shukran v arabščini pomeni „hvala“. 2# Nota di Viaggio (Shukran…) je moja osebna želja, da svoja potovanja v Maroku pripovedujem skozi parfum — sveti obred za ljudstvo Berberov, ki postane vsakodnevna kretnja srečanja za vsakega popotnika: čaj z meto.",
+      "Potovanje v Maroko, himna radosti, sreči potovanja in lepoti srečanja. Shukran v arabščini pomeni „hvala“. 2# Nota di Viaggio (Shukran…) je moja osebna želja, da svoja potovanja v Maroku pripovedujem skozi parfum, sveti obred za ljudstvo Berberov, ki postane vsakodnevna kretnja srečanja za vsakega popotnika: čaj z meto.",
     notes:
       "Eucalyptus, Lemon, Lemongrass, Litsea Cubeba, Moroccan chamomile, Moroccan dwarf mint, Sandalwood, Tobacco, Verbena",
     ingredients: "",
@@ -147,7 +147,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Poklon noči in poeziji. Notturno pripoveduje o mojem notranjem potovanju — temnem tunelu, kjer sem se lahko ustavil in premišljeval o lepoti poezije, o besedi, vklesani s črnilom življenja. Opojne note ruma označijo pot kot udarec. Eterično potovanje v oddaljen čas, v namišljene temne sobe uma.",
+      "Poklon noči in poeziji. Notturno pripoveduje o mojem notranjem potovanju, temnem tunelu, kjer sem se lahko ustavil in premišljeval o lepoti poezije, o besedi, vklesani s črnilom življenja. Opojne note ruma označijo pot kot udarec. Eterično potovanje v oddaljen čas, v namišljene temne sobe uma.",
     notes:
       "Amber, Birch, Cedar, Incense, Ink Agreement, Leather, Moss, Pineapple, Rum, Sandalwood",
     ingredients: "",
@@ -156,7 +156,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Srečanje z našimi najglobljimi spomini je lahko preobremenjujoče — to sem poskušal ustvariti z Narcotico, osebno in globoko potovanje v najbolj skrite olfaktorne spomine moje duše. Narcotico pripoveduje skozi potovanje v Palermo — mesto tisoč kontrastov, med njegovimi ulicami in cerkvami — duhovno potovanje duše, mojega osebnega odnosa s Svetim.",
+      "Srečanje z našimi najglobljimi spomini je lahko preobremenjujoče, to sem poskušal ustvariti z Narcotico, osebno in globoko potovanje v najbolj skrite olfaktorne spomine moje duše. Narcotico pripoveduje skozi potovanje v Palermo, mesto tisoč kontrastov, med njegovimi ulicami in cerkvami, duhovno potovanje duše, mojega osebnega odnosa s Svetim.",
     notes:
       "Benzoin, Guaiac Wood, Incense, Labdanum, Oud, Patchouli, Thyme, Tonka bean, Vetiver",
     ingredients: "",
@@ -165,7 +165,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Odor 93 je potovanje v svet pravljic. Čustvena posvetitev skupini Current 93 in njenemu ustanovitelju Davidu Tibetu. Dišeča zgodba odpre zaveso med dimnimi in začinjenimi notami. Obred pripovedovanja se praznuje; megla skriva pred očmi, kar se je zgodilo, in povzdiguje našo domišljijo — to onirično potovanje. Koraki postajajo počasnejši in parfum odpre srce zgodbe.",
+      "Odor 93 je potovanje v svet pravljic. Čustvena posvetitev skupini Current 93 in njenemu ustanovitelju Davidu Tibetu. Dišeča zgodba odpre zaveso med dimnimi in začinjenimi notami. Obred pripovedovanja se praznuje; megla skriva pred očmi, kar se je zgodilo, in povzdiguje našo domišljijo, to onirično potovanje. Koraki postajajo počasnejši in parfum odpre srce zgodbe.",
     notes:
       "Cumin, Guaiac Wood, Narcissus, Patchouli, Tuberose",
     ingredients: "",
@@ -183,7 +183,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Varanasi je navdihnjen z mojim potovanjem v Indijo leta 2017 — pripoveduje, kaj od Indije je ostalo v mojem srcu, v mojih mislih, v moji duši in v mojem nosu. Varanasi je sveto in profano mesto vonja, bogato s kontrasti in pomeni. Ta parfum sem sestavil tako, da sem se dal voditi od visceralnega čustva, ki sem ga občutil tisti dan, ko sem držal sveto vodo Gangesa v rokah; iskal sem v svojem olfaktornem spominu in našel vir, iz katerega je bilo vse ustvarjeno.",
+      "Varanasi je navdihnjen z mojim potovanjem v Indijo leta 2017, pripoveduje, kaj od Indije je ostalo v mojem srcu, v mojih mislih, v moji duši in v mojem nosu. Varanasi je sveto in profano mesto vonja, bogato s kontrasti in pomeni. Ta parfum sem sestavil tako, da sem se dal voditi od visceralnega čustva, ki sem ga občutil tisti dan, ko sem držal sveto vodo Gangesa v rokah; iskal sem v svojem olfaktornem spominu in našel vir, iz katerega je bilo vse ustvarjeno.",
     notes:
       "Ambergris, Ambrette, Cardamom, Cypriol, Gurjum, Incense, Jasmine, Leather Accord, Nardo, Nutmeg, Oud, Rose, Saffron, Vetiver",
     ingredients: "",
@@ -192,7 +192,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "100 ml",
     metaLine2: "Parfum",
     description:
-      "Sogni pripoveduje o tistem trenutku, obešenem med sanjami in resničnim življenjem, o tistem hipu, ko sta naša um in srce še vedno na oddaljenem kraju in se počutimo izgubljene, zmedene, obešene… S Sogni sem pripovedoval zgodbo svoje ljubezni do Japonske, spomine na pretekla potovanja, svojo strast do Kawabatine literature, Kurosawinih filmov in bonsajev. Poskušal sem pripovedovati novo zgodbo skozi toplo leseno dišavo — moje japonske sanje.",
+      "Sogni pripoveduje o tistem trenutku, obešenem med sanjami in resničnim življenjem, o tistem hipu, ko sta naša um in srce še vedno na oddaljenem kraju in se počutimo izgubljene, zmedene, obešene… S Sogni sem pripovedoval zgodbo svoje ljubezni do Japonske, spomine na pretekla potovanja, svojo strast do Kawabatine literature, Kurosawinih filmov in bonsajev. Poskušal sem pripovedovati novo zgodbo skozi toplo leseno dišavo, moje japonske sanje.",
     notes:
       "Amber, Bamboo, Cedar wood, Guaiac Wood, Incense, Kodo Ritual, Musk, Oak Wood, Peony, Pine Needles, Rice Absolute, Roasted Green Tea, Sandalwood, Tatami, Tobacco, Vetiver",
     ingredients: "",
@@ -350,7 +350,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "50 ml",
     metaLine2: "Extrait de Parfum",
     description:
-      "Obstaja trenutek, ko stojiš na robu svojega starega življenja in spoznaš, da tam več ne moreš ostati.\n\nTišina se zbira okoli tebe in vse zloži v eno samo misel: čas je prišel.\n\nPrepoznaš težo navad, spominov, odločitev, ki so te nekoč oblikovale, vendar čutiš, kako se tvoje telo počasi odmika od njih.\nZaznaš, da so svojo vlogo izpolnile.\n\nPlamen se takrat pojavi kot naravno dejanje — jasno gorenje tega, kar nima več kam iti.\nDel tebe vstopa v vzpenjajočo se svetlobo, tih in vztrajen, skoraj miren.\n\nKo stojiš pred tem ognjem, ne veš, kam greš.\nNe vidiš celotne poti, a čutiš gibanje v sebi, impulz, ki te vodi naprej, preden ga popolnoma razumeš.\n\nKo se ogenj umiri, prostor pred tabo izgleda drugače.\nSpoznaš, da je stara mapa za tabo, in prvič hodiš proti prihodnosti, ki se oblikuje pod tvojim korakom.",
+      "Obstaja trenutek, ko stojiš na robu svojega starega življenja in spoznaš, da tam več ne moreš ostati.\n\nTišina se zbira okoli tebe in vse zloži v eno samo misel: čas je prišel.\n\nPrepoznaš težo navad, spominov, odločitev, ki so te nekoč oblikovale, vendar čutiš, kako se tvoje telo počasi odmika od njih.\nZaznaš, da so svojo vlogo izpolnile.\n\nPlamen se takrat pojavi kot naravno dejanje, jasno gorenje tega, kar nima več kam iti.\nDel tebe vstopa v vzpenjajočo se svetlobo, tih in vztrajen, skoraj miren.\n\nKo stojiš pred tem ognjem, ne veš, kam greš.\nNe vidiš celotne poti, a čutiš gibanje v sebi, impulz, ki te vodi naprej, preden ga popolnoma razumeš.\n\nKo se ogenj umiri, prostor pred tabo izgleda drugače.\nSpoznaš, da je stara mapa za tabo, in prvič hodiš proti prihodnosti, ki se oblikuje pod tvojim korakom.",
     notes:
       "burning silence\nglowing dust\ncracked ground\ndry heat\nclear light ahead",
     ingredients: "",
@@ -368,7 +368,7 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
     metaLine1: "50 ml",
     metaLine2: "Extrait de Parfum",
     description:
-      "Preden sem postal to, kar sem zdaj, sem se premikal po tisti goreči puščavi, zavit v usnje in težko bombažno blago, vsaka plast strjena od vročine in znoja. Moji koraki so se globoko zarivali z vsakim sunkom naprej, upočasnjevali so me, upogibali, izvlekli zadnje sledi moči iz mojega telesa.\n\nZrak je imel kovinski in tako suh okus, da bi ga lahko prerezal.\nObzorje se je raztezalo v enaki ponavljajoči se črti, oddaljen lesket brez premika, brez preloma.\n\nKo se je sonce začelo pogrezati, se je vročina popustila in veter se je ohladil.\nUstavil sem se na vrhu sipine in opazoval, kako se nebo spremeni v kovino in ogenj.\n\nV tišini, ki je sledila, se je puščava premaknila.\nNjena ostrost se je umirila in mir je razkril samega sebe.\n\nŠibka zelena sled se je premikala skozi hladeči zrak — šepet življenja, ki ga nosi veter.\nVdihnil sem jo in začutil prvi signal prenove. Upanje, razlog za nadaljevanje.\n\nDesert Hope je ta spomin — trenutek, ko me je puščava ogolila in oblikovala tega, ki sem postal.",
+      "Preden sem postal to, kar sem zdaj, sem se premikal po tisti goreči puščavi, zavit v usnje in težko bombažno blago, vsaka plast strjena od vročine in znoja. Moji koraki so se globoko zarivali z vsakim sunkom naprej, upočasnjevali so me, upogibali, izvlekli zadnje sledi moči iz mojega telesa.\n\nZrak je imel kovinski in tako suh okus, da bi ga lahko prerezal.\nObzorje se je raztezalo v enaki ponavljajoči se črti, oddaljen lesket brez premika, brez preloma.\n\nKo se je sonce začelo pogrezati, se je vročina popustila in veter se je ohladil.\nUstavil sem se na vrhu sipine in opazoval, kako se nebo spremeni v kovino in ogenj.\n\nV tišini, ki je sledila, se je puščava premaknila.\nNjena ostrost se je umirila in mir je razkril samega sebe.\n\nŠibka zelena sled se je premikala skozi hladeči zrak, šepet življenja, ki ga nosi veter.\nVdihnil sem jo in začutil prvi signal prenove. Upanje, razlog za nadaljevanje.\n\nDesert Hope je ta spomin, trenutek, ko me je puščava ogolila in oblikovala tega, ki sem postal.",
     notes:
       "sun-burnt sand\ndry woods\nresin heat\nrose dust\ndistant cool light",
     ingredients: "",
@@ -492,7 +492,7 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
     metaLine1: "100 ml",
     metaLine2: "Eau de Parfum",
     description:
-      "Fig Lemonade temelji na sanjah o pravi, sočni limoni, ki je končno postavljena v središče. Odpre se z žarečim italijanskim limoninim oljem, skrivnost pa je v paru z izjemnim in ekskluzivnim Bergamot Integrale iz Kalabrije: redka kakovost, ki nosi srčne note, kjer so citrusi običajno le bežne vrhunske note. Tako limonada dobi nežno citrusno cvetličnost in — še pomembneje — limona ostane bleščeča in živahna še ure.\n\nRezultat je akord limonade nenavadne kompleksnosti: peneč, sočen in sladek, ki ujame tisto pravo svežo limono, ki jo v parfumeriji redko vidimo kot glavno junakinjo. To je poletje in Dolce Vita, ujet v stekleničko.\n\nTo svetlost uravnoteži akord fige in figovega lista. Figov list ni na voljo kot naravna surovina, zato smo akord zgradili z buchu listom iz Južne Afrike, cenjenim zaradi sočne zelenosti. Buchu olje prinese intenziven zeliščen, metin značaj, s kamforjem in sadnimi plastmi ter celo odtenkom črnega ribeza. Ščepet cedrovega olja iz Virginije zaključi akord in doda zeleno mlečnost, ki jo najdemo v pravem figovem listu.\n\nUčinek je peneč, svež in osvežilen; figov list prinese nepričakovano eleganco, zaradi katere je Fig Lemonade tiho, a prepričljivo prefinjen.",
+      "Fig Lemonade temelji na sanjah o pravi, sočni limoni, ki je končno postavljena v središče. Odpre se z žarečim italijanskim limoninim oljem, skrivnost pa je v paru z izjemnim in ekskluzivnim Bergamot Integrale iz Kalabrije: redka kakovost, ki nosi srčne note, kjer so citrusi običajno le bežne vrhunske note. Tako limonada dobi nežno citrusno cvetličnost in, še pomembneje, limona ostane bleščeča in živahna še ure.\n\nRezultat je akord limonade nenavadne kompleksnosti: peneč, sočen in sladek, ki ujame tisto pravo svežo limono, ki jo v parfumeriji redko vidimo kot glavno junakinjo. To je poletje in Dolce Vita, ujet v stekleničko.\n\nTo svetlost uravnoteži akord fige in figovega lista. Figov list ni na voljo kot naravna surovina, zato smo akord zgradili z buchu listom iz Južne Afrike, cenjenim zaradi sočne zelenosti. Buchu olje prinese intenziven zeliščen, metin značaj, s kamforjem in sadnimi plastmi ter celo odtenkom črnega ribeza. Ščepet cedrovega olja iz Virginije zaključi akord in doda zeleno mlečnost, ki jo najdemo v pravem figovem listu.\n\nUčinek je peneč, svež in osvežilen; figov list prinese nepričakovano eleganco, zaradi katere je Fig Lemonade tiho, a prepričljivo prefinjen.",
     notes: "NOTES:\nLemonade\nFig Leaves\nVirginia Cedarwood",
     ingredients:
       "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Limonene, Citrus Limon (Lemon) Peel Oil, Tetramethyl Acetyloctahydronaphthalenes, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Pinene, Citral, Linalyl Acetate, Linalool, Ethylhexyl Salicylate, Alpha-Isomethyl Ionone, Geraniol, Butyl Methoxydibenzoylmethane, Coumarin, Hydroxycitronellal, Citronellol, Beta-Caryophyllene, Geranyl Acetate, Terpinolene, Eucalyptus Globulus Oil, Rose ketones, Terpineol, Alpha-Terpinene, Camphor",
@@ -600,7 +600,7 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
     metaLine1: "50 ml",
     metaLine2: "Parfum · 25 %",
     description:
-      "Zasleduješ občutek, ki si ga imel, preden si vedel, kako se bo končalo.\n\nNe zasleduješ preteklosti, ker jo hočeš nazaj.\n\nKar je nekoč bolelo, postane nenadoma blagodejno. Riž, beli mošus in topli lesi nelagodo spremenijo v domačnost. Nato vse mehče.\n\nCHASING GHOSTS se začne z udarcem — oster rabarbar, grenivka in nekaj nedvomno zelenega.\n\nDrugi se preprosto naučijo skrivati. Nekateri spomini izginejo.\n\nPrvi rez je vedno najgloblji.",
+      "Zasleduješ občutek, ki si ga imel, preden si vedel, kako se bo končalo.\n\nNe zasleduješ preteklosti, ker jo hočeš nazaj.\n\nKar je nekoč bolelo, postane nenadoma blagodejno. Riž, beli mošus in topli lesi nelagodo spremenijo v domačnost. Nato vse mehče.\n\nCHASING GHOSTS se začne z udarcem, oster rabarbar, grenivka in nekaj nedvomno zelenega.\n\nDrugi se preprosto naučijo skrivati. Nekateri spomini izginejo.\n\nPrvi rez je vedno najgloblji.",
     notes:
       "NOTES:\nRhubarb · Marijuana Note · Grapefruit · Canapa Sativa Essence · Pink Pepper Extract · Solar Notes · Orange Blossom Absolute · Tea · Rice · White Musk · Cashmere Wood · Ambroxan · Modern Woods\n\nSmells like: Powdery Warm · Gourmand · Woody",
     ingredients: "",
@@ -614,11 +614,41 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
       "NOTES:\nFresh Raspberry · Maritime Notes · Freesia · Peony · Water Lily · White Musk · Cashmere\n\nSmells like: Aldehydic · Aquatic · Floral",
     ingredients: "",
   },
+  "nuit-vagabonde-cuir-de-peau": {
+    metaLine1: "50 ml",
+    metaLine2: "Eau de Parfum · 25 %",
+    description:
+      "V utišanem vzdušju jazz kluba dišava postane sopotnica teles in hrepenenj. Cuir de Peau se obdrži v zraku in prostor preplavi s svojo očarljivo toplino in mesno čutnostjo. Vabilo pogumnim dušam, skrivni šepet, ki pritegne tiste, ki si upajo izgubiti se v temi in prepustiti noč, da jih odnese.\n\nZ izjemno koncentracijo 25 % esencialnih olj parfumi razkrijejo globok, prepoznaven podpis.",
+    notes:
+      "NOTES:\nGalbanum · Violet leaf · Bergamot · Absolute Tonka bean from Brazil · Cashmeran · Iris butter · Ambroxan · Amber Habanolide · Java vetiver · Light patchouli · Virginia blond tobacco absolute\n\nAct I",
+    ingredients:
+      "ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), POGOSTEMON CABLIN OIL, TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, HEXAMETHYLINDANOPYRAN, LINALOOL, LINALYL ACETATE, COUMARIN, BETA-CARYOPHYLLENE, PINENE, CITRAL, EUGENOL, CINNAMAL, LIMONENE, CI60730, CI19140, CI14700, SODIUM SULFATE, CI17200",
+  },
+  "nuit-vagabonde-peau-de-cuir": {
+    metaLine1: "50 ml",
+    metaLine2: "Eau de Parfum · 25 %",
+    description:
+      "V vročični senci noči dišava postane sopotnica teles in hrepenenj. Peau de Cuir se razteza skozi zrak in popelje potujoče duše v svoji sledi topline in čutnosti. Vabilo svobodnim dušam in pogumnim srcem, šepet, ki vodi tiste, ki si upajo stopiti v temo in se noči predati.\n\nZ izjemno koncentracijo 25 % esencialnih olj eau de parfumi razkrijejo globok, prepoznaven podpis.",
+    notes:
+      "NOTES:\nEO Cumin · Eucalyptol · Clear Patchouli · Cypriol · Siam Benzoin resin super · Labdanum absolute super · Java Vetiver · Brazilian Tonka Bean absolute · Birch Wood\n\nAct II",
+    ingredients:
+      "ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), POGOSTEMON CABLIN OIL, TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, HEXAMETHYLINDANOPYRAN, LINALOOL, LINALYL ACETATE, COUMARIN, BETA-CARYOPHYLLENE, PINENE, CITRAL, EUGENOL, LIMONENE, CI60730, CI19140, CI14700, SODIUM SULFATE, CI17200, AL. 80% VOL",
+  },
+  "nuit-vagabonde-la-trace": {
+    metaLine1: "50 ml",
+    metaLine2: "Eau de Parfum · 25 %",
+    description:
+      "Ob zori, ko se svet prebudi in noč zbledi, La Trace na koži ostane kot šepet. Dišava, ki hrani spomin na objeme, minljive dotike in zadržane strasti. Dušam, ki v sebi nosijo spomin na potujoče noči, ta parfum postane nevidno, temno in neizbrisno odmevanje, brezčasna sled pretekle želje in ljubezni.\n\nZ izjemno koncentracijo 25 % esencialnih olj eau de parfumi razkrijejo globok, prepoznaven podpis.",
+    notes:
+      "NOTES:\nGalbanum · Rhubarb · Zested Lemon · Pine Needles · Juniper Berries · Virginia Cedar · Cypress · Vetiver Java · Ambroxan · Amber Xtreme · Styrax · Clear Patchouli · Alaskan Cedar",
+    ingredients:
+      "ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, CEDRUS ATLANTICA OIL/EXTRACT, BENZYL ALCOHOL, JUNIPERUS VIRGINIANA OIL, TERPINEOL, ACETYL CEDRENE, ISOEUGENOL, CAMPHOR, CITRONELLOL, GERANIOL, BETA-CARYOPHYLLENE, EUGENOL, AL. 80% VOL",
+  },
   "french-cowboy-vanilla-for-breakfast": {
     metaLine1: "100 ml",
     metaLine2: "Eau de Parfum",
     description:
-      "Vanilla for Breakfast je vanilija, ki jo iščemo vse življenje — ustvarjena, da zacveti že v prvem trenutku. Njena skrivnost se začne z ekstraktom sladkega mandlja, kakovostjo, ekskluzivno za Givaudan in upcycled iz mandljevega mleka, ki v uvod prinese vso to nežno mlečnost. Mandelj in vanilija delita določene hlapne spojine, zato mandelj vaniliji omogoči, da se razglasi že na vrhu. To daje dišavi moč: medtem ko večina vanilij potrebuje pol ure, da zacveti, in nato ostane blizu kože, ta takoj izžareva — z resničnim sillageom in prisotnostjo. Ščepet benjoina zaokroži uvod s toplino.\n\nV srcu leži obsesija: štiri različne vanilije, vsaka izbrana zaradi obraza, ki ga razkrije njen način ekstrakcije. Vanilijeva tinktura na osnovi etanola se dvigne prva ob sladkem mandlju. Vanilija CO₂ premosti vrh in srce. Vanilijev absolut iz Madagaskarja se usede v srce in bazo. In končno — Vanilijev Twentyfold absolut, najbolj ovojen od vseh, tisti, ki ostane s tabo za vedno. Štiri vanilije, ne zaradi marketinga, ampak ker vanilija ponuja tako malo vrhunskih not, da jo je treba graditi od vrha naprej — in to zahteva prav ta spekter.\n\nZa zaokrožitev in še več elegance uporabimo pečen tonkin absolut — božanski in nepozaben, s praženo globino, kakršne še nisi zaznal.",
+      "Vanilla for Breakfast je vanilija, ki jo iščemo vse življenje, ustvarjena, da zacveti že v prvem trenutku. Njena skrivnost se začne z ekstraktom sladkega mandlja, kakovostjo, ekskluzivno za Givaudan in upcycled iz mandljevega mleka, ki v uvod prinese vso to nežno mlečnost. Mandelj in vanilija delita določene hlapne spojine, zato mandelj vaniliji omogoči, da se razglasi že na vrhu. To daje dišavi moč: medtem ko večina vanilij potrebuje pol ure, da zacveti, in nato ostane blizu kože, ta takoj izžareva, z resničnim sillageom in prisotnostjo. Ščepet benjoina zaokroži uvod s toplino.\n\nV srcu leži obsesija: štiri različne vanilije, vsaka izbrana zaradi obraza, ki ga razkrije njen način ekstrakcije. Vanilijeva tinktura na osnovi etanola se dvigne prva ob sladkem mandlju. Vanilija CO₂ premosti vrh in srce. Vanilijev absolut iz Madagaskarja se usede v srce in bazo. In končno, Vanilijev Twentyfold absolut, najbolj ovojen od vseh, tisti, ki ostane s tabo za vedno. Štiri vanilije, ne zaradi marketinga, ampak ker vanilija ponuja tako malo vrhunskih not, da jo je treba graditi od vrha naprej, in to zahteva prav ta spekter.\n\nZa zaokrožitev in še več elegance uporabimo pečen tonkin absolut, božanski in nepozaben, s praženo globino, kakršne še nisi zaznal.",
     notes: "NOTES:\nAlmond Milk\nVanilla Absolute\nRoasted Tonka",
     ingredients:
       "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Coumarin, Linalool, Ethylhexyl Salicylate, Benzaldehyde, Linalyl Acetate, Benzyl Cinnamate, Vanillin, Benzyl Benzoate, Alcohol, Tris(Tetramethylhydroxypiperidinol) Citrate, Isoeugenol",
@@ -743,6 +773,27 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
     alt: "Wet Dreams",
     brand: "Art Brüt",
     name: "Wet Dreams",
+  },
+  {
+    slug: "nuit-vagabonde-cuir-de-peau",
+    imageSrc: "/Nuit%20Vagabonde/Cuir%20de%20Peau.png",
+    alt: "Cuir de Peau",
+    brand: "Nuit Vagabonde",
+    name: "Cuir de Peau",
+  },
+  {
+    slug: "nuit-vagabonde-peau-de-cuir",
+    imageSrc: "/Nuit%20Vagabonde/Peau%20de%20Cuir.png",
+    alt: "Peau de Cuir",
+    brand: "Nuit Vagabonde",
+    name: "Peau de Cuir",
+  },
+  {
+    slug: "nuit-vagabonde-la-trace",
+    imageSrc: "/Nuit%20Vagabonde/La%20Trace.png",
+    alt: "La Trace",
+    brand: "Nuit Vagabonde",
+    name: "La Trace",
   },
   { slug: "spiritica-lynch", imageSrc: "/Spiritica/lynch.png", alt: "Lynch", brand: "Spiritica", name: "Lynch" },
   { slug: "spiritica-yuzu-yakuza", imageSrc: "/Spiritica/yuzu.png", alt: "Yuzu Yakuza", brand: "Spiritica", name: "Yuzu Yakuza" },

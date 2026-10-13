@@ -1,5 +1,5 @@
 /** Bump when replacing files in public/partnerji/ (clears browser + Next image cache). */
-export const PARTNER_ASSET_VERSION = "3";
+export const PARTNER_ASSET_VERSION = "4";
 
 export type PartnerLogo = {
   name: string;
@@ -39,4 +39,11 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
   },
   { name: "Reja", src: partnerSrc("/partnerji/reja.png"), width: 120, height: 48, displayHeight: 58 },
   { name: "Večer", src: partnerSrc("/partnerji/vecer.webp"), width: 140, height: 48, displayHeight: 44 },
+  {
+    name: "ELLE Slovenija",
+    src: partnerSrc("/partnerji/elle-slovenia.jpg"),
+    width: 200,
+    height: 80,
+    displayHeight: 40,
+  },
 ];
