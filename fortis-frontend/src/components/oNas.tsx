@@ -382,7 +382,7 @@ export default function ONas() {
         >
           Fortis Niche Atelier je nišna parfumerija v središču Ljubljane za
           ljudi, ki hočejo več kot hitro testiranje na listič. Ne delujemo kot
-          klasična trgovina — pri nas dobiš osebno svetovanje in izbor dišav, ki
+          klasična trgovina. Pri nas dobiš osebno svetovanje in izbor dišav, ki
           se ti dejansko prilegajo. Fokus je na značaju, zgodbi in tem, kako
           parfum deluje na tvoji koži.
         </p>

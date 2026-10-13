@@ -10,8 +10,6 @@ export type KolekcijaBrandMeta = {
 export const KOLEKCIJA_BRAND_META: Record<string, KolekcijaBrandMeta> = {
   "Kinetic Parfums Barcelona": {
     displayName: "KINETIC",
-    logo: "/Trail/Kinetic.png",
-    tagline: "MODERN PERFUMERY IN MOTION",
   },
   Hedonik: {
     displayName: "HEDONIK",
@@ -52,6 +50,9 @@ export const KOLEKCIJA_BRAND_META: Record<string, KolekcijaBrandMeta> = {
   "Art Brüt": {
     displayName: "ART BRÜT",
     logo: "/Trail/Art%20Brut.png",
+  },
+  "Nuit Vagabonde": {
+    displayName: "NUIT VAGABONDE",
   },
   Spiritica: {
     displayName: "SPIRITICA",
