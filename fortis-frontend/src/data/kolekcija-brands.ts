@@ -53,6 +53,7 @@ export const KOLEKCIJA_BRAND_META: Record<string, KolekcijaBrandMeta> = {
   },
   "Nuit Vagabonde": {
     displayName: "NUIT VAGABONDE",
+    logo: "/Trail/nuit-vagabonde.png",
   },
   Spiritica: {
     displayName: "SPIRITICA",
