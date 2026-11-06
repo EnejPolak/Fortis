@@ -59,6 +59,9 @@ export const KOLEKCIJA_BRAND_META: Record<string, KolekcijaBrandMeta> = {
     displayName: "SPIRITICA",
     logo: "/Trail/Spiritica.png",
   },
+  Gravel: {
+    displayName: "GRAVEL",
+  },
 };
 
 export function getKolekcijaBrandMeta(brand: string): KolekcijaBrandMeta {

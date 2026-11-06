@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { getParfumBySlug } from "@/data/parfumi";
+import { formatParfumPrice, getParfumPriceEur } from "@/lib/parfum-prices";
 
 export type ParfumDetailTab = "name" | "notes" | "ingredients";
 
@@ -28,6 +29,7 @@ export function ParfumDetail({
   ingredients = "",
 }: ParfumDetailProps) {
   const [activeTab, setActiveTab] = useState<ParfumDetailTab>("name");
+  const priceEur = getParfumPriceEur(slug);
 
   return (
     <main className="parfum-detail-main min-h-screen w-full flex items-start pt-20">
@@ -53,13 +55,19 @@ export function ParfumDetail({
             style={{ marginTop: "20rem", marginLeft: "7rem" }}
           >
             {/* Samostojen gumb – position absolute, premik le njega, ne 3 gumbov */}
-            <div className="parfum-detail-back-link absolute left-0" style={{ top: "-9rem" }}>
+            <div
+              className="parfum-detail-top-row absolute left-0 right-0 flex items-start justify-between gap-4"
+              style={{ top: "-9rem" }}
+            >
               <Link
                 href={`/kolekcija#${slug}`}
-                className="text-sm font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity"
+                className="text-sm font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity shrink-0"
               >
                 Nazaj na kolekcijo
               </Link>
+              {priceEur != null ? (
+                <p className="parfum-price parfum-price--detail shrink-0">{formatParfumPrice(priceEur)}</p>
+              ) : null}
             </div>
 
             {/* 3 gumbe – na mobilu čisto na levi rob (v CSS) */}

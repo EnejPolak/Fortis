@@ -1361,6 +1361,43 @@ html:has(body.hero-reveal-lock-ui) {
   font-weight: 500;
 }
 
+.parfum-price {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.parfum-price--detail {
+  font-size: 20px;
+}
+
+.kolekcija-hover-price {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.15rem;
+}
+
+.kolekcija-mobile-price {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .kolekcija-mobile-price {
+    display: block;
+    margin-top: 0.35rem;
+    font-family: "JMH Typewriter", "Courier New", monospace;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+  }
+}
+
 /* CG clip menu */
 .cg-menu-toggle {
   font-family: var(--font-libre-baskerville), serif;
@@ -1948,9 +1985,15 @@ button.footer-link-button {
     transform: none !important;
   }
 
-  /* Na telefonu skrij gumb Nazaj na kolekcijo */
-  .parfum-detail-back-link {
+  /* Na telefonu skrij gumb Nazaj na kolekcijo, cena ostane desno */
+  .parfum-detail-top-row > a:first-child {
     display: none;
+  }
+
+  .parfum-detail-top-row {
+    position: static !important;
+    justify-content: flex-end;
+    margin-bottom: 0.35rem;
   }
 
   /* Na telefonu: tri gumbe višje gor, bližje parfumu */

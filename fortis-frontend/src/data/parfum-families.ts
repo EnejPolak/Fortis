@@ -21,6 +21,7 @@ export const PARFUM_SCENT_FAMILIES: Partial<Record<string, ScentFamilySlug[]>> =
   bepolar: ["weird"],
   "spiritica-jeffrey": ["weird"],
   "spiritica-leonarda": ["weird"],
+  "spiritica-weona": ["aquatic", "amber", "woody"],
 };
 
 export function getParfumScentFamilies(slug: string): ScentFamilySlug[] {

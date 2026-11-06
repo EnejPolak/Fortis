@@ -15,9 +15,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { KOLEKCIJA_ITEMS, getShortDescription } from "@/data/parfumi";
+import { formatParfumPrice, getParfumPriceEur } from "@/lib/parfum-prices";
 import type { KolekcijaItem } from "@/data/parfumi";
 
-type HoverInfo = { brand: string; name: string } | null;
+type HoverInfo = { brand: string; name: string; slug: string } | null;
 
 const ROW_SIZE = 3;
 
@@ -83,6 +84,11 @@ function KolekcijaPageContent() {
             <div className="kolekcija-hover-info" aria-hidden="true">
               <div className="kolekcija-hover-brand">{activePerfume.brand}</div>
               <div className="kolekcija-hover-name">{activePerfume.name}</div>
+              {getParfumPriceEur(activePerfume.slug) != null ? (
+                <div className="kolekcija-hover-price">
+                  {formatParfumPrice(getParfumPriceEur(activePerfume.slug)!)}
+                </div>
+              ) : null}
             </div>
           )}
 
@@ -119,7 +125,13 @@ function KolekcijaPageContent() {
                               href={`/parfum/${item.slug}`}
                               className="kolekcija-image-wrap"
                               onMouseEnter={() => {
-                                if (canHover) setActivePerfume({ brand: item.brand, name: item.name });
+                                if (canHover) {
+                                  setActivePerfume({
+                                    brand: item.brand,
+                                    name: item.name,
+                                    slug: item.slug,
+                                  });
+                                }
                               }}
                               onMouseLeave={() => {
                                 if (canHover) setActivePerfume(null);
@@ -147,6 +159,11 @@ function KolekcijaPageContent() {
                             </Link>
                             <div className="kolekcija-mobile-info">
                               <div className="kolekcija-mobile-name">{item.name}</div>
+                              {getParfumPriceEur(item.slug) != null ? (
+                                <div className="kolekcija-mobile-price">
+                                  {formatParfumPrice(getParfumPriceEur(item.slug)!)}
+                                </div>
+                              ) : null}
                               {getShortDescription(item.slug) ? (
                                 <div className="kolekcija-mobile-desc">{getShortDescription(item.slug)}</div>
                               ) : null}

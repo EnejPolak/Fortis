@@ -1,4 +1,5 @@
 import { SITE_NAME } from "@/lib/site-brand";
+import { getParfumPriceEur } from "@/lib/parfum-prices";
 import { getSiteUrl, toAbsoluteUrl } from "@/lib/site";
 
 type Props = {
@@ -28,6 +29,19 @@ export function ParfumJsonLd({
   const parfumUrl = `${base}/parfum/${slug}`;
   const desc = plainDescription(description) || `${name} – ${brand}, ${SITE_NAME}.`;
   const imageUrl = toAbsoluteUrl(imageSrc);
+  const priceEur = getParfumPriceEur(slug);
+
+  const offers: Record<string, unknown> = {
+    "@type": "Offer",
+    url: parfumUrl,
+    availability: "https://schema.org/InStoreOnly",
+    seller: { "@type": "Organization", name: SITE_NAME, url: base },
+  };
+
+  if (priceEur != null) {
+    offers.price = priceEur;
+    offers.priceCurrency = "EUR";
+  }
 
   const data = {
     "@context": "https://schema.org",
@@ -70,12 +84,7 @@ export function ParfumJsonLd({
           { "@type": "PropertyValue", name: "Volumen", value: metaLine1 },
           { "@type": "PropertyValue", name: "Tip", value: metaLine2 },
         ],
-        offers: {
-          "@type": "Offer",
-          url: parfumUrl,
-          availability: "https://schema.org/InStoreOnly",
-          seller: { "@type": "Organization", name: SITE_NAME, url: base },
-        },
+        offers,
       },
     ],
   };

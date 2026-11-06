@@ -427,6 +427,15 @@ const PARFUM_DETAIL_OVERRIDES: Partial<Record<string, Pick<ParfumDetailData, "me
       "HEAD NOTES:\nHomemade soap\nBlood orange\nCaustic soda accord\nBlack pepper\nBlood\n\nHEART NOTES:\nChantilly cream\nHomemade biscuits\nRaspberry syrup\nMetallic notes\n\nFEET NOTES:\nOud\nSulfur\nDark chocolate\nGrey amber",
     ingredients: "",
   },
+  "spiritica-weona": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Chiloé, Patagonia – južna Čile\n\nV južni Čile, kjer se dežela lomi ob Pacifiškem oceanu in patagonski veter piha čez črne pečine in vlažne gozdove, je točka, kjer so se elementi združili v neposreden način: Punta Chana na otoku Chiloé.\n\nTu je morje temno in globoko, prepleteno z ledenimi tokovi, ki prihajajo iz Antarktike.\nNedaleč stoji veličasten vulkan Michinmahuida, vulkanovanski velikan patagonske Čile.\n\nV 19. stoletju je masiven tok lave, ki ga je sprožila njegova vulkanska aktivnost, dosegel ocean in ustvaril enega najmočnejših spektakov narave: žareča lava, ki vstopi v zamrznjeno morje, ustvarja paro, novo skalo, preobrazbo.\n\nIz tega prvobitnega srečanja WEONA črpa navdih.\n\nV teh istih vodah ustna tradicija govori o Pincoyi, predniku morski figuri, ki se dvigne iz valov in pleše po površini morja.\nŽenski duh oceana, simbol blaginje, skrivnosti in naravne cikličnosti.\n\nWEONA to mitologijo prevaja v olfaktorno snov.",
+    notes:
+      "TOP NOTES:\nBlueberry\nMaqui berry\nGlacial sea breeze\nPineapple\nGrapefruit\nMaritime pine\n\nHEART NOTES:\nIcy sea\nNalca accord\nCalafate\nPineapple\nLavender\nBoiling lava accord\n\nBASE NOTES:\nWhite musk\nAquatic musk\nStarfish accord\nCypress\nAmbergris\nSandalwood",
+    ingredients: "",
+  },
   "spiritica-jeffrey": {
     metaLine1: "50 ml",
     metaLine2: "Extrait de Parfum",
@@ -614,6 +623,46 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
       "NOTES:\nFresh Raspberry · Maritime Notes · Freesia · Peony · Water Lily · White Musk · Cashmere\n\nSmells like: Aldehydic · Aquatic · Floral",
     ingredients: "",
   },
+  "art-brut-ubermut": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 30 %",
+    description:
+      "Übermut govori o drznosti, premikanju meja in pripravljenosti nadaljevati kljub možnosti neuspeha. Postavlja pod vprašaj varnost ustaljenih navad in slavi pogum za spremembe. Dišava ima slan, zelen in kovinski značaj: šampanjec, morske alge in mineralni poudarki se prepletajo s svežino kumare, zelenimi rastlinskimi toni ter mehkobo sandalovine in semiša.",
+    notes:
+      "Fragrance notes:\nChampagne · Seaweed Accord · Flintstone · Angelica Root Essence · Green Notes · Galbanum Essence · Cucumber · Ambroxan · Stem Note · Davana Essence · Sandalwood · Suede Note",
+    ingredients:
+      "Alcohol Denat., Fragrance, Water, Linalool, Citral, D-Limonene, Isoeugenol, Eugenol.",
+  },
+  "art-brut-disko-disko": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 20 %",
+    description:
+      "Dišava ujame brezskrbno predajanje noči, glasbi in plesu v ritmu 138 udarcev na minuto. Navdihuje jo zadnje srečno obdobje pred sončnim vzhodom, ko endorfini še delujejo in se zabava še ne želi končati. Lesni in pudrasti značaj povezuje mošus, florentinsko peruniko in pačuli, z medeno toplino, usnjem in dimnim pridihom kadila.",
+    notes:
+      "Fragrance notes:\nIncense · Musk · Indonesian Patchouli · Florentine Iris · Honey · Leather",
+    ingredients:
+      "Alcohol Denat., Fragrance, Water, Benzyl benzoate, Limonene, Lemon Peel Oil, Virginia Juniper Oil, Pinene, Beta-Caryophyllene, Terpineol, Citral.",
+  },
+  "art-brut-turbulent-romantic": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 30 %",
+    description:
+      "Turbulent Romantic pripoveduje o ljubezni, ki niha med evforijo in obupom. Začetno navdušenje se spremeni v težo, bližina v odvisnost in strast v napetost. Ta čustveni kontrast izraža s sladkimi, mineralnimi in živalskimi poudarki: temna čokolada in slana karamela se srečata z zelenim čajem, lesom, mahom ter usnjem.",
+    notes:
+      "Fragrance notes:\nGreen tea · Magnolia · Papyrus · Dark chocolate · Mangrove essence · Opoponax essence · Salty caramel · Tonka absolute · Patchouli essence · Gaiac wood · Moss · Leather",
+    ingredients:
+      "Alcohol Denat., Parfum, Aqua, Coumarin, Benzyl Benzoate, D-Limonene, Linalool, Cinnamaldehyde, Citral, Eugenol.",
+  },
+  "art-brut-je-ne-regrette-rien": {
+    metaLine1: "50 ml",
+    metaLine2: "Parfum · 30 %",
+    description:
+      "Dišava govori o življenju v presežkih: divjih nočeh, strasti, kaosu in napakah, ki za seboj pustijo razdejanje. V središču ostaja odločen odnos: ničesar ne obžalujem. Sveži citrusi in ingver se povezujejo z vrtnico ter geranijo, medtem ko črni tartuf, mehki lesovi in beli mošusi dodajo zemeljsko globino in razkošnost.",
+    notes:
+      "Fragrance notes:\nBergamot Italy essence · Lemon essence · Grapefruit · Fresh ginger essence · Rose · Geranium essence · White musks · Cashmere wood · Sandalwood · Black truffle",
+    ingredients:
+      "Alcohol Denat., Fragrance, Water, D-Limonene, Geraniol, Citronellol, Linalool, Citral, Farsenol, Isoeugenol.",
+  },
   "nuit-vagabonde-cuir-de-peau": {
     metaLine1: "50 ml",
     metaLine2: "Eau de Parfum · 25 %",
@@ -652,6 +701,123 @@ V tem visečem prostoru se rodi Jeffrey – drugi parfum na svetu, posvečen ser
     notes: "NOTES:\nAlmond Milk\nVanilla Absolute\nRoasted Tonka",
     ingredients:
       "Alcohol Denat., Parfum/Fragrance, Aqua/Water/Eau, Coumarin, Linalool, Ethylhexyl Salicylate, Benzaldehyde, Linalyl Acetate, Benzyl Cinnamate, Vanillin, Benzyl Benzoate, Alcohol, Tris(Tetramethylhydroxypiperidinol) Citrate, Isoeugenol",
+  },
+  "gravel-mans-cologne": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Prva dišava Michaela B. Knudsena, predstavljena leta 1957 v New Yorku, predstavlja začetek znamke GRAVEL. Njen značaj je klasičen, aromatičen in balzamičen, s toplimi smolnatimi in lesnimi poudarki. Stekleničke polnijo ročno; kamenčki v njih med zorenjem prispevajo k toplemu barvnemu odtenku parfuma.",
+    notes:
+      "Top notes:\nBergamot, Orange\n\nHeart notes:\nPatchouli, Tonka bean, Benzoin\n\nBase notes:\nFrankincense, Vetiver, Musk",
+    ingredients: "",
+  },
+  "gravel-across-the-ocean": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Navdihujejo ga razkošne čezoceanske ladje, ki so povezovale Evropo in Ameriko, ter Knudsenovo potovanje v ZDA, kjer se je začela zgodba znamke. Svež citrusni začetek se prepleta s temnejšimi lesnimi toni, nato pa preide v mehko sladkobo vrtnice, tonke in vanilje.",
+    notes:
+      "Top notes:\nBergamot, Lime, Cashmere Wood, Oud\n\nHeart notes:\nRose, Tonka Bean\n\nBase notes:\nGuaiac Wood – Gaiac, Vanilla, Musk",
+    ingredients: "",
+  },
+  "gravel-american-dream": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Dišava predstavlja obljubo ameriških sanj, energijo New Yorka in eleganco ameriške vzhodne obale. Odpre se s svežimi citrusi in baziliko, nato postane mehkejša in cvetlična. Zemeljska, lesna osnova ji daje umirjen in klasičen zaključek.",
+    notes:
+      "Top notes:\nBergamot, Orange, Lemon, Basil\n\nHeart notes:\nPetitgrain, Jasmine, Lavender, Tonka Bean\n\nBase notes:\nPatchouli, Moss, Vetiver",
+    ingredients: "",
+  },
+  "gravel-46th-street": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Ime se nanaša na 46. ulico ob aveniji Madison v New Yorku, kjer je bila leta 1957 prodana prva steklenička GRAVEL. Intenzivna lesna in balzamična dišava povezuje sadni začetek z izrazitim usnjenim srcem ter toplim, smolnatim zaključkom.",
+    notes:
+      "Top notes:\nRaspberry, Birch\n\nHeart notes:\nPrecious woods, Jasmine, Leather\n\nBase notes:\nFrankincense, Amber, Musk, Oud",
+    ingredients: "",
+  },
+  "gravel-hudson-river-ny": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Dišava ujame živahnost in energijo New Yorka. Svež, aromatičen začetek se razvije v toplejše začimbno srce, nato pa v kremasto, rahlo sladko lesno osnovo. Združuje zračnost, cvetlične poudarke in toplino.",
+    notes:
+      "Top notes:\nBergamot, Geranium\n\nHeart notes:\nLavender, Coriander, Cardamom\n\nBase notes:\nTonka Bean, Vanilla, Cedarwood, Precious Woods",
+    ingredients: "",
+  },
+  "gravel-hazel": {
+    metaLine1: "100 ml",
+    metaLine2: "Eau de Parfum",
+    description:
+      "Prvotno je bil ustvarjen za Hazel Guggenheim. Zaradi visokih proizvodnih stroškov je bil sprva dostopen samo po posebnem naročilu, danes pa je ponovno del ponudbe. Sveži citrusi odprejo pudrasto in cvetlično srce, ki ga figov list dopolni z zelenim poudarkom. Zaključek je mehak in topel.",
+    notes:
+      "Top notes:\nMandarin, Lime, Bergamot\n\nHeart notes:\nYlang, Iris, Fig Leaf, Neroli\n\nBase notes:\nMusk, Vetiver, Tonka Bean",
+    ingredients: "",
+  },
+  "gravel-eau-desire": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Navdih je močno hrepenenje po nečem, kar prinaša zadovoljstvo in izpolnitev. Dišava temelji na kontrastih: živahno tropsko sadje se sreča s svežimi lesnimi poudarki, začimbami in zemeljsko globino. Izrazita kompozicija združuje toplino, svežino in čutnost.",
+    notes:
+      "Top notes:\nBergamot, Cypress, Saffron, Nutmeg, Pineapple, Mango\n\nHeart notes:\nViolet, Hyacinth, Cumin, Clove Leaves, Patchouli\n\nBase notes:\nMusk, Tolu Balsam, Mousse de Saxe, Amber",
+    ingredients: "",
+  },
+  "gravel-eau-devolution": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Izhaja iz ideje razvoja in izboljševanja skozi čas. Sveža in elegantna dišava združuje lahkotnost cvetlic s kremasto toplino. Citrusni in začimbni začetek se razvije v bogato cvetlično srce, ki ga podpre mehka osnova mošusa, vanilje in balzamičnih tonov.",
+    notes:
+      "Top notes:\nBergamot, lime, pink pepper, angelica root\n\nHeart notes:\nOrange blossom, iris, rose petals, magnolia, tuberose, cedarwood\n\nBase notes:\nWhite musk, amber, benzoin Siam, vanilla absolute, tonka bean",
+    ingredients: "",
+  },
+  "gravel-eau-dominance": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Predstavlja moč, opaznost in izrazito prisotnost. Svež citrusni začetek vodi v nenavadno kombinacijo slanih akordov in temnega usnja. Oud, vetiver in hrastov mah ustvarijo globok, lesni značaj.",
+    notes:
+      "Top notes:\nPink pepper, tangerine, bergamot\n\nHeart notes:\nSalty notes, leather\n\nBase notes:\nMusk, vetiver, oud, oakmoss, ambroxan, violet",
+    ingredients: "",
+  },
+  "gravel-eau-daspiration": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Navdihuje ga močna želja po uspehu in izpolnitvi. Temna, sladko obarvana dišava prepleta tobak, sadne poudarke in tople začimbe. V srcu se pojavijo pražena tonka, usnje in akord suhega peska, ki kompoziciji dodajo poseben značaj.",
+    notes:
+      "Top notes:\nTobacco, Bergamot, Davana, Cranberry\n\nHeart notes:\nLoganberry, Osmanthus, Roasted Tonka Bean, Dry Sand Accord, Leather, Ginger Root\n\nBase notes:\nMusk, Tolu Balsam, Mousse de Saxe, Amber",
+    ingredients: "",
+  },
+  "gravel-eau-declat": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Ime izraža sijaj, privlačnost in močno eleganco. Bogata dišava združuje živahno sadnost z razkošnim cvetličnim srcem in globino smol. Granatno jabolko in cvet črnega ribeza vodita v cvetlično kompozicijo, zaključeno z vaniljo, sandalovino in ambro.",
+    notes:
+      "Top notes:\nPomegranate, Davana, Blackcurrant blossom, Freesia\n\nHeart notes:\nMagnolia, Rose Centifolia, Lily of the Valley, Ylang-Ylang\n\nBase notes:\nPatchouli, Vanilla pod, Olibanum, Sandalwood, Amber",
+    ingredients: "",
+  },
+  "gravel-eau-divine": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Navdihuje ga božanska eleganca, ki presega vsakdanjost. Dišava je svetla, sveža in vodna, z ravnovesjem med lahkotnostjo in globino. Sadni in citrusni začetek se poveže z aromatičnim srcem ter toplejšo lesno osnovo z mošusom, tonko in vaniljo.",
+    notes:
+      "Top notes:\nBergamot, Pineapple, Red Pepper, Grapefruit, Geranium, Mandarin, Apple\n\nHeart notes:\nElemi, Rose, Aquatic Notes, Lavandin\n\nBase notes:\nVetiver, Amber, Musk, Tonka Bean, Moss, Sandalwood, Patchouli, Vanilla",
+    ingredients: "",
+  },
+  "gravel-mulholland-bloom": {
+    metaLine1: "100 ml",
+    metaLine2: "Extrait de Parfum",
+    description:
+      "Navdih je fotografija divjih cvetlic, ki prodirajo skozi suh asfalt ceste Mulholland Drive. Dišava je nastala v sodelovanju s fotografom Dylanom Donom in parfumerjem Markom Buxtonom. Predstavlja odkrivanje lepote na nepričakovanih mestih ter povezuje umetnost, pokrajino in naravo. Njen značaj je lesni, aromatičen in citrusen.\nBy Dylan Don",
+    notes:
+      "Top notes:\nClary sage, bergamot, saffron, mandarin\n\nHeart notes:\nNutmeg, leather, cypriol, frankincense\n\nBase notes:\nHaitian vetiver, amber, musk, cedarwood, sandalwood",
+    ingredients: "",
   },
 };
 
@@ -775,6 +941,34 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
     name: "Wet Dreams",
   },
   {
+    slug: "art-brut-ubermut",
+    imageSrc: "/Art%20Brut/Ubermut.png",
+    alt: "Übermut",
+    brand: "Art Brüt",
+    name: "Übermut",
+  },
+  {
+    slug: "art-brut-disko-disko",
+    imageSrc: "/Art%20Brut/DiskoDisko.png",
+    alt: "Disko Disko",
+    brand: "Art Brüt",
+    name: "Disko Disko",
+  },
+  {
+    slug: "art-brut-turbulent-romantic",
+    imageSrc: "/Art%20Brut/TurbulentRomantic.png",
+    alt: "Turbulent Romantic",
+    brand: "Art Brüt",
+    name: "Turbulent Romantic",
+  },
+  {
+    slug: "art-brut-je-ne-regrette-rien",
+    imageSrc: "/Art%20Brut/JeNeRegretteRien.png",
+    alt: "Je Ne Regrette Rien",
+    brand: "Art Brüt",
+    name: "Je Ne Regrette Rien",
+  },
+  {
     slug: "nuit-vagabonde-cuir-de-peau",
     imageSrc: "/Nuit%20Vagabonde/Cuir%20de%20Peau.png",
     alt: "Cuir de Peau",
@@ -800,6 +994,20 @@ export const KOLEKCIJA_ITEMS: KolekcijaItem[] = [
   { slug: "spiritica-mango-macumba", imageSrc: "/Spiritica/MangoMavcuma.png", alt: "Mango Macumba", brand: "Spiritica", name: "Mango Macumba" },
   { slug: "spiritica-leonarda", imageSrc: "/Spiritica/Leonarda.png", alt: "Leonarda", brand: "Spiritica", name: "Leonarda" },
   { slug: "spiritica-jeffrey", imageSrc: "/Spiritica/jeffrey.png", alt: "Jeffrey", brand: "Spiritica", name: "Jeffrey" },
+  { slug: "spiritica-weona", imageSrc: "/Spiritica/weona.png", alt: "Weona", brand: "Spiritica", name: "Weona" },
+  { slug: "gravel-mans-cologne", imageSrc: "/Gravel/MansCologne.png", alt: "A Man's Cologne", brand: "Gravel", name: "A Man's Cologne" },
+  { slug: "gravel-across-the-ocean", imageSrc: "/Gravel/AcrossTheOcean.png", alt: "Across the Ocean", brand: "Gravel", name: "Across the Ocean" },
+  { slug: "gravel-american-dream", imageSrc: "/Gravel/AmericanDream.png", alt: "American Dream", brand: "Gravel", name: "American Dream" },
+  { slug: "gravel-46th-street", imageSrc: "/Gravel/46thStreet.png", alt: "46th Street", brand: "Gravel", name: "46th Street" },
+  { slug: "gravel-hudson-river-ny", imageSrc: "/Gravel/HudsonRiverNY.png", alt: "Hudson River NY", brand: "Gravel", name: "Hudson River NY" },
+  { slug: "gravel-hazel", imageSrc: "/Gravel/Hazel.png", alt: "Hazel", brand: "Gravel", name: "Hazel" },
+  { slug: "gravel-eau-desire", imageSrc: "/Gravel/EauDEsire.png", alt: "Eau D'Esire", brand: "Gravel", name: "Eau D'Esire" },
+  { slug: "gravel-eau-devolution", imageSrc: "/Gravel/EauDEvolution.png", alt: "Eau D'Evolution", brand: "Gravel", name: "Eau D'Evolution" },
+  { slug: "gravel-eau-dominance", imageSrc: "/Gravel/EauDOminance.png", alt: "Eau D'Ominance", brand: "Gravel", name: "Eau D'Ominance" },
+  { slug: "gravel-eau-daspiration", imageSrc: "/Gravel/EauDAspiration.png", alt: "Eau D'Aspiration", brand: "Gravel", name: "Eau D'Aspiration" },
+  { slug: "gravel-eau-declat", imageSrc: "/Gravel/EauDEclat.png", alt: "Eau D'Eclat", brand: "Gravel", name: "Eau D'Eclat" },
+  { slug: "gravel-eau-divine", imageSrc: "/Gravel/EauDIvine.png", alt: "Eau D'Ivine", brand: "Gravel", name: "Eau D'Ivine" },
+  { slug: "gravel-mulholland-bloom", imageSrc: "/Gravel/MulhollandBloom.png", alt: "Mulholland Bloom", brand: "Gravel", name: "Mulholland Bloom" },
 ];
 
 const PARFUM_BY_SLUG: Record<string, ParfumDetailData> = {};
