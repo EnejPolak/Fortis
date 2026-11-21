@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <div
       className="flex min-h-screen items-center justify-center px-4 pt-20 sm:items-start sm:px-6 sm:pt-24 md:pt-28 lg:pt-32"
-      style={{ backgroundColor: "#0f0f0f" }}
+      style={{ backgroundColor: "var(--bg-primary, #121211)" }}
     >
       <div className="flex w-full max-w-[1012px] -translate-y-16 flex-col items-center gap-0 sm:translate-y-0">
         <div className="relative z-0 w-full shrink-0" style={{ aspectRatio: "1012 / 680" }}>

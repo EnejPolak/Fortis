@@ -8,7 +8,7 @@
   justify-content: center;
   padding: var(--space-phi-lg, 6.5rem) var(--content-gutter, 1.25rem)
     calc(4rem + env(safe-area-inset-bottom));
-  background: #0f0f0f;
+  background: transparent;
   color: #fff;
   box-sizing: border-box;
 }

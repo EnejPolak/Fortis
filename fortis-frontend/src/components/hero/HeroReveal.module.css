@@ -8,13 +8,13 @@
   width: 100%;
   min-height: 100svh;
   overflow: hidden;
-  background: #0f0f0f;
+  background: var(--bg-primary, #121211);
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background-color: #0f0f0f;
+  background-color: var(--bg-primary, #121211);
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   will-change: clip-path;
   z-index: 2;

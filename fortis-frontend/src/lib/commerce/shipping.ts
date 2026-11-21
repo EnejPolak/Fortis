@@ -4,6 +4,8 @@
  * Set NEXT_PUBLIC_DELIVERY_CENTS when business provides a flat rate.
  */
 
+import { ATELIER_ADDRESS_LINE } from "@/lib/commerce/atelier";
+
 export type FulfillmentMethod = "pickup" | "delivery";
 
 export type FulfillmentOption = {
@@ -29,7 +31,7 @@ export function getFulfillmentOptions(): FulfillmentOption[] {
   const pickup: FulfillmentOption = {
     id: "pickup",
     label: "Osebni prevzem",
-    description: "Prevzem v ateljeju Fortis, Poljanska cesta 7, Ljubljana.",
+    description: ATELIER_ADDRESS_LINE,
     cents: 0,
     available: true,
   };
@@ -44,9 +46,7 @@ export function getFulfillmentOptions(): FulfillmentOption[] {
     cents: deliveryCents ?? 0,
     available: deliveryCents != null,
     unavailableReason:
-      deliveryCents == null
-        ? "Strošek dostave še ni konfiguriran. Izberite osebni prevzem ali nas kontaktirajte."
-        : undefined,
+      deliveryCents == null ? "Dostava trenutno ni na voljo." : undefined,
   };
 
   return [pickup, delivery];

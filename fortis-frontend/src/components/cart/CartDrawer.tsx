@@ -2,10 +2,16 @@
 
 import { useEffect, useId, useRef } from "react";
 import Link from "next/link";
+import { X } from "lucide-react";
 import { QuantityStepper } from "@/components/cart/QuantityStepper";
 import { useCart } from "@/components/cart/CartProvider";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { formatEurFromCents } from "@/lib/commerce/money";
+
+function formatItemCount(count: number): string {
+  if (count > 99) return "99+";
+  return String(count).padStart(2, "0");
+}
 
 export function CartDrawer() {
   const {
@@ -74,10 +80,20 @@ export function CartDrawer() {
         aria-labelledby={titleId}
         hidden={!isOpen}
       >
-        <div className="cart-drawer-header">
-          <h2 id={titleId} className="cart-drawer-title">
-            Košarica{itemCount > 0 ? ` (${itemCount})` : ""}
-          </h2>
+        <header className="cart-drawer-header">
+          <div className="cart-drawer-heading">
+            <p className="cart-drawer-eyebrow">Vaš izbor</p>
+            <div className="cart-drawer-title-row">
+              <h2 id={titleId} className="cart-drawer-title">
+                Košarica
+              </h2>
+              {itemCount > 0 ? (
+                <span className="cart-drawer-count" aria-hidden="true">
+                  {formatItemCount(itemCount)}
+                </span>
+              ) : null}
+            </div>
+          </div>
           <button
             ref={closeRef}
             type="button"
@@ -85,16 +101,20 @@ export function CartDrawer() {
             onClick={closeCart}
             aria-label="Zapri košarico"
           >
-            Zapri
+            <X size={20} strokeWidth={1.5} aria-hidden="true" />
           </button>
-        </div>
+        </header>
 
         <div className="cart-drawer-body">
           {lines.length === 0 ? (
             <div className="cart-empty">
-              <p>Košarica je prazna.</p>
-              <Link href="/kolekcija" className="cart-empty-link" onClick={closeCart}>
-                Pojdi v kolekcijo
+              <p>Vaša košarica je prazna.</p>
+              <Link
+                href="/kolekcija"
+                className="cart-empty-link"
+                onClick={closeCart}
+              >
+                Raziščite kolekcijo
               </Link>
             </div>
           ) : (
@@ -105,18 +125,25 @@ export function CartDrawer() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={line.imageSrc} alt="" />
                   </div>
-                  <div className="cart-line-info">
-                    <p className="cart-line-brand">{line.brand}</p>
-                    <p className="cart-line-name">{line.name}</p>
-                    <p className="cart-line-meta">
-                      {line.volumeLabel} · {formatEurFromCents(line.unitCents)}
-                    </p>
-                    {!line.available ? (
-                      <p className="cart-line-error">Ni na zalogi</p>
-                    ) : null}
+                  <div className="cart-line-main">
+                    <div className="cart-line-top">
+                      <div className="cart-line-copy">
+                        <p className="cart-line-brand">{line.brand}</p>
+                        <p className="cart-line-name">{line.name}</p>
+                        <p className="cart-line-meta">{line.volumeLabel}</p>
+                        {!line.available ? (
+                          <p className="cart-line-error">Ni na zalogi</p>
+                        ) : null}
+                      </div>
+                      <p className="cart-line-total">
+                        {formatEurFromCents(line.lineCents)}
+                      </p>
+                    </div>
                     <div className="cart-line-controls">
                       <QuantityStepper
+                        className="qty-stepper--drawer"
                         value={line.quantity}
+                        min={1}
                         max={Math.max(1, line.maxQuantity)}
                         disabled={!line.available}
                         onChange={(qty) => updateQuantity(line.variantId, qty)}
@@ -126,12 +153,12 @@ export function CartDrawer() {
                         type="button"
                         className="cart-line-remove"
                         onClick={() => removeItem(line.variantId)}
+                        aria-label={`Odstrani ${line.name}`}
                       >
-                        Odstrani
+                        <X size={16} strokeWidth={1.5} aria-hidden="true" />
                       </button>
                     </div>
                   </div>
-                  <p className="cart-line-total">{formatEurFromCents(line.lineCents)}</p>
                 </li>
               ))}
             </ul>
@@ -139,9 +166,9 @@ export function CartDrawer() {
         </div>
 
         {lines.length > 0 ? (
-          <div className="cart-drawer-footer">
+          <footer className="cart-drawer-footer">
             <div className="cart-subtotal">
-              <span>Vmesna vsota</span>
+              <span>Skupna vsota</span>
               <strong>{formatEurFromCents(subtotalCents)}</strong>
             </div>
             <p className="cart-shipping-note">Dostava še ni vključena.</p>
@@ -150,12 +177,19 @@ export function CartDrawer() {
               className="cart-checkout-btn btn-commerce-primary"
               onClick={closeCart}
             >
-              Na blagajno
+              <span>Na blagajno</span>
+              <span className="cart-checkout-arrow" aria-hidden="true">
+                →
+              </span>
             </Link>
-            <button type="button" className="cart-continue-btn" onClick={closeCart}>
+            <button
+              type="button"
+              className="cart-continue-btn"
+              onClick={closeCart}
+            >
               Nadaljuj z ogledom
             </button>
-          </div>
+          </footer>
         ) : null}
 
         <div className="sr-only" aria-live="polite">
