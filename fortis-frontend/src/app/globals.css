@@ -25,9 +25,9 @@
   --bg-secondary: #1a1a18;
   --bg-secondary-rgb: 26 26 24;
   --paper-grain-image: url("/textures/paper-grain.webp");
-  --paper-grain-size: 280px;
+  --paper-grain-size: 360px;
   /* soft-light mix strength (0 = flat color, 1 = full grain blend) */
-  --paper-grain-opacity: 0.62;
+  --paper-grain-opacity: 0.34;
 
   /* Golden-ratio composition tokens (φ ≈ 1.618) — flexible guidelines */
   --phi: 1.618;
@@ -275,17 +275,36 @@ p {
   line-height: 1.55;
 }
 
-/* Homepage atelier introduction — φ major media / minor copy */
-.intro-atelier-grid {
-  align-items: start;
+/* Homepage story — copy left, portrait photo right (desktop) */
+.intro-atelier {
+  width: 100%;
+  padding: clamp(3.5rem, 8vw, 7.5rem) 0;
+  background: transparent;
+}
+
+.intro-atelier-inner {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 1.5rem);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
 }
 
 .intro-atelier-media {
-  aspect-ratio: 496 / 661;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+  border-radius: 0;
+  order: -1;
 }
 
 .intro-atelier-image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -293,46 +312,99 @@ p {
 }
 
 .intro-atelier-copy {
-  margin-top: clamp(2rem, 4vw, 5rem);
+  min-width: 0;
+  width: 100%;
+  max-width: 28.75rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.intro-atelier-eyebrow {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(246, 244, 239, 0.48);
 }
 
 .intro-atelier-headline {
+  margin: 0;
   font-family: var(--font-libre-baskerville), serif;
-  font-weight: 700;
-  font-size: var(--font-display-md);
-  line-height: 1.15;
-  letter-spacing: 0.04em;
-  color: #fcfcfc;
+  font-weight: 400;
+  font-size: clamp(2.125rem, 4.5vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: #f6f4ef;
 }
 
 .intro-atelier-tagline {
-  margin-top: 1.75rem;
+  margin: 1.5rem 0 0;
   font-family: var(--font-libre-baskerville), serif;
-  color: var(--text-subtle);
-  text-align: center;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1.5vw, 1.125rem);
   line-height: 1.4;
+  color: rgba(246, 244, 239, 0.55);
 }
 
 .intro-atelier-body {
-  margin-top: var(--space-phi-sm);
-  width: min(100%, 16rem);
-  font-family: var(--font-libre-baskerville), serif;
-  color: var(--text-muted);
-  text-align: justify;
-  white-space: pre-line;
-  font-size: 0.95rem;
-  line-height: 1.55;
+  margin: 0;
+  margin-top: 1.5rem;
+  width: 100%;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.2vw, 1.0625rem);
+  line-height: 1.6;
+  color: rgba(246, 244, 239, 0.72);
+  text-align: left;
+  text-wrap: pretty;
 }
 
-@media (min-width: 1024px) and (max-width: 1199px) {
-  /* Rebalance before the copy column becomes cramped */
-  .intro-atelier-grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 1fr);
+.intro-atelier-tagline + .intro-atelier-body {
+  margin-top: clamp(2rem, 3vw, 2.5rem);
+}
+
+.intro-atelier-body + .intro-atelier-body {
+  margin-top: 1.5rem;
+}
+
+.intro-atelier-rule {
+  width: 2.75rem;
+  height: 1px;
+  margin-top: clamp(2rem, 3vw, 2.5rem);
+  background: rgba(246, 244, 239, 0.28);
+}
+
+.intro-atelier-closing {
+  margin: 1.35rem 0 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.2vw, 1.5rem);
+  line-height: 1.35;
+  color: #f6f4ef;
+}
+
+@media (min-width: 900px) {
+  .intro-atelier-inner {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.18fr);
+    gap: clamp(4rem, 6vw, 6rem);
+    padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .intro-atelier-media {
+    order: 0;
+    aspect-ratio: 3 / 4;
+  }
+
+  .intro-atelier-copy {
+    justify-self: start;
+  }
+
+  .intro-atelier-image {
+    object-position: center top;
   }
 }
 
@@ -2264,6 +2336,7 @@ button.footer-link-button {
 /* Intro Trail Container */
 .intro-trail-container {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -2275,6 +2348,7 @@ button.footer-link-button {
   width: 175px;
   height: 175px;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .intro-trail-img .intro-trail-mask-layer {
