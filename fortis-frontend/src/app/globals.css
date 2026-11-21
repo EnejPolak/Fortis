@@ -4422,18 +4422,22 @@ body:has(.checkout-route) .site-header {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.35rem clamp(1.25rem, 4vw, 3rem);
+  height: 64px;
+  padding: 0 max(20px, calc(50vw - var(--site-max-width) / 2 + 20px));
+  box-sizing: border-box;
   background: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .checkout-logo {
   font-family: "JMH Typewriter", "Courier New", monospace;
-  font-size: 1.05rem;
-  letter-spacing: 0.06em;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #f4f4f2;
+  color: #fff;
   text-decoration: none;
+  line-height: 1;
 }
 
 .checkout-back-cart {
