@@ -30,6 +30,8 @@ type CartContextValue = {
   subtotalCents: number;
   isOpen: boolean;
   stockByVariant: Record<string, number | null>;
+  /** Increments only after a successful addItem — for bag wobble, not hydration. */
+  addSuccessVersion: number;
   openCart: () => void;
   closeCart: () => void;
   addItem: (variantId: string, quantity?: number) => { error?: string };
@@ -67,6 +69,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [announce, setAnnounce] = useState("");
+  const [addSuccessVersion, setAddSuccessVersion] = useState(0);
   const [stockByVariant, setStockByVariant] = useState<Record<string, number | null>>(
     {}
   );
@@ -128,6 +131,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
         return result.state;
       });
+      if (!error) {
+        setAddSuccessVersion((version) => version + 1);
+      }
       return { error };
     },
     [stockByVariant]
@@ -180,6 +186,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     subtotalCents,
     isOpen,
     stockByVariant,
+    addSuccessVersion,
     openCart,
     closeCart,
     addItem,

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CartButton } from "@/components/cart/CartButton";
+import { AccountButton } from "@/components/navbar/AccountButton";
 import { MenuPanel } from "./MenuPanel";
 
 export function Navbar() {
@@ -38,7 +39,10 @@ export function Navbar() {
             FORTIS
           </Link>
           <div className="navbar-menu-right">
-            <CartButton />
+            <div className="navbar-icon-group">
+              <AccountButton />
+              <CartButton />
+            </div>
             <button
               ref={menuToggleRef}
               type="button"

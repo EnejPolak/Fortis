@@ -160,9 +160,6 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
             {message}
           </p>
         ) : null}
-        <div className="sr-only" aria-live="polite">
-          {status === "success" ? message : ""}
-        </div>
       </div>
     </div>
   );
