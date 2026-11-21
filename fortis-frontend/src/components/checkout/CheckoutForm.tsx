@@ -312,7 +312,11 @@ export function CheckoutForm({
           <p className="shop-lead" style={{ marginBottom: 0 }}>
             Plačilo poteka varno prek Stripe. Podatkov o kartici ne shranjujemo.
           </p>
-          <button type="submit" className="shop-primary" disabled={submitting}>
+          <button
+            type="submit"
+            className="shop-primary btn-commerce-primary"
+            disabled={submitting}
+          >
             {submitting ? "Pripravljam plačilo…" : "Nadaljuj na plačilo"}
           </button>
           <p className="purchase-feedback-msg purchase-feedback-msg--muted">

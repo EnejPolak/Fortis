@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { AuthForm } from "@/components/auth/AuthForm";
+import { LoginEditorial } from "@/components/auth/LoginEditorial";
 
 export const metadata: Metadata = {
   title: "Prijava",
@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="shop-page">
-      <Suspense fallback={<p className="shop-lead">Nalagam…</p>}>
-        <AuthForm mode="login" />
+    <main className="login-page">
+      <Suspense fallback={<p className="login-panel-lead">Nalagam…</p>}>
+        <LoginEditorial />
       </Suspense>
     </main>
   );

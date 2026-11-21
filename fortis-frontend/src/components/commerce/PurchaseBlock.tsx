@@ -143,7 +143,7 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
         </div>
         <button
           type="button"
-          className="purchase-add"
+          className="purchase-add btn-commerce-primary"
           disabled={unavailable || pending}
           aria-busy={pending}
           onClick={onAdd}

@@ -147,7 +147,7 @@ export function CartDrawer() {
             <p className="cart-shipping-note">Dostava še ni vključena.</p>
             <Link
               href="/checkout"
-              className="cart-checkout-btn"
+              className="cart-checkout-btn btn-commerce-primary"
               onClick={closeCart}
             >
               Na blagajno
