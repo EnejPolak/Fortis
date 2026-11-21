@@ -39,7 +39,6 @@ export default function ONas() {
       cardRefs.current.forEach((cardContainer) => {
         if (!cardContainer) return;
 
-        /* Poišči vse SVG path elemente in naslov */
         const cardPaths =
           cardContainer.querySelectorAll<SVGPathElement>(".svg-stroke path");
         const cardTitle =
@@ -47,7 +46,6 @@ export default function ONas() {
 
         if (!cardTitle || cardPaths.length === 0) return;
 
-        /* SplitText – razbij naslov na besede za mask animacijo */
         const split = SplitText.create(cardTitle, {
           type: "words",
           mask: "words",
@@ -55,22 +53,18 @@ export default function ONas() {
         });
         splits.push(split);
 
-        /* Začetno stanje: besede skrite (pod masko) */
         gsap.set(split.words, { yPercent: 100 });
 
-        /* Izračunaj dolžino vsake poti; nastavi dasharray/offset */
         const pathLengths: number[] = [];
         cardPaths.forEach((path) => {
           const length = path.getTotalLength();
           pathLengths.push(length);
           path.style.strokeDasharray = `${length}`;
-          path.style.strokeDashoffset = "0"; // poteza VIDNA → slika zakrita
+          path.style.strokeDashoffset = "0";
         });
 
-        /* Debelina poteze na 700 → prekriva celotno sliko */
         gsap.set(cardPaths, { attr: { "stroke-width": 700 } });
 
-        /* Timeline s ScrollTrigger – reveal dol, reverse gor */
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: cardContainer,
@@ -79,7 +73,6 @@ export default function ONas() {
           },
         });
 
-        /* Animiraj poteze stran → slika se odkrije */
         cardPaths.forEach((path, index) => {
           tl.to(
             path,
@@ -93,7 +86,6 @@ export default function ONas() {
           );
         });
 
-        /* Animiraj naslov (besede se dvignejo) */
         tl.to(
           split.words,
           {
@@ -115,240 +107,165 @@ export default function ONas() {
 
   return (
     <section ref={sectionRef}>
-      {/* ——— Zgornji del: naslov ——— */}
-      <div
-        className="o-nas-hero"
-        style={{
-          minHeight: "80vh",
-          paddingTop: "200px",
-          paddingLeft: "150px",
-          paddingRight: "120px",
-          position: "relative",
-        }}
-      >
-        <h2
-          className="o-nas-title"
-          style={{
-            maxWidth: "1200px",
-            fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
-            fontWeight: 500,
-            lineHeight: 1.15,
-            letterSpacing: "-0.06rem",
-          }}
-        >
+      <div className="o-nas-hero">
+        <h2 className="o-nas-title">
           Vsaka dišava tukaj ima razlog&nbsp; zgodbo, izvor in človeka, ki jo
           zna postaviti na pravo mesto.
         </h2>
       </div>
 
-      {/* ——— Spodnji del: kartice s scroll-reveal animacijo ——— */}
-      <div
-        style={{
-          width: "100%",
-          padding: "0 1rem 4rem",
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-        }}
-      >
-        {/* Kartice po 2 v vrsti (flex row), zadnja sama če je liha */}
-        {Array.from(
-          { length: Math.ceil(IMAGES.length / 2) },
-          (_, rowIdx) => {
-            const pair = IMAGES.slice(rowIdx * 2, rowIdx * 2 + 2);
-            return (
-              <div
-                key={rowIdx}
-                className="o-nas-row"
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  gap: "1rem",
-                }}
-              >
-                {pair.map((img, colIdx) => {
-                  const flatIdx = rowIdx * 2 + colIdx;
-                  const strokeColor =
-                    STROKE_COLORS[flatIdx % STROKE_COLORS.length];
-                  const elements = [];
+      <div className="o-nas-cards">
+        {Array.from({ length: Math.ceil(IMAGES.length / 2) }, (_, rowIdx) => {
+          const pair = IMAGES.slice(rowIdx * 2, rowIdx * 2 + 2);
+          return (
+            <div key={rowIdx} className="o-nas-row">
+              {pair.map((img, colIdx) => {
+                const flatIdx = rowIdx * 2 + colIdx;
+                const strokeColor = STROKE_COLORS[flatIdx % STROKE_COLORS.length];
+                const sizeClass =
+                  pair.length === 2
+                    ? colIdx === 0
+                      ? "o-nas-card--major"
+                      : "o-nas-card--minor"
+                    : "";
+                const elements = [];
 
-                  elements.push(
+                elements.push(
+                  <div
+                    key={img.src}
+                    ref={(el) => {
+                      if (el) cardRefs.current[flatIdx] = el;
+                    }}
+                    className={`o-nas-card ${sizeClass}`.trim()}
+                  >
+                    <div style={{ width: "100%", height: "100%" }}>
+                      <img
+                        src={img.src}
+                        alt={img.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+
                     <div
-                      key={img.src}
-                      ref={(el) => {
-                        if (el) cardRefs.current[flatIdx] = el;
-                      }}
+                      className="svg-stroke svg-stroke-1"
                       style={{
-                        position: "relative",
-                        flex: 1,
-                        aspectRatio: "1",
-                        borderRadius: "1rem",
-                        overflow: "hidden",
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%) scale(1.5)",
+                        width: "100%",
+                        height: "100%",
                       }}
                     >
-                      {/* 1) Slika */}
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                        }}
+                      <svg
+                        width="2453"
+                        height="2273"
+                        viewBox="0 0 2453 2273"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ width: "100%", height: "100%" }}
                       >
-                        <img
-                          src={img.src}
-                          alt={img.title}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
+                        <path
+                          d={SVG_PATH_1}
+                          stroke={strokeColor}
+                          strokeWidth="200"
+                          strokeLinecap="round"
                         />
-                      </div>
+                      </svg>
+                    </div>
 
-                      {/* 2) SVG poteza 1 (barvna) */}
-                      <div
-                        className="svg-stroke svg-stroke-1"
+                    <div
+                      className="svg-stroke svg-stroke-2"
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%) scale(1.5)",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
+                      <svg
+                        width="2250"
+                        height="2535"
+                        viewBox="0 0 2250 2535"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ width: "100%", height: "100%" }}
+                      >
+                        <path
+                          d={SVG_PATH_2}
+                          stroke={BASE_STROKE}
+                          strokeWidth="200"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div
+                      className="card-title"
+                      style={{
+                        position: "absolute",
+                        bottom: "2rem",
+                        left: "2rem",
+                        color: "#ededed",
+                      }}
+                    >
+                      <h3
                         style={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%) scale(1.5)",
-                          width: "100%",
-                          height: "100%",
+                          fontSize: "clamp(1.75rem, 2.5vw, 2.75rem)",
+                          fontWeight: 450,
+                          lineHeight: 1.25,
+                          letterSpacing: "-0.025rem",
                         }}
                       >
-                        <svg
-                          width="2453"
-                          height="2273"
-                          viewBox="0 0 2453 2273"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                          }}
-                        >
-                          <path
-                            d={SVG_PATH_1}
-                            stroke={strokeColor}
-                            strokeWidth="200"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </div>
+                        {img.title}
+                      </h3>
+                    </div>
+                  </div>
+                );
 
-                      {/* 3) SVG poteza 2 (bazna/siva) */}
-                      <div
-                        className="svg-stroke svg-stroke-2"
-                        style={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%) scale(1.5)",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      >
-                        <svg
-                          width="2250"
-                          height="2535"
-                          viewBox="0 0 2250 2535"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                          }}
-                        >
-                          <path
-                            d={SVG_PATH_2}
-                            stroke={BASE_STROKE}
-                            strokeWidth="200"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </div>
-
-                      {/* 4) Naslov */}
-                      <div
-                        className="card-title"
-                        style={{
-                          position: "absolute",
-                          bottom: "2rem",
-                          left: "2rem",
-                          color: "#ededed",
-                        }}
-                      >
-                        <h3
-                          style={{
-                            fontSize: "clamp(2rem, 2.5vw, 3rem)",
-                            fontWeight: 450,
-                            lineHeight: 1.25,
-                            letterSpacing: "-0.025rem",
-                          }}
-                        >
-                          {img.title}
-                        </h3>
-                      </div>
+                if (flatIdx === 0) {
+                  elements.push(
+                    <div
+                      key="mobile-lan-text"
+                      className="o-nas-mobile-text"
+                      style={{
+                        display: "none",
+                        padding: "2.5rem 0 3.5rem",
+                        lineHeight: 1.6,
+                        textAlign: "justify",
+                        textAlignLast: "left",
+                        hyphens: "auto",
+                      }}
+                    >
+                      <p>
+                        Lan Kraševec je obraz Fortis Niche Atelier in ambasador nišne
+                        parfumerije z dolgoletnimi izkušnjami profesionalnega svetovanja v svetu
+                        artisanal dišav. Njegov pristop temelji na zgodbi: kaj parfum pomeni, od
+                        kod prihaja, in zakaj določena hiša izstopa. Svoje znanje in naravno
+                        sposobnost pripovedovanja je dokazal tudi na različnih dogodkih, kjer je
+                        ljudi pritegnil z iskrenimi vpogledi v svet dišav. Fortis je ustanovil z
+                        idejo ustvariti prostor, kjer se luksuz ne meri v glasnosti, ampak v
+                        kakovosti izbire, miru in avtentični povezavi z dišavo.
+                      </p>
                     </div>
                   );
+                }
 
-                  /* Na telefonu: tekst o Lanu med slikama */
-                  if (flatIdx === 0) {
-                    elements.push(
-                      <div
-                        key="mobile-lan-text"
-                        className="o-nas-mobile-text"
-                        style={{
-                          display: "none",
-                          padding: "2.5rem 0 3.5rem",
-                          lineHeight: 1.6,
-                          textAlign: "justify",
-                          textAlignLast: "left",
-                          hyphens: "auto",
-                        }}
-                      >
-                        <p>
-                          Lan Kraševec je obraz Fortis Niche Atelier in ambasador nišne
-                          parfumerije z dolgoletnimi izkušnjami profesionalnega svetovanja v svetu
-                          artisanal dišav. Njegov pristop temelji na zgodbi: kaj parfum pomeni, od
-                          kod prihaja, in zakaj določena hiša izstopa. Svoje znanje in naravno
-                          sposobnost pripovedovanja je dokazal tudi na različnih dogodkih, kjer je
-                          ljudi pritegnil z iskrenimi vpogledi v svet dišav. Fortis je ustanovil z
-                          idejo ustvariti prostor, kjer se luksuz ne meri v glasnosti, ampak v
-                          kakovosti izbire, miru in avtentični povezavi z dišavo.
-                        </p>
-                      </div>
-                    );
-                  }
-
-                  return elements;
-                })}
-              </div>
-            );
-          }
-        )}
+                return elements;
+              })}
+            </div>
+          );
+        })}
       </div>
 
-      {/* ——— Pod slikami: tekst pod Lanom (levo) — samo desktop ——— */}
-      <div
-        className="o-nas-text-block o-nas-text-block-lan"
-        style={{
-          paddingTop: "4rem",
-          paddingLeft: "1rem",
-          paddingBottom: "8rem",
-          display: "flex",
-          justifyContent: "flex-start",
-        }}
-      >
-        <p
-          style={{
-            width: "calc(50% - 0.5rem)",
-            lineHeight: 1.6,
-            textAlign: "justify",
-            textAlignLast: "left",
-            hyphens: "auto",
-          }}
-        >
+      <div className="o-nas-text-block o-nas-text-block-lan">
+        <p>
           Lan Kraševec je obraz Fortis Niche Atelier in ambasador nišne
           parfumerije z dolgoletnimi izkušnjami profesionalnega svetovanja v svetu
           artisanal dišav. Njegov pristop temelji na zgodbi: kaj parfum pomeni, od
@@ -360,26 +277,8 @@ export default function ONas() {
         </p>
       </div>
 
-      {/* ——— Pod slikami: tekst pod Fortisom (desno) ——— */}
-      <div
-        className="o-nas-text-block"
-        style={{
-          paddingTop: "2rem",
-          paddingRight: "1rem",
-          paddingBottom: "8rem",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <p
-          style={{
-            width: "calc(50% - 0.5rem)",
-            lineHeight: 1.6,
-            textAlign: "justify",
-            textAlignLast: "left",
-            hyphens: "auto",
-          }}
-        >
+      <div className="o-nas-text-block o-nas-text-block-atelier">
+        <p>
           Fortis Niche Atelier je nišna parfumerija v središču Ljubljane za
           ljudi, ki hočejo več kot hitro testiranje na listič. Ne delujemo kot
           klasična trgovina. Pri nas dobiš osebno svetovanje in izbor dišav, ki

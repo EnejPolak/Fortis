@@ -13,12 +13,10 @@ import {
 } from "@/lib/kolekcija-filter";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useEffect, useMemo, useState } from "react";
-import { KOLEKCIJA_ITEMS, getShortDescription } from "@/data/parfumi";
+import { Suspense, useEffect, useMemo } from "react";
+import { KOLEKCIJA_ITEMS } from "@/data/parfumi";
 import { formatParfumPrice, getParfumPriceEur } from "@/lib/parfum-prices";
 import type { KolekcijaItem } from "@/data/parfumi";
-
-type HoverInfo = { brand: string; name: string; slug: string } | null;
 
 const ROW_SIZE = 3;
 
@@ -30,8 +28,6 @@ function chunkRows(items: KolekcijaItem[]) {
 
 function KolekcijaPageContent() {
   const { filters, setFilters } = useKolekcijaFilterUrl();
-  const [activePerfume, setActivePerfume] = useState<HoverInfo>(null);
-  const [canHover, setCanHover] = useState(false);
 
   const brandOptions = useMemo(() => getBrandFilterOptions(KOLEKCIJA_ITEMS), []);
 
@@ -51,18 +47,6 @@ function KolekcijaPageContent() {
   const filterKey = `${filters.brands.join(",")}|${filters.families.join(",")}`;
 
   useEffect(() => {
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const update = () => setCanHover(mq.matches);
-
-    update();
-    mq.addEventListener?.("change", update);
-
-    return () => {
-      mq.removeEventListener?.("change", update);
-    };
-  }, []);
-
-  useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash.slice(1) : "";
     if (!hash) return;
 
@@ -80,18 +64,6 @@ function KolekcijaPageContent() {
     <>
       <div className="site-content">
         <main className="kolekcija-page">
-          {canHover && activePerfume && (
-            <div className="kolekcija-hover-info" aria-hidden="true">
-              <div className="kolekcija-hover-brand">{activePerfume.brand}</div>
-              <div className="kolekcija-hover-name">{activePerfume.name}</div>
-              {getParfumPriceEur(activePerfume.slug) != null ? (
-                <div className="kolekcija-hover-price">
-                  {formatParfumPrice(getParfumPriceEur(activePerfume.slug)!)}
-                </div>
-              ) : null}
-            </div>
-          )}
-
           <CollectionFilters
             filters={filters}
             onChange={setFilters}
@@ -101,7 +73,18 @@ function KolekcijaPageContent() {
 
           <div key={filterKey} className="kolekcija-results">
             {brandGroups.length === 0 ? (
-              <p className="kolekcija-filter-empty">Noben parfum ne ustreza izbranim filtrom.</p>
+              <div className="kolekcija-filter-empty">
+                <p className="kolekcija-filter-empty-text">
+                  Noben parfum ne ustreza izbranim filtrom.
+                </p>
+                <button
+                  type="button"
+                  className="kolekcija-filter-empty-reset"
+                  onClick={() => setFilters({ brands: [], families: [] })}
+                >
+                  Ponastavi filtre
+                </button>
+              </div>
             ) : null}
 
             {brandGroups.map((group, brandIndex) => {
@@ -120,24 +103,13 @@ function KolekcijaPageContent() {
                     {rows.map((rowItems, rowIndex) => (
                       <div key={`${group.brand}-${rowIndex}`} className="kolekcija-row">
                         {rowItems.map((item) => (
-                          <div key={item.slug} id={item.slug} className="kolekcija-item-wrap">
-                            <Link
-                              href={`/parfum/${item.slug}`}
-                              className="kolekcija-image-wrap"
-                              onMouseEnter={() => {
-                                if (canHover) {
-                                  setActivePerfume({
-                                    brand: item.brand,
-                                    name: item.name,
-                                    slug: item.slug,
-                                  });
-                                }
-                              }}
-                              onMouseLeave={() => {
-                                if (canHover) setActivePerfume(null);
-                              }}
-                              onTouchStart={() => setActivePerfume(null)}
-                            >
+                          <Link
+                            key={item.slug}
+                            id={item.slug}
+                            href={`/parfum/${item.slug}`}
+                            className="kolekcija-item-wrap"
+                          >
+                            <span className="kolekcija-image-wrap">
                               {item.imageSrc.includes("%23") ? (
                                 <img
                                   src={item.imageSrc}
@@ -156,19 +128,16 @@ function KolekcijaPageContent() {
                                   priority={prioritySlugs.has(item.slug)}
                                 />
                               )}
-                            </Link>
-                            <div className="kolekcija-mobile-info">
-                              <div className="kolekcija-mobile-name">{item.name}</div>
+                            </span>
+                            <span className="kolekcija-card-info">
+                              <span className="kolekcija-card-name">{item.name}</span>
                               {getParfumPriceEur(item.slug) != null ? (
-                                <div className="kolekcija-mobile-price">
+                                <span className="kolekcija-card-price">
                                   {formatParfumPrice(getParfumPriceEur(item.slug)!)}
-                                </div>
+                                </span>
                               ) : null}
-                              {getShortDescription(item.slug) ? (
-                                <div className="kolekcija-mobile-desc">{getShortDescription(item.slug)}</div>
-                              ) : null}
-                            </div>
-                          </div>
+                            </span>
+                          </Link>
                         ))}
                       </div>
                     ))}

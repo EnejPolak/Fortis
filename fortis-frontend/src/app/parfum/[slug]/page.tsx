@@ -77,6 +77,7 @@ export default async function ParfumPage({ params }: Props) {
         slug={slug}
         imageSrc={parfum.imageSrc}
         name={parfum.name}
+        brand={brand}
         metaLine1={parfum.metaLine1}
         metaLine2={parfum.metaLine2}
         description={parfum.description}

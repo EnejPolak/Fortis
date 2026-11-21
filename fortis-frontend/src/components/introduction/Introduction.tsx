@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export function Introduction() {
   return (
-    <section className="relative w-full py-12 md:py-20">
-      {/* Na telefonu: slika Lana (LanHeroIntruduction.png) */}
+    <section className="intro-atelier phi-section relative w-full">
+      {/* Mobile: full-bleed editorial image */}
       <div className="block w-full md:hidden">
         <Image
           src="/LanHeroIntruduction.png"
@@ -14,61 +14,26 @@ export function Introduction() {
           sizes="100vw"
         />
       </div>
-      {/* Na desktopu: lan.jpeg + besedilo ob sliki */}
-      <div className="hidden md:flex" style={{ marginLeft: "386px", gap: "96px" }}>
-        <div style={{ 
-          width: "496px",
-          height: "661px"
-        }}>
+
+      {/* Desktop: major image / minor copy (φ) */}
+      <div className="site-shell hidden md:grid phi-split intro-atelier-grid">
+        <div className="phi-media intro-atelier-media">
           <Image
             src="/lan.jpeg"
             alt="Fortis Introduction"
             width={496}
             height={661}
-            className="w-full h-full object-cover"
+            className="intro-atelier-image"
+            sizes="(min-width: 1024px) 55vw, 62vw"
           />
         </div>
-        <div style={{ 
-          marginTop: "80px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center"
-        }}>
-          <div style={{ 
-            width: "364px",
-            height: "90px",
-            fontFamily: "var(--font-libre-baskerville), serif",
-            fontWeight: "bold",
-            fontSize: "40px",
-            lineHeight: "45px",
-            letterSpacing: "6%",
-            color: "#fcfcfc",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center"
-          }}>
+        <div className="phi-copy intro-atelier-copy">
+          <div className="intro-atelier-headline">
             <div>Fortis ni moda.</div>
             <div>Je namen.</div>
           </div>
-          <div style={{
-            marginTop: "30px",
-            fontFamily: "var(--font-libre-baskerville), serif",
-            color: "#a9a9a9",
-            opacity: 0.6,
-            textAlign: "center"
-          }}>
-            Ne ustvarjeno za trende
-          </div>
-          <div style={{
-            marginTop: "40px",
-            width: "250px",
-            fontFamily: "var(--font-libre-baskerville), serif",
-            color: "#a9a9a9",
-            opacity: 0.75,
-            textAlign: "justify"
-          }}>
+          <p className="intro-atelier-tagline">Ne ustvarjeno za trende</p>
+          <div className="intro-atelier-body">
             Fortis ni ustvarjen, da bi bil opažen.
             Ustvarjen je, da ostane.
 

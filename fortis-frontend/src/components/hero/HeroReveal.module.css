@@ -59,8 +59,9 @@
 }
 
 .heroImages {
+  /* Imagery occupies the major (~62%) vertical band */
   position: absolute;
-  top: 30%;
+  top: calc(61.8% * 0.5);
   transform: translateY(-50%);
   width: 100%;
   padding: 0 2rem;
@@ -88,22 +89,30 @@
 }
 
 .heroHeader {
+  /* Title sits in the lower minor (~38%) band — placement, not a column split */
   position: absolute;
-  bottom: calc(8rem + var(--sab));
+  top: 61.8%;
+  bottom: var(--sab);
   width: 100%;
   z-index: 1;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--content-gutter, 2rem);
+  box-sizing: border-box;
 }
 
 .heroHeader h1 {
   font-family: "JMH Typewriter", "Courier New", monospace;
   text-transform: uppercase;
   text-align: center;
-  font-size: clamp(4rem, 15vw, 16rem);
+  font-size: clamp(3.5rem, 14vw, 16rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   line-height: 0.85;
   color: #ededed;
+  max-width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -128,13 +137,21 @@
   }
 
   .heroImages {
-    top: 42%;
+    top: 36%;
     padding: 0 0.5rem;
     gap: 2.5vw;
   }
 
   .heroHeader {
-    bottom: calc(16rem + var(--sab));
+    top: auto;
+    bottom: calc(5.5rem + var(--sab));
+    align-items: flex-end;
+    padding-bottom: 0.5rem;
+    min-height: 0;
+  }
+
+  .heroHeader h1 {
+    font-size: clamp(3rem, 18vw, 5.5rem);
   }
 
   .img {

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter, Libre_Baskerville } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import { CartDrawer } from "@/components/cart/CartDrawer";
+import { CartProvider } from "@/components/cart/CartProvider";
 import { CookieConsent } from "@/components/cookie-consent/CookieConsent";
 import { Navbar } from "@/components/navbar/Navbar";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
@@ -112,9 +114,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${libreBaskerville.variable} antialiased`}
       >
         <SiteJsonLd />
-        <Navbar />
-        {children}
-        <CookieConsent />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <CartDrawer />
+          <CookieConsent />
+        </CartProvider>
         <Analytics />
       </body>
     </html>

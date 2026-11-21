@@ -18,6 +18,113 @@
   --foreground: #ededed;
   --site-max-width: 1920px;
   --wine-gold: #b8956a;
+
+  /* Golden-ratio composition tokens (φ ≈ 1.618) — flexible guidelines */
+  --phi: 1.618;
+  --phi-major: 0.618;
+  --phi-minor: 0.382;
+  --content-max: 1400px;
+  --content-gutter: clamp(1.25rem, 4vw, 3.125rem);
+  --space-phi-sm: 2.5rem; /* ~40px */
+  --space-phi-md: 4rem; /* ~64px */
+  --space-phi-lg: 6.5rem; /* ~104px */
+  --font-display-sm: clamp(1.375rem, 2.2vw, 1.625rem); /* ~26 */
+  --font-display-md: clamp(1.625rem, 3.2vw, 2.625rem); /* ~42 */
+  --font-display-lg: clamp(2.25rem, 5vw, 4.25rem); /* ~68 */
+  --measure-prose: min(38rem, 100%);
+
+  /* Spacing scale (practical) — use alongside φ section intervals */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.5rem; /* 24 */
+  --space-6: 2rem; /* 32 */
+  --space-7: 3rem; /* 48 */
+  --space-8: 4rem; /* 64 */
+  --space-9: 6rem; /* 96 */
+
+  /* Readable muted text on #0f0f0f (AA-oriented) */
+  --text-muted: rgba(255, 255, 255, 0.72);
+  --text-subtle: rgba(255, 255, 255, 0.55);
+  --text-faint: rgba(255, 255, 255, 0.42);
+  --focus-ring: rgba(255, 255, 255, 0.7);
+  --control-border: rgba(255, 255, 255, 0.35);
+}
+
+/* Shared focus for keyboard users */
+:focus-visible {
+  outline: 1px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Shared alignment shell */
+.site-shell {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-gutter);
+  box-sizing: border-box;
+}
+
+.phi-section {
+  padding-block: var(--space-phi-md);
+}
+
+@media (min-width: 768px) {
+  .phi-section {
+    padding-block: var(--space-phi-lg);
+  }
+}
+
+/* Major/minor tracks; gap is outside the fr units so columns do not overflow */
+.phi-split {
+  display: grid;
+  align-items: start;
+  gap: clamp(var(--space-phi-sm), 5vw, var(--space-phi-md));
+  grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr);
+}
+
+.phi-split--reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr);
+}
+
+.phi-split--prose {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr);
+}
+
+.phi-media {
+  min-width: 0;
+  width: 100%;
+}
+
+.phi-media img,
+.phi-media > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.phi-copy {
+  min-width: 0;
+  max-width: var(--measure-prose);
+}
+
+.phi-prose-width {
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 1023px) {
+  .phi-split,
+  .phi-split--reverse,
+  .phi-split--prose {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 html {
@@ -62,7 +169,7 @@ img {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 500;
   letter-spacing: -0.1rem;
   line-height: 1.25;
@@ -71,7 +178,68 @@ h1 {
 p {
   font-size: 1.125rem;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.55;
+}
+
+/* Homepage atelier introduction — φ major media / minor copy */
+.intro-atelier-grid {
+  align-items: start;
+}
+
+.intro-atelier-media {
+  aspect-ratio: 496 / 661;
+  overflow: hidden;
+}
+
+.intro-atelier-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.intro-atelier-copy {
+  margin-top: clamp(2rem, 4vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-atelier-headline {
+  font-family: var(--font-libre-baskerville), serif;
+  font-weight: 700;
+  font-size: var(--font-display-md);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: #fcfcfc;
+}
+
+.intro-atelier-tagline {
+  margin-top: 1.75rem;
+  font-family: var(--font-libre-baskerville), serif;
+  color: var(--text-subtle);
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.intro-atelier-body {
+  margin-top: var(--space-phi-sm);
+  width: min(100%, 16rem);
+  font-family: var(--font-libre-baskerville), serif;
+  color: var(--text-muted);
+  text-align: justify;
+  white-space: pre-line;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Rebalance before the copy column becomes cramped */
+  .intro-atelier-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 1fr);
+  }
 }
 
 /* Stran parfuma: prejšnji font (Inter) za vsebino strani parfuma */
@@ -79,11 +247,11 @@ p {
   font-family: var(--font-inter), sans-serif;
 }
 
-/* Stran parfuma: vse besedilo (100 ml, Eau de Parfum, opis) enake velikosti kot gumbi, obojestranska poravnava kot v knjigi */
+/* Stran parfuma: body copy left-aligned for readable ragged edge */
 .parfum-detail-text,
 .parfum-detail-text p {
-  font-size: 0.875rem;
-  text-align: justify;
+  font-size: 1.0625rem;
+  text-align: left;
 }
 
 section {
@@ -93,7 +261,12 @@ section {
   color: #fff;
 }
 
-/* Navbar */
+/* Navbar — compact opaque bar so content does not collide while scrolling */
+.site-header {
+  height: 64px;
+  background: #0f0f0f;
+}
+
 .navbar-container {
   display: flex;
   align-items: center;
@@ -177,48 +350,64 @@ html:has(body.hero-reveal-lock-ui) {
 .kolekcija-page {
   background: #0f0f0f;
   min-height: 100vh;
-  padding-top: 170px;
-  padding-bottom: 3rem;
+  padding-top: 7.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .kolekcija-brand-section {
   width: 100%;
 }
 
-.kolekcija-brand-section:not(:last-child) {
-  padding-bottom: 9rem;
+/* Large pause before each subsequent brand heading (not the first). */
+.kolekcija-brand-section + .kolekcija-brand-section {
+  padding-top: 5.5rem; /* ~88px mobile */
+}
+
+@media (min-width: 768px) {
+  .kolekcija-brand-section + .kolekcija-brand-section {
+    padding-top: 8rem; /* ~128px tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .kolekcija-brand-section + .kolekcija-brand-section {
+    padding-top: 11rem; /* ~176px desktop */
+  }
 }
 
 .kolekcija-brand-products {
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 0;
 }
 
 .kolekcija-brand-products .kolekcija-row + .kolekcija-row {
-  margin-top: 3.5rem;
+  /* ~64–88px from previous card text to next image row */
+  margin-top: 4.5rem;
 }
 
-/* Mobile-only break between brand collections; no layout impact on desktop */
+/* Spacing handled by section padding-top; keep hook for mobile-only if needed */
 .kolekcija-collection-transition {
   display: none;
 }
 
 .kolekcija-brand-header {
-  max-width: 1400px;
-  margin: 0 auto 4rem;
-  padding: 0 50px;
+  max-width: var(--content-max);
+  /* Closer to its own products than to the previous collection */
+  margin: 0 auto 3.5rem; /* ~56px desktop */
+  padding: 0 var(--content-gutter);
   text-align: center;
   font-family: var(--font-libre-baskerville), serif;
 }
 
 .kolekcija-brand-header-label {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.85rem;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .kolekcija-brand-header-row {
@@ -275,9 +464,9 @@ html:has(body.hero-reveal-lock-ui) {
 
 /* Kolekcija – filtri */
 .kolekcija-filters {
-  max-width: 1400px;
-  margin: 0 auto 2.5rem;
-  padding: 0 50px;
+  max-width: var(--content-max);
+  margin: 0 auto var(--space-phi-sm);
+  padding: 0 var(--content-gutter);
   font-family: var(--font-libre-baskerville), serif;
 }
 
@@ -310,13 +499,14 @@ html:has(body.hero-reveal-lock-ui) {
 .kolekcija-filter-trigger {
   background: none;
   border: none;
-  padding: 0;
+  padding: 0.65rem 0;
+  min-height: 2.75rem;
   cursor: pointer;
   font-family: inherit;
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-subtle);
   transition: color 0.2s ease;
 }
 
@@ -404,13 +594,14 @@ html:has(body.hero-reveal-lock-ui) {
 .kolekcija-filter-tag {
   background: none;
   border: none;
-  padding: 0;
+  padding: 0.55rem 0.15rem;
+  min-height: 2.5rem;
   cursor: pointer;
   font-family: inherit;
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.48);
+  color: var(--text-subtle);
 }
 
 .kolekcija-filter-tag:hover {
@@ -422,7 +613,8 @@ html:has(body.hero-reveal-lock-ui) {
   align-items: flex-start;
   gap: 0.65rem;
   cursor: pointer;
-  padding: 0.35rem 0;
+  padding: 0.55rem 0;
+  min-height: 2.5rem;
 }
 
 .kolekcija-filter-check-input {
@@ -502,7 +694,7 @@ html:has(body.hero-reveal-lock-ui) {
 /* Naši partnerji – domača stran */
 .partnerji-section {
   width: 100%;
-  padding: 3.75rem 0 3.25rem;
+  padding: var(--space-phi-md) 0 var(--space-phi-sm);
   background: #0f0f0f;
   position: relative;
   overflow: hidden;
@@ -689,7 +881,7 @@ html:has(body.hero-reveal-lock-ui) {
 
 @media (min-width: 1024px) {
   .partnerji-section {
-    padding: 4.25rem 0 3.75rem;
+    padding: var(--space-phi-lg) 0 var(--space-phi-md);
   }
 
   .partnerji-inner {
@@ -740,12 +932,38 @@ html:has(body.hero-reveal-lock-ui) {
 .kolekcija-filter-empty {
   text-align: center;
   font-family: var(--font-libre-baskerville), serif;
-  font-size: 14px;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.5);
-  padding: 3rem 1rem 4rem;
-  max-width: 1400px;
+  padding: var(--space-7) var(--space-4) var(--space-8);
+  max-width: var(--content-max);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.kolekcija-filter-empty-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.kolekcija-filter-empty-reset {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--control-border);
+  color: #fff;
+  cursor: pointer;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.15rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.kolekcija-filter-empty-reset:hover {
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 /* Delovni čas page – vse v enem kontejnerju, centrirano na sredino */
@@ -1020,20 +1238,20 @@ html:has(body.hero-reveal-lock-ui) {
 
 
 .kolekcija-row {
-  padding: 0 50px;
+  padding: 0 var(--content-gutter);
   display: grid;
-  grid-template-columns: repeat(3, 437px);
+  grid-template-columns: repeat(3, minmax(0, 437px));
   justify-content: center;
   align-items: start;
-  column-gap: 63px;
+  column-gap: clamp(2rem, 4vw, 63px);
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--content-max);
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* Enaka višina in poravnava vseh celic – srednji stolpec (2, 5, 8…) ne sme biti nižji ali manjši */
 .kolekcija-row > * {
-  min-height: 437px;
+  min-height: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -1044,33 +1262,57 @@ html:has(body.hero-reveal-lock-ui) {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  scroll-margin-top: 180px;
+  width: 100%;
+  max-width: 437px;
+  text-decoration: none;
+  color: inherit;
+  scroll-margin-top: 5.5rem;
+  transition: opacity 0.2s ease;
 }
 
-.kolekcija-mobile-info {
-  display: none;
-  margin-top: 0.75rem;
-  text-align: left;
-  padding: 1rem 0.5rem 1.25rem;
+.kolekcija-item-wrap:hover {
+  opacity: 0.92;
+}
+
+.kolekcija-item-wrap:focus-visible {
+  outline: 1px solid var(--focus-ring);
+  outline-offset: 6px;
+}
+
+/* Persistent card info — bottle / name / price as one group */
+.kolekcija-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 1.5rem; /* ~24px */
+  text-align: center;
+  padding: 0 0.35rem 0;
   width: 100%;
   box-sizing: border-box;
 }
 
-.kolekcija-mobile-name {
+.kolekcija-card-name {
+  display: block;
   font-family: var(--font-libre-baskerville), serif;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 500;
   color: #fff;
   letter-spacing: 0.02em;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
-.kolekcija-mobile-desc {
-  font-family: var(--font-libre-baskerville), serif;
-  font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.25rem;
-  line-height: 1.35;
+.kolekcija-card-price {
+  display: block;
+  margin-top: 0.5rem; /* ~8px */
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
 }
+
 
 @media (max-width: 768px) {
   .kolekcija-page {
@@ -1096,13 +1338,14 @@ html:has(body.hero-reveal-lock-ui) {
     gap: 0.65rem;
     background: none;
     border: none;
-    padding: 0;
+    padding: 0.65rem 0.15rem;
+    min-height: 2.75rem;
     cursor: pointer;
     font-family: var(--font-libre-baskerville), serif;
     font-size: 10px;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--text-subtle);
   }
 
   .kolekcija-filters-mobile-badge {
@@ -1159,7 +1402,9 @@ html:has(body.hero-reveal-lock-ui) {
     font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
-    padding: 0 0.25rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.5rem;
   }
 
   .kolekcija-filter-drawer-body {
@@ -1220,39 +1465,29 @@ html:has(body.hero-reveal-lock-ui) {
     cursor: pointer;
   }
 
-  .kolekcija-brand-section:not(:last-child) {
-    padding-bottom: 0;
-  }
-
   .kolekcija-brand-products {
-    gap: 1.35rem;
+    gap: 1.75rem;
   }
 
   .kolekcija-brand-products .kolekcija-row + .kolekcija-row {
     margin-top: 0;
   }
 
+  /* Whitespace alone separates brands; avoid stacking with section padding-top */
   .kolekcija-collection-transition {
     display: block;
-    padding-top: 5rem;
-    padding-bottom: 3rem;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
   }
 
   .kolekcija-collection-transition-line {
-    width: 70%;
-    max-width: 100%;
-    height: 1px;
-    margin: 0 auto;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.16),
-      transparent
-    );
+    display: none;
   }
 
   .kolekcija-brand-header {
-    margin-bottom: 2.75rem;
+    margin-bottom: 2.25rem; /* ~36px mobile */
     padding: 0 0.25rem;
   }
 
@@ -1294,22 +1529,19 @@ html:has(body.hero-reveal-lock-ui) {
   .kolekcija-image-wrap {
     min-height: 0;
     max-height: none;
+    aspect-ratio: 1;
   }
 
-  .kolekcija-mobile-info {
-    display: block;
-    margin-top: 0.2rem;
-    padding: 0.35rem 0.5rem 0.5rem;
+  .kolekcija-card-info {
+    text-align: left;
+    align-items: flex-start;
+    margin-top: 1.15rem;
+    padding: 0 0.35rem 0;
   }
 
-  .kolekcija-hover-info {
-    display: none;
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  .kolekcija-hover-info {
-    display: none !important;
+  .kolekcija-item-wrap {
+    max-width: none;
+    scroll-margin-top: 5rem;
   }
 }
 
@@ -1319,7 +1551,7 @@ html:has(body.hero-reveal-lock-ui) {
   height: auto;
   max-height: 437px;
   object-fit: contain;
-  object-position: top center;
+  object-position: center;
   display: block;
 }
 
@@ -1330,9 +1562,11 @@ html:has(body.hero-reveal-lock-ui) {
 .kolekcija-image-wrap {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
-  min-height: 437px;
+  max-width: 437px;
+  aspect-ratio: 1;
+  min-height: 0;
 }
 
 .kolekcija-hover-info {
@@ -1382,22 +1616,6 @@ html:has(body.hero-reveal-lock-ui) {
   margin-top: 0.15rem;
 }
 
-.kolekcija-mobile-price {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .kolekcija-mobile-price {
-    display: block;
-    margin-top: 0.35rem;
-    font-family: "JMH Typewriter", "Courier New", monospace;
-    font-size: 14px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.92);
-  }
-}
-
 /* CG clip menu */
 .cg-menu-toggle {
   font-family: var(--font-libre-baskerville), serif;
@@ -1410,6 +1628,9 @@ html:has(body.hero-reveal-lock-ui) {
   cursor: pointer;
   position: relative;
   z-index: 60;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.5rem 0.25rem;
 }
 
 .cg-menu-backdrop {
@@ -1584,7 +1805,7 @@ html:has(body.hero-reveal-lock-ui) {
 
 .intro h1,
 .outro h1 {
-  width: 60%;
+  width: min(61.8%, 28rem);
   text-align: center;
   line-height: 1.1;
   position: relative;
@@ -1677,7 +1898,7 @@ html:has(body.hero-reveal-lock-ui) {
 
 .card-content .card-description {
   text-align: center;
-  width: 40%;
+  width: min(38.2%, 28rem);
   margin-bottom: 3em;
   position: relative;
   transform: translateX(40px);
@@ -1700,16 +1921,17 @@ html:has(body.hero-reveal-lock-ui) {
   will-change: transform;
 }
 
-/* Footer */
+/* Footer — normal document flow (avoids overlapping product imagery) */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: max(0px, calc(50vw - var(--site-max-width) / 2));
-  right: max(0px, calc(50vw - var(--site-max-width) / 2));
+  position: relative;
+  width: 100%;
+  max-width: var(--site-max-width);
+  margin-inline: auto;
   box-sizing: border-box;
-  z-index: 100;
-  padding: 12px 16px 16px;
-  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 10;
+  background: #0f0f0f;
+  padding: 1.75rem 16px 1.5rem;
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
 }
 
 /* Ena vrstica: FORTIS + vse povezave – prostor se razdeli med vseh 5 enako */
@@ -1781,8 +2003,8 @@ button.footer-link-button {
 /* Footer – tablet in več */
 @media (min-width: 640px) {
   .footer {
-    padding: 14px 20px 18px;
-    padding-bottom: max(18px, env(safe-area-inset-bottom));
+    padding: 1.75rem 20px 1.5rem;
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 
   .footer-link {
@@ -1790,7 +2012,6 @@ button.footer-link-button {
   }
 }
 
-/* Footer poravnan z navbarjem (FORTIS ↔ Menu) – enak 20px inset znotraj site pasu */
 @media (min-width: 769px) {
   .footer {
     padding-left: 20px;
@@ -1971,96 +2192,498 @@ button.footer-link-button {
   padding: 12em 2em 4em 2em;
 }
 
-/* Parfum detail – samo mobil: parfum na sredino ekrana (desktop nespremenjen) */
-@media (max-width: 1023px) {
-  .parfum-detail-main {
+/* Product detail — match Fortis Weltschmerz mockup */
+.parfum-detail-main {
+  padding-top: 5.75rem;
+  padding-bottom: 5rem;
+}
+
+.parfum-detail-shell {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 4rem;
+  box-sizing: border-box;
+}
+
+.parfum-detail-back {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 2.25rem;
+  margin-bottom: 2.75rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.parfum-detail-back:hover {
+  color: #fff;
+}
+
+.parfum-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 2.5rem;
+}
+
+.parfum-detail-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.parfum-detail-gallery-frame {
+  width: min(100%, 28rem);
+  height: clamp(18rem, 55vw, 24rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parfum-detail-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.parfum-detail-info {
+  width: 100%;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  min-width: 0;
+}
+
+.parfum-detail-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.parfum-detail-brand {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.parfum-detail-name {
+  margin: 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.parfum-detail-meta {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.72);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.parfum-detail-meta-sep {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.parfum-detail-identity .parfum-price--detail {
+  font-size: 1.25rem;
+}
+
+.parfum-detail-disclosure {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.parfum-detail-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 2rem;
+}
+
+.parfum-detail-tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding: 0.45rem 0 0.55rem;
+  min-height: 2.5rem;
+  cursor: pointer;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.parfum-detail-tab:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.parfum-detail-tab--active {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+}
+
+.parfum-detail-text {
+  min-width: 0;
+}
+
+/* OPIS only — collapse long stories by rendered overflow */
+.parfum-detail-opis {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.parfum-detail-opis-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.parfum-detail-opis-content--collapsed {
+  /* ~7–8 lines of body copy (accounts for paragraph spacing) */
+  max-height: calc(1.7em * 8);
+  overflow: hidden;
+}
+
+.parfum-detail-opis-toggle {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0.35rem 0;
+  margin: 0;
+  min-height: 2.5rem;
+  cursor: pointer;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.parfum-detail-opis-toggle:hover {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.7);
+}
+
+.parfum-detail-body {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: left;
+}
+
+.parfum-detail-body--spaced {
+  margin-top: 1.15rem;
+}
+
+.parfum-notes-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.parfum-notes-heading {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.parfum-detail-inci {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Quiet visit strip — left copy / right action */
+.parfum-detail-visit {
+  margin-top: clamp(4.25rem, 8vw, 5.5rem);
+  padding-top: 2.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.parfum-detail-visit-title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: clamp(1.65rem, 2.8vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.parfum-detail-visit-text {
+  margin: 0;
+  max-width: 28rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.parfum-detail-visit-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  width: fit-content;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  padding-bottom: 0.15rem;
+  transition: border-color 0.2s ease;
+}
+
+.parfum-detail-visit-action:hover {
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .parfum-detail-layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.95fr);
+    gap: clamp(4.5rem, 7vw, 6.5rem);
     align-items: center;
   }
 
-  .parfum-detail-main .grid > div:first-child {
-    justify-content: center;
+  .parfum-detail-gallery {
+    justify-content: flex-start;
   }
 
-  .parfum-detail-main .grid > div:first-child > div {
-    transform: none !important;
+  .parfum-detail-gallery-frame {
+    width: min(100%, 38rem);
+    height: clamp(28rem, 48vh, 34rem);
   }
 
-  /* Na telefonu skrij gumb Nazaj na kolekcijo, cena ostane desno */
-  .parfum-detail-top-row > a:first-child {
-    display: none;
-  }
-
-  .parfum-detail-top-row {
-    position: static !important;
-    justify-content: flex-end;
-    margin-bottom: 0.35rem;
-  }
-
-  /* Na telefonu: tri gumbe višje gor, bližje parfumu */
-  .parfum-detail-main aside {
-    margin-top: 0.5rem !important;
-    margin-left: 0 !important;
-    padding: 0.25rem, 0.25rem !important;
-  }
-
-  .parfum-detail-main .grid {
-    row-gap: 0.5rem;
-  }
-
-  /* Na telefonu: 1. gumb levo, Note na sredini, Sestavine čisto desno */
-  .parfum-detail-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  .parfum-detail-info {
+    max-width: 28rem;
+    justify-self: end;
     width: 100%;
+  }
+
+  .parfum-detail-visit {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 3rem;
+  }
+
+  .parfum-detail-visit-action {
+    flex-shrink: 0;
+    margin-bottom: 0.15rem;
+  }
+}
+
+/* O nas — φ section spacing and asymmetric editorial blocks */
+.o-nas-hero {
+  min-height: 80vh;
+  padding-top: calc(var(--space-phi-lg) + 4rem);
+  padding-left: var(--content-gutter);
+  padding-right: max(var(--content-gutter), calc(100% * var(--phi-minor)));
+  position: relative;
+}
+
+.o-nas-title {
+  width: min(100%, 42rem);
+  max-width: calc(100% * var(--phi-major));
+  font-size: var(--font-display-lg);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.06rem;
+}
+
+.o-nas-cards {
+  width: 100%;
+  padding: 0 var(--content-gutter) var(--space-phi-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.o-nas-row {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.o-nas-card {
+  position: relative;
+  flex: 1 1 0;
+  aspect-ratio: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.o-nas-card--major {
+  flex: 1.618 1 0;
+}
+
+.o-nas-card--minor {
+  flex: 1 1 0;
+}
+
+.o-nas-text-block {
+  padding-inline: var(--content-gutter);
+  padding-bottom: var(--space-phi-lg);
+  display: flex;
+}
+
+.o-nas-text-block p {
+  width: min(100%, calc((100% - 1rem) * var(--phi-major)));
+  max-width: 40rem;
+  line-height: 1.6;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+}
+
+.o-nas-text-block-lan {
+  padding-top: var(--space-phi-md);
+  justify-content: flex-start;
+}
+
+.o-nas-text-block-atelier {
+  padding-top: var(--space-phi-sm);
+  justify-content: flex-end;
+}
+
+.o-nas-text-block-atelier p {
+  width: min(100%, calc((100% - 1rem) * var(--phi-minor) + 12rem));
+  max-width: 34rem;
+}
+
+/* Parfum detail + O nas — mobile stacking */
+@media (max-width: 1023px) {
+  .parfum-detail-main {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .parfum-detail-shell {
+    padding-top: 1rem;
+  }
+
+  .parfum-detail-back {
+    margin-bottom: 1.75rem;
+  }
+
+  .parfum-detail-layout {
+    gap: 1.75rem;
+  }
+
+  .parfum-detail-gallery-frame {
+    width: min(100%, 18rem);
+    height: clamp(16rem, 58vw, 21rem);
+  }
+
+  .parfum-detail-info {
+    max-width: none;
+    gap: 1.75rem;
+  }
+
+  .parfum-detail-name {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+  }
+
+  .parfum-detail-tabs {
+    width: 100%;
+    justify-content: space-between;
     gap: 0;
   }
 
-  .parfum-detail-tabs > *:nth-child(1) {
-    justify-self: start;
+  .parfum-detail-visit {
+    margin-top: 3.25rem;
+    padding-top: 1.75rem;
   }
 
-  .parfum-detail-tabs > *:nth-child(2) {
-    justify-self: center;
-  }
-
-  .parfum-detail-tabs > *:nth-child(3) {
-    justify-self: end;
-  }
-
-  /* O nas: slike ena pod drugo na telefonu */
   .o-nas-row {
     flex-direction: column;
   }
 
-  /* O nas: naslov na telefonu bolj levo, manjši padding */
+  .o-nas-card,
+  .o-nas-card--major,
+  .o-nas-card--minor {
+    flex: 1 1 auto;
+  }
+
   .o-nas-hero {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 6.5rem;
+    min-height: auto;
+    padding-bottom: var(--space-phi-md);
   }
 
   .o-nas-title {
-    font-size: clamp(2rem, 8vw, 3rem) !important;
+    font-size: clamp(2rem, 8vw, 3rem);
     text-align: left;
+    width: 100%;
+    max-width: none;
   }
 
-  /* O nas: tekst pod slikami na telefonu na polno širino */
+  .o-nas-cards {
+    padding-inline: 1rem;
+  }
+
   .o-nas-text-block {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    justify-content: flex-start !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: flex-start;
   }
 
-  .o-nas-text-block p {
-    width: 100% !important;
+  .o-nas-text-block p,
+  .o-nas-text-block-atelier p {
+    width: 100%;
+    max-width: none;
   }
 
-  /* O nas: na telefonu skrij desktop tekst o Lanu, pokaži mobilnega med slikama */
   .o-nas-text-block-lan {
-    display: none !important;
+    display: none;
   }
 
   .o-nas-mobile-text {
-    display: block !important;
+    display: block;
   }
 }
 
@@ -2171,5 +2794,880 @@ button.footer-link-button {
   .cookie-consent-btn {
     width: 100%;
     text-align: center;
+  }
+}
+/* —— Commerce: purchase, cart, checkout, account —— */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.navbar-cart-btn {
+  font-family: var(--font-libre-baskerville), serif;
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.35rem 0.15rem;
+  min-height: 44px;
+}
+
+.navbar-cart-btn:focus-visible,
+.cg-menu-toggle:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 4px;
+}
+
+.navbar-cart-count {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.purchase-block {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.purchase-block--unavailable {
+  margin-top: 1rem;
+}
+
+.purchase-block-note {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.purchase-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  width: 100%;
+}
+
+.purchase-summary-volume {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.purchase-variants {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.purchase-variant-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.purchase-variant {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+}
+
+.purchase-variant input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.purchase-variant--selected {
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #fff;
+}
+
+.purchase-variant--unavailable {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.purchase-variant-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.purchase-price {
+  margin: 0;
+  margin-left: auto;
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.purchase-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+.purchase-qty {
+  flex: 0 0 auto;
+  width: 7.5rem;
+}
+
+.purchase-add {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: #f4f4f2;
+  color: #0f0f0f;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.purchase-add-label {
+  display: inline-block;
+  min-width: 12ch;
+  text-align: center;
+}
+
+.purchase-add:hover:not(:disabled) {
+  background: #fff;
+}
+
+.purchase-add:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.purchase-add:focus-visible,
+.qty-stepper-btn:focus-visible,
+.qty-stepper-input:focus-visible,
+.purchase-cart-link:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+
+.purchase-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 0;
+}
+
+.purchase-feedback-msg {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.purchase-feedback-msg--error {
+  color: #e8b4b4;
+}
+
+.purchase-cart-status {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.purchase-cart-link {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.purchase-cart-link:hover {
+  color: #fff;
+}
+
+.qty-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  min-height: 48px;
+  width: 100%;
+}
+
+.qty-stepper--purchase {
+  height: 3.25rem;
+  min-height: 3.25rem;
+}
+
+.qty-stepper--purchase .qty-stepper-btn {
+  width: 2.5rem;
+  flex: 0 0 2.5rem;
+}
+
+.qty-stepper--purchase .qty-stepper-input {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.qty-stepper-btn {
+  width: 44px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.125rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qty-stepper-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qty-stepper-input {
+  width: 3rem;
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 0.9375rem;
+  -moz-appearance: textfield;
+}
+
+.qty-stepper-input::-webkit-outer-spin-button,
+.qty-stepper-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cart-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.cart-drawer-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 61;
+  width: min(100vw, 26rem);
+  height: 100%;
+  background: #0f0f0f;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  color: #fff;
+}
+
+.cart-drawer--open {
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-drawer,
+  .cart-drawer-backdrop {
+    transition: none;
+  }
+}
+
+.cart-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cart-drawer-title {
+  margin: 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.cart-drawer-close {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0.35rem 0.15rem;
+}
+
+.cart-drawer-body {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem 1.25rem;
+}
+
+.cart-empty {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-empty p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.cart-empty-link {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-family: var(--font-inter), sans-serif;
+  width: fit-content;
+}
+
+.cart-line-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cart-line {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  gap: 0.85rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-line-media {
+  width: 4.5rem;
+  aspect-ratio: 3 / 4;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.cart-line-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-line-brand {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cart-line-name {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 1rem;
+}
+
+.cart-line-meta,
+.cart-line-error {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cart-line-error {
+  color: #e8b4b4;
+}
+
+.cart-line-controls {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cart-line-remove {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.cart-line-total {
+  margin: 0;
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.cart-drawer-footer {
+  padding: 1rem 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9375rem;
+}
+
+.cart-subtotal strong {
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+}
+
+.cart-shipping-note {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cart-checkout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  color: #0f0f0f;
+  text-decoration: none;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 1rem;
+}
+
+.cart-continue-btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  min-height: 44px;
+  align-self: center;
+}
+
+.shop-page {
+  min-height: 100vh;
+  background: #0f0f0f;
+  color: #fff;
+  padding: 7rem 1.25rem 4rem;
+}
+
+.shop-shell {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.shop-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+}
+
+.shop-lead {
+  margin: 0 0 2rem;
+  font-family: var(--font-inter), sans-serif;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 36rem;
+}
+
+.shop-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 960px) {
+  .shop-grid--checkout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.85fr);
+    align-items: start;
+  }
+}
+
+.shop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.shop-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.shop-section-title {
+  margin: 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.shop-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.shop-field-row {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .shop-field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.shop-label {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.shop-optional {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.shop-input,
+.shop-select,
+.shop-textarea {
+  min-height: 48px;
+  padding: 0.7rem 0.85rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+}
+
+.shop-textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.shop-input:focus-visible,
+.shop-select:focus-visible,
+.shop-textarea:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 2px;
+}
+
+.shop-field-error {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem;
+  color: #e8b4b4;
+}
+
+.shop-radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.shop-radio {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.shop-radio--selected {
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.shop-radio--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.shop-radio input {
+  margin-top: 0.2rem;
+}
+
+.shop-radio strong {
+  display: block;
+  font-family: var(--font-libre-baskerville), serif;
+  font-weight: 400;
+}
+
+.shop-radio span {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.shop-primary {
+  min-height: 48px;
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  background: #fff;
+  color: #0f0f0f;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.shop-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.shop-secondary {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-inter), sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.shop-summary {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 5.5rem;
+}
+
+.shop-summary-title {
+  margin: 0;
+  font-family: var(--font-libre-baskerville), serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.shop-summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.shop-summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: "JMH Typewriter", "Courier New", monospace;
+  letter-spacing: 0.04em;
+}
+
+.shop-banner {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+}
+
+.shop-banner--error {
+  border-color: rgba(232, 180, 180, 0.45);
+  color: #e8b4b4;
+}
+
+.shop-banner--ok {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.account-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 2rem;
+  padding: 0 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.account-nav a {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+
+.account-nav a[aria-current="page"],
+.account-nav a:hover {
+  color: #fff;
+}
+
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.order-list-item {
+  display: grid;
+  gap: 0.35rem 1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 640px) {
+  .order-list-item {
+    grid-template-columns: 1fr auto auto;
+    align-items: baseline;
+  }
+}
+
+.order-list-item:hover .order-list-id {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.order-list-id {
+  font-family: var(--font-libre-baskerville), serif;
+}
+
+.order-list-meta {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.auth-shell {
+  width: min(100%, 26rem);
+  margin: 0 auto;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  appearance: none;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+@media (max-width: 380px) {
+  .purchase-actions {
+    flex-wrap: wrap;
+  }
+
+  .purchase-qty {
+    width: 100%;
+    max-width: 8rem;
+  }
+
+  .purchase-add {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .cart-line {
+    grid-template-columns: 4rem 1fr;
+  }
+
+  .cart-line-total {
+    grid-column: 2;
   }
 }

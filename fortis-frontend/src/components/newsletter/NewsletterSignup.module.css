@@ -6,16 +6,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(5rem, 10vw, 8rem) 1.25rem calc(8rem + env(safe-area-inset-bottom));
+  padding: var(--space-phi-lg, 6.5rem) var(--content-gutter, 1.25rem)
+    calc(4rem + env(safe-area-inset-bottom));
   background: #0f0f0f;
   color: #fff;
   box-sizing: border-box;
 }
 
 .inner {
-  width: min(100%, 760px);
+  width: min(100%, var(--content-max, 1400px));
   margin: 0 auto;
-  text-align: center;
+  display: grid;
+  /* Slightly wider form column so the email underline has more room */
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.25rem);
+  align-items: end;
+}
+
+.messageBlock {
+  min-width: 0;
+  text-align: left;
+}
+
+.formBlock {
+  min-width: 0;
 }
 
 .kicker {
@@ -29,16 +43,17 @@
 
 .title {
   font-family: var(--font-libre-baskerville), serif;
-  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 3.75rem);
   font-weight: 500;
   letter-spacing: -0.04em;
-  line-height: 1.05;
+  line-height: 1.08;
   margin-bottom: 1.1rem;
+  max-width: 14ch;
 }
 
 .copy {
-  width: min(100%, 46ch);
-  margin: 0 auto 2.25rem;
+  width: min(100%, 42ch);
+  margin: 0;
   font-family: var(--font-libre-baskerville), serif;
   font-size: clamp(14px, 2vw, 17px);
   line-height: 1.6;
@@ -50,8 +65,8 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 1rem;
-  width: min(100%, 620px);
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 .consent {
@@ -131,9 +146,9 @@
   background: transparent;
   color: #fff;
   cursor: pointer;
-  padding: 0.8rem 1.35rem;
+  padding: 0.55rem 0.95rem;
   font-family: var(--font-libre-baskerville), serif;
-  font-size: 15px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   white-space: nowrap;
   transition: border-color 0.2s ease, background-color 0.2s ease;
@@ -159,6 +174,26 @@
 
 .messageSuccess {
   color: rgba(255, 255, 255, 0.86);
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-phi-md, 4rem);
+  }
+
+  .messageBlock {
+    text-align: center;
+  }
+
+  .title {
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .copy {
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 640px) {

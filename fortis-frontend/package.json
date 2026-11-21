@@ -7,10 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:cart": "npx tsx src/lib/cart/cart-logic.test.ts",
     "upscale": "node scripts/upscale-almost-human.cjs"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^10.3.0",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.2",
     "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -21,7 +25,9 @@
     "ogl": "^1.0.11",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.4.0"
+    "stripe": "^23.2.0",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

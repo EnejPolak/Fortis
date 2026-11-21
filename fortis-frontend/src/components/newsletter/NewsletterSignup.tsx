@@ -45,66 +45,70 @@ export function NewsletterSignup() {
   return (
     <section className={styles.section} aria-labelledby="newsletter-title">
       <div className={styles.inner}>
-        <p className={styles.kicker}>Fortis novice</p>
-        <h2 id="newsletter-title" className={styles.title}>
-          Prijavite se na e-novice.
-        </h2>
-        <p className={styles.copy}>
-          Prejmite izbrane Fortis novice, nove kolekcije in vabila v atelier.
-        </p>
+        <div className={styles.messageBlock}>
+          <p className={styles.kicker}>Fortis novice</p>
+          <h2 id="newsletter-title" className={styles.title}>
+            Prijavite se na e-novice.
+          </h2>
+          <p className={styles.copy}>
+            Prejmite izbrane Fortis novice, nove kolekcije in vabila v atelier.
+          </p>
+        </div>
 
-        <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          <label className={styles.label} htmlFor="newsletter-email">
-            Email naslov
-          </label>
-          <input
-            id="newsletter-email"
-            className={styles.input}
-            type="email"
-            autoComplete="email"
-            inputMode="email"
-            placeholder="vas@email.com"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-              if (status !== "idle") {
-                setStatus("idle");
-                setMessage("");
-              }
-            }}
-            aria-invalid={status === "error"}
-            aria-describedby={message ? "newsletter-message" : undefined}
-          />
-          <button className={styles.button} type="submit">
-            Prijavi se
-          </button>
-
-          <label className={styles.consent}>
+        <div className={styles.formBlock}>
+          <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <label className={styles.label} htmlFor="newsletter-email">
+              Email naslov
+            </label>
             <input
-              className={styles.consentInput}
-              type="checkbox"
-              checked={consented}
+              id="newsletter-email"
+              className={styles.input}
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              placeholder="vas@email.com"
+              value={email}
               onChange={(event) => {
-                setConsented(event.target.checked);
+                setEmail(event.target.value);
                 if (status !== "idle") {
                   setStatus("idle");
                   setMessage("");
                 }
               }}
+              aria-invalid={status === "error"}
+              aria-describedby={message ? "newsletter-message" : undefined}
             />
-            <span className={styles.consentText}>
-              Strinjam se s{" "}
-              <Link href="/privacy-policy" className={styles.consentLink}>
-                politiko zasebnosti
-              </Link>{" "}
-              in soglašam z obdelavo email naslova za prejemanje Fortis novic.
-            </span>
-          </label>
-        </form>
+            <button className={styles.button} type="submit">
+              Prijavi se
+            </button>
 
-        <p id="newsletter-message" className={messageClassName} aria-live="polite">
-          {message}
-        </p>
+            <label className={styles.consent}>
+              <input
+                className={styles.consentInput}
+                type="checkbox"
+                checked={consented}
+                onChange={(event) => {
+                  setConsented(event.target.checked);
+                  if (status !== "idle") {
+                    setStatus("idle");
+                    setMessage("");
+                  }
+                }}
+              />
+              <span className={styles.consentText}>
+                Strinjam se s{" "}
+                <Link href="/privacy-policy" className={styles.consentLink}>
+                  politiko zasebnosti
+                </Link>{" "}
+                in soglašam z obdelavo email naslova za prejemanje Fortis novic.
+              </span>
+            </label>
+          </form>
+
+          <p id="newsletter-message" className={messageClassName} aria-live="polite">
+            {message}
+          </p>
+        </div>
       </div>
     </section>
   );

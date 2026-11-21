@@ -27,6 +27,8 @@ function toggleInList<T extends string>(list: T[], value: T, on: boolean): T[] {
 export function CollectionFilters({ filters, onChange, brandOptions, resultCount }: Props) {
   const baseId = useId();
   const barRef = useRef<HTMLDivElement>(null);
+  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
+  const drawerCloseRef = useRef<HTMLButtonElement>(null);
   const [openPanel, setOpenPanel] = useState<PanelKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -62,6 +64,14 @@ export function CollectionFilters({ filters, onChange, brandOptions, resultCount
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    drawerCloseRef.current?.focus();
+    return () => {
+      mobileTriggerRef.current?.focus();
+    };
+  }, [mobileOpen]);
+
   const reset = () => onChange({ brands: [], families: [] });
 
   const setBrand = (slug: string, checked: boolean) => {
@@ -92,8 +102,14 @@ export function CollectionFilters({ filters, onChange, brandOptions, resultCount
   const checkboxGroups = (
     <>
       <div className="kolekcija-filter-group">
-        <p className="kolekcija-filter-group-title">Znamka</p>
-        <div className="kolekcija-filter-group-list">
+        <p className="kolekcija-filter-group-title" id={`${baseId}-group-brand`}>
+          Znamka
+        </p>
+        <div
+          className="kolekcija-filter-group-list"
+          role="group"
+          aria-labelledby={`${baseId}-group-brand`}
+        >
           {brandOptions.map((opt) => (
             <FilterCheckbox
               key={opt.slug}
@@ -106,8 +122,14 @@ export function CollectionFilters({ filters, onChange, brandOptions, resultCount
         </div>
       </div>
       <div className="kolekcija-filter-group">
-        <p className="kolekcija-filter-group-title">Družina vonja</p>
-        <div className="kolekcija-filter-group-list">
+        <p className="kolekcija-filter-group-title" id={`${baseId}-group-family`}>
+          Družina vonja
+        </p>
+        <div
+          className="kolekcija-filter-group-list"
+          role="group"
+          aria-labelledby={`${baseId}-group-family`}
+        >
           {SCENT_FAMILY_OPTIONS.map((opt) => (
             <FilterCheckbox
               key={opt.slug}
@@ -192,11 +214,6 @@ export function CollectionFilters({ filters, onChange, brandOptions, resultCount
         </div>
         <div className="kolekcija-filters-bar-end">
           {hasFilters ? (
-            <span className="kolekcija-filters-count">
-              {resultCount} {resultCount === 1 ? "parfum" : "parfumov"}
-            </span>
-          ) : null}
-          {hasFilters ? (
             <button type="button" className="kolekcija-filter-reset" onClick={reset}>
               Ponastavi
             </button>
@@ -205,13 +222,17 @@ export function CollectionFilters({ filters, onChange, brandOptions, resultCount
       </div>
 
       <button
+        ref={mobileTriggerRef}
         type="button"
         className="kolekcija-filters-mobile-trigger"
         aria-expanded={mobileOpen}
+        aria-controls={`${baseId}-drawer`}
         onClick={() => setMobileOpen(true)}
       >
         <span>Filtri</span>
-        {activeCount > 0 ? <span className="kolekcija-filters-mobile-badge">{activeCount}</span> : null}
+        {activeCount > 0 ? (
+          <span className="kolekcija-filters-mobile-badge">{activeCount}</span>
+        ) : null}
       </button>
 
       {hasFilters ? (
@@ -247,10 +268,21 @@ export function CollectionFilters({ filters, onChange, brandOptions, resultCount
             aria-label="Zapri filtre"
             onClick={closeAll}
           />
-          <div className="kolekcija-filter-drawer" role="dialog" aria-modal="true" aria-label="Filtri">
+          <div
+            id={`${baseId}-drawer`}
+            className="kolekcija-filter-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Filtri"
+          >
             <div className="kolekcija-filter-drawer-head">
               <span className="kolekcija-filter-drawer-title">Filtri</span>
-              <button type="button" className="kolekcija-filter-drawer-close" onClick={closeAll}>
+              <button
+                ref={drawerCloseRef}
+                type="button"
+                className="kolekcija-filter-drawer-close"
+                onClick={closeAll}
+              >
                 ×
               </button>
             </div>
