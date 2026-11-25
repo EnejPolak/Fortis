@@ -14,6 +14,8 @@ type PurchaseBlockProps = {
 export function PurchaseBlock({ slug }: PurchaseBlockProps) {
   const product = getSellableProduct(slug);
   const { addItem, openCart, stockByVariant } = useCart();
+  const [localStock, setLocalStock] = useState<Record<string, number | null>>({});
+  const [stockReady, setStockReady] = useState(false);
   const [selectedVariantId, setSelectedVariantId] = useState(
     () => product?.variants[0]?.id ?? ""
   );
@@ -30,12 +32,48 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
     setQuantity(1);
     setStatus("idle");
     setMessage(null);
+    setStockReady(false);
   }, [slug]);
+
+  useEffect(() => {
+    if (!product?.isSellable) return;
+    const ids = product.variants.map((v) => v.id);
+    let cancelled = false;
+    fetch(`/api/commerce/stock?ids=${encodeURIComponent(ids.join(","))}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (cancelled || !data?.stock) {
+          if (!cancelled) {
+            // Fail closed: unreadable stock → not purchasable
+            const zero: Record<string, number | null> = {};
+            for (const id of ids) zero[id] = 0;
+            setLocalStock(zero);
+            setStockReady(true);
+          }
+          return;
+        }
+        setLocalStock(data.stock);
+        setStockReady(true);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          const zero: Record<string, number | null> = {};
+          for (const id of ids) zero[id] = 0;
+          setLocalStock(zero);
+          setStockReady(true);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [product]);
 
   if (!product || !product.isSellable) {
     return (
       <div className="purchase-block purchase-block--unavailable">
-        <p className="purchase-block-note">Nakup spletu trenutno ni na voljo.</p>
+        <p className="purchase-block-note">
+          Ta dišava trenutno ni na voljo za spletni nakup.
+        </p>
       </div>
     );
   }
@@ -44,16 +82,33 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
     product.variants.find((v) => v.id === selectedVariantId) ??
     product.variants[0];
   const multi = product.variants.length > 1;
-  const stock = stockByVariant[variant.id];
+
+  // Prefer live cart stock, then local fetch. null/undefined = treat as unavailable.
+  const resolvedStock = (id: string): number => {
+    const fromCart = stockByVariant[id];
+    const fromLocal = localStock[id];
+    const value = fromCart ?? fromLocal;
+    if (value == null) return stockReady ? 0 : -1; // -1 = still loading
+    return Math.max(0, value);
+  };
+
+  const stock = resolvedStock(variant.id);
+  const loading = !stockReady || stock < 0;
   const max =
-    stock == null
-      ? CART_MAX_LINE_QTY
+    loading || stock <= 0
+      ? 0
       : Math.max(0, Math.min(CART_MAX_LINE_QTY, stock));
-  const unavailable = max <= 0;
+  const unavailable = !loading && max <= 0;
   const qtyValue = Math.min(quantity, Math.max(1, max || 1));
 
+  const availabilityNote = loading
+    ? "Preverjam zalogo…"
+    : unavailable
+      ? "Trenutno ni na zalogi. Pišite nam za razpoložljivost v ateljeju."
+      : null;
+
   const onAdd = () => {
-    if (pending || unavailable) return;
+    if (pending || unavailable || loading) return;
     setStatus("idle");
     setMessage(null);
     startTransition(() => {
@@ -81,12 +136,8 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
               aria-label="Prostornina"
             >
               {product.variants.map((v) => {
-                const vStock = stockByVariant[v.id];
-                const vMax =
-                  vStock == null
-                    ? CART_MAX_LINE_QTY
-                    : Math.max(0, Math.min(CART_MAX_LINE_QTY, vStock));
-                const soldOut = vMax <= 0;
+                const vStock = resolvedStock(v.id);
+                const soldOut = stockReady && vStock <= 0;
                 const selected = v.id === variant.id;
                 return (
                   <label
@@ -123,6 +174,12 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
         </p>
       </div>
 
+      {availabilityNote ? (
+        <p className="purchase-block-note" role="status">
+          {availabilityNote}
+        </p>
+      ) : null}
+
       <div className="purchase-actions">
         <div className="purchase-qty">
           <label htmlFor={qtyId} className="sr-only">
@@ -133,7 +190,7 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
             className="qty-stepper--purchase"
             value={qtyValue}
             max={Math.max(1, max)}
-            disabled={unavailable || pending}
+            disabled={unavailable || pending || loading}
             onChange={(next) => {
               setQuantity(next);
               setStatus("idle");
@@ -144,12 +201,18 @@ export function PurchaseBlock({ slug }: PurchaseBlockProps) {
         <button
           type="button"
           className="purchase-add btn-commerce-primary"
-          disabled={unavailable || pending}
-          aria-busy={pending}
+          disabled={unavailable || pending || loading}
+          aria-busy={pending || loading}
           onClick={onAdd}
         >
           <span className="purchase-add-label">
-            {pending ? "Dodajam…" : unavailable ? "Ni na zalogi" : "Dodaj v košarico"}
+            {pending
+              ? "Dodajam…"
+              : loading
+                ? "Preverjam…"
+                : unavailable
+                  ? "Ni na zalogi"
+                  : "Dodaj v košarico"}
           </span>
         </button>
       </div>

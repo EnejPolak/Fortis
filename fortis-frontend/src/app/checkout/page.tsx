@@ -1,5 +1,5 @@
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";
-import { isStripeConfigured, isStripeTestMode } from "@/lib/stripe";
+import { isStripeConfigured, isStripeTestMode } from "@/stripe";
 
 type Props = {
   searchParams: Promise<{ cancelled?: string }>;

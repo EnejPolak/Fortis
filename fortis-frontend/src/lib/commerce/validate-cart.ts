@@ -14,6 +14,7 @@ export type ValidatedLine = {
   brand: string;
   volumeLabel: string;
   imageSrc: string;
+  sku: string | null;
   quantity: number;
   unitCents: number;
   lineCents: number;
@@ -23,6 +24,19 @@ export type ValidateCartResult =
   | { ok: true; lines: ValidatedLine[]; subtotalCents: number }
   | { ok: false; error: string; fieldErrors?: Record<string, string> };
 
+type InventoryRow = {
+  variant_id: string;
+  stock_quantity: number;
+  unit_cents: number | null;
+  is_active: boolean;
+  sku: string | null;
+};
+
+/**
+ * Server-side cart validation for checkout.
+ * Requires an active product_inventory row — missing stock never becomes unlimited.
+ * Unit price: inventory.unit_cents if set, otherwise catalogue file price.
+ */
 export async function validateCartLines(
   input: CartInputLine[]
 ): Promise<ValidateCartResult> {
@@ -39,22 +53,34 @@ export async function validateCartLines(
     if (!Number.isInteger(qty) || qty < 1) {
       return { ok: false, error: "Neveljavna količina." };
     }
+    if (qty > CART_MAX_LINE_QTY) {
+      return { ok: false, error: `Največja količina je ${CART_MAX_LINE_QTY}.` };
+    }
     merged.set(line.variantId, (merged.get(line.variantId) ?? 0) + qty);
   }
 
   const supabase = getServiceSupabase();
+  if (!supabase) {
+    return {
+      ok: false,
+      error: "Blagajna še ni konfigurirana (Supabase).",
+    };
+  }
+
   const variantIds = [...merged.keys()];
-  const stockMap = new Map<string, number>();
+  const { data: invRows, error: invError } = await supabase
+    .from("product_inventory")
+    .select("variant_id, stock_quantity, unit_cents, is_active, sku")
+    .in("variant_id", variantIds);
 
-  if (supabase) {
-    const { data } = await supabase
-      .from("product_inventory")
-      .select("variant_id, stock_quantity")
-      .in("variant_id", variantIds);
+  if (invError) {
+    console.error("inventory load", invError.message);
+    return { ok: false, error: "Zaloge trenutno ni mogoče preveriti." };
+  }
 
-    for (const row of data ?? []) {
-      stockMap.set(row.variant_id, row.stock_quantity ?? 0);
-    }
+  const stockMap = new Map<string, InventoryRow>();
+  for (const row of (invRows ?? []) as InventoryRow[]) {
+    stockMap.set(row.variant_id, row);
   }
 
   const lines: ValidatedLine[] = [];
@@ -68,11 +94,14 @@ export async function validateCartLines(
       continue;
     }
 
-    let max = CART_MAX_LINE_QTY;
-    if (stockMap.has(variantId)) {
-      max = Math.min(CART_MAX_LINE_QTY, stockMap.get(variantId)!);
+    const inv = stockMap.get(variantId);
+    if (!inv || !inv.is_active) {
+      fieldErrors[variantId] =
+        `${product.name} ni na voljo za nakup (zaloga ni vpisana ali je neaktiven).`;
+      continue;
     }
 
+    const max = Math.min(CART_MAX_LINE_QTY, Math.max(0, inv.stock_quantity ?? 0));
     if (max <= 0) {
       fieldErrors[variantId] = `${product.name} ni na zalogi.`;
       continue;
@@ -83,6 +112,16 @@ export async function validateCartLines(
       continue;
     }
 
+    const unitCents =
+      inv.unit_cents != null && inv.unit_cents >= 0
+        ? inv.unit_cents
+        : variant.unitCents;
+
+    if (!Number.isInteger(unitCents) || unitCents <= 0) {
+      fieldErrors[variantId] = `${product.name} nima veljavne cene.`;
+      continue;
+    }
+
     lines.push({
       variantId,
       slug: variant.slug,
@@ -90,9 +129,10 @@ export async function validateCartLines(
       brand: product.brand,
       volumeLabel: variant.volumeLabel,
       imageSrc: product.imageSrc,
+      sku: inv.sku,
       quantity,
-      unitCents: variant.unitCents,
-      lineCents: variant.unitCents * quantity,
+      unitCents,
+      lineCents: unitCents * quantity,
     });
   }
 

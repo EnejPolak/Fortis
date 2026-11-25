@@ -33,6 +33,7 @@ export function ProfileForm({
         setMessage("Seja je potekla. Prijavite se znova.");
         return;
       }
+      // Never send is_admin — server trigger also freezes it for authenticated clients.
       const { error } = await supabase.from("profiles").upsert({
         id: user.id,
         full_name: fullName,

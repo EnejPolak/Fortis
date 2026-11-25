@@ -25,6 +25,7 @@ type OrderPayload = {
     fulfillment_status: string;
   };
   items: Array<{
+    variant_id?: string;
     product_name: string;
     brand: string;
     volume_label: string;
@@ -40,7 +41,7 @@ export function OrderConfirmation({
   orderNumber: string;
   token?: string;
 }) {
-  const { clearCart } = useCart();
+  const { removePurchasedLines } = useCart();
   const [data, setData] = useState<OrderPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -48,6 +49,7 @@ export function OrderConfirmation({
   useEffect(() => {
     let cancelled = false;
     let attempts = 0;
+    let clearedForPaid = false;
 
     async function load() {
       attempts += 1;
@@ -67,13 +69,26 @@ export function OrderConfirmation({
           setData(json);
           setLoading(false);
           if (json.order?.payment_status === "paid") {
-            clearCart();
+            if (!clearedForPaid && Array.isArray(json.items)) {
+              clearedForPaid = true;
+              removePurchasedLines(
+                json.items.map(
+                  (item: {
+                    variant_id?: string;
+                    quantity: number;
+                  }) => ({
+                    variantId: item.variant_id ?? "",
+                    quantity: item.quantity,
+                  })
+                ).filter((l: { variantId: string }) => l.variantId)
+              );
+            }
             window.sessionStorage.removeItem("fortis.pendingOrder");
           } else if (
             json.order?.payment_status === "pending" &&
             attempts < 8
           ) {
-            // Webhook may lag briefly after redirect
+            // Webhook may lag briefly after redirect — success URL is not proof of payment
             window.setTimeout(load, 1500);
           }
         }
@@ -89,7 +104,7 @@ export function OrderConfirmation({
     return () => {
       cancelled = true;
     };
-  }, [orderNumber, token, clearCart]);
+  }, [orderNumber, token, removePurchasedLines]);
 
   if (loading) {
     return <p className="shop-lead">Preverjam naročilo…</p>;
@@ -136,8 +151,8 @@ export function OrderConfirmation({
               : "Naročilo bomo odpremili po potrditvi plačila."}
           </p>
           <p className="purchase-feedback-msg purchase-feedback-msg--muted">
-            Potrditveno e-pošto pošljemo, ko je e-poštna storitev konfigurirana.
-            Trenutno shranite številko naročila.
+            Potrditveno e-pošto pošljemo po potrditvi plačila (ko je Resend
+            konfiguriran). Shranite številko naročila.
           </p>
         </section>
 

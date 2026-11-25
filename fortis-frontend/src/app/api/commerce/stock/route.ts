@@ -5,8 +5,9 @@ import { CART_MAX_LINE_QTY } from "@/lib/cart/types";
 
 /**
  * Returns stock for variant ids.
- * If inventory table is missing/unconfigured, returns null stock
- * (client uses CART_MAX_LINE_QTY as soft cap — not a production guarantee).
+ * When inventory rows exist: reported quantity (capped).
+ * When inventory row is missing: 0 (never unlimited).
+ * When Supabase is unconfigured: null (soft UI cap only — checkout will refuse).
  */
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -28,48 +29,34 @@ export async function GET(request: Request) {
       return NextResponse.json({ stock, mode: "untracked" });
     }
 
-    const slugs = [
-      ...new Set(
-        ids
-          .map((id) => getVariantById(id)?.slug)
-          .filter((s): s is string => Boolean(s))
-      ),
-    ];
-
-    if (slugs.length === 0) {
+    if (ids.length === 0) {
       return NextResponse.json({ stock, mode: "tracked" });
     }
 
     const { data, error } = await supabase
       .from("product_inventory")
-      .select("variant_id, stock_quantity")
+      .select("variant_id, stock_quantity, is_active")
       .in("variant_id", ids);
 
     if (error) {
-      // Fallback: try slug-based rows
-      const bySlug = await supabase
-        .from("product_inventory")
-        .select("variant_id, stock_quantity")
-        .in("slug", slugs);
+      console.error("stock query", error.message);
+      return NextResponse.json({ stock, mode: "untracked" });
+    }
 
-      if (bySlug.error) {
-        return NextResponse.json({ stock, mode: "untracked" });
-      }
+    // Default missing rows to 0 once inventory table is reachable
+    for (const id of ids) {
+      if (getVariantById(id)) stock[id] = 0;
+    }
 
-      for (const row of bySlug.data ?? []) {
+    for (const row of data ?? []) {
+      if (row.is_active === false) {
+        stock[row.variant_id] = 0;
+      } else {
         stock[row.variant_id] = Math.min(
           CART_MAX_LINE_QTY,
           Math.max(0, row.stock_quantity ?? 0)
         );
       }
-      return NextResponse.json({ stock, mode: "tracked" });
-    }
-
-    for (const row of data ?? []) {
-      stock[row.variant_id] = Math.min(
-        CART_MAX_LINE_QTY,
-        Math.max(0, row.stock_quantity ?? 0)
-      );
     }
 
     return NextResponse.json({ stock, mode: "tracked" });

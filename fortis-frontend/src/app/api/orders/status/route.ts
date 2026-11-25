@@ -24,7 +24,7 @@ export async function GET(request: Request) {
   const { data: order, error } = await supabase
     .from("orders")
     .select(
-      "id, order_number, email, full_name, phone, fulfillment, shipping_address, billing_address, subtotal_cents, shipping_cents, total_cents, currency, payment_status, fulfillment_status, tracking_url, created_at, user_id, guest_access_token_hash"
+      "id, order_number, email, full_name, phone, fulfillment, shipping_address, billing_address, subtotal_cents, shipping_cents, total_cents, currency, payment_status, fulfillment_status, tracking_url, created_at, user_id, guest_access_token_hash, guest_access_token_expires_at"
     )
     .eq("order_number", orderNumber)
     .maybeSingle();
@@ -37,7 +37,12 @@ export async function GET(request: Request) {
 
   if (token && order.guest_access_token_hash) {
     const hash = await hashToken(token);
-    allowed = hash === order.guest_access_token_hash;
+    const tokenOk = hash === order.guest_access_token_hash;
+    const expiresAt = (order as { guest_access_token_expires_at?: string | null })
+      .guest_access_token_expires_at;
+    const notExpired =
+      !expiresAt || new Date(expiresAt).getTime() > Date.now();
+    allowed = tokenOk && notExpired;
   }
 
   if (!allowed) {

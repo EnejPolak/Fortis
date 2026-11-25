@@ -216,9 +216,26 @@ export function CheckoutForm({
     setSubmitting(true);
 
     try {
+      let idempotencyKey = window.sessionStorage.getItem(
+        "fortis.checkoutIdempotency"
+      );
+      if (!idempotencyKey) {
+        idempotencyKey =
+          typeof crypto !== "undefined" && "randomUUID" in crypto
+            ? crypto.randomUUID()
+            : `ck-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        window.sessionStorage.setItem(
+          "fortis.checkoutIdempotency",
+          idempotencyKey
+        );
+      }
+
       const res = await fetch("/api/checkout/create-session", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": idempotencyKey,
+        },
         body: JSON.stringify({
           email,
           fullName,
@@ -241,6 +258,7 @@ export function CheckoutForm({
             variantId: l.variantId,
             quantity: l.quantity,
           })),
+          idempotencyKey,
         }),
       });
 
@@ -255,6 +273,7 @@ export function CheckoutForm({
         "fortis.pendingOrder",
         JSON.stringify({ orderNumber: data.orderNumber, at: Date.now() })
       );
+      window.sessionStorage.removeItem("fortis.checkoutIdempotency");
       window.location.href = data.url;
     } catch {
       setFormError("Omrežna napaka. Poskusite znova.");

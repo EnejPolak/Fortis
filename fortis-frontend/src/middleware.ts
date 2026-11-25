@@ -33,8 +33,9 @@ export async function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname;
   const isAccount = path.startsWith("/racun");
+  const isAdmin = path.startsWith("/admin");
 
-  if (isAccount && !user) {
+  if ((isAccount || isAdmin) && !user) {
     const redirect = new URL("/prijava", request.url);
     redirect.searchParams.set("next", path);
     return NextResponse.redirect(redirect);
@@ -44,5 +45,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/racun/:path*"],
+  matcher: ["/racun/:path*", "/admin/:path*"],
 };

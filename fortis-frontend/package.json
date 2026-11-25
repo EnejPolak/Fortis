@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "test:cart": "npx tsx src/lib/cart/cart-logic.test.ts",
+    "test:commerce": "npx tsx src/lib/commerce/commerce.test.ts && npm run test:cart",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node scripts/run-migrations.mjs",
+    "db:seed-inventory": "npx tsx scripts/seed-inventory-zero.ts",
+    "test:inventory-flow": "npx tsx scripts/test-inventory-flow.ts",
+    "test:webhook-auth": "npx tsx scripts/test-webhook-and-auth.ts",
     "upscale": "node scripts/upscale-almost-human.cjs"
   },
   "dependencies": {
@@ -23,6 +29,7 @@
     "lucide-react": "^0.562.0",
     "next": "16.1.0",
     "ogl": "^1.0.11",
+    "pg": "^8.23.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "stripe": "^23.2.0",
@@ -32,6 +39,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
